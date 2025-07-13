@@ -7,6 +7,66 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Montserrat:wght@700;900&family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* --- MENÚ HAMBURGUESA RESPONSIVE --- */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      margin-left: 12px;
+      z-index: 101;
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 78vw;
+      max-width: 340px;
+      height: 100vh;
+      background: rgba(22,25,35,0.98);
+      box-shadow: -2px 0 18px #0007;
+      z-index: 200;
+      padding: 48px 24px 24px 24px;
+      gap: 22px;
+      animation: fadeup 0.3s;
+    }
+    .mobile-link {
+      color: #fff;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      text-decoration: none;
+      padding: 8px 0;
+      border-radius: 7px;
+      transition: background 0.14s, color 0.16s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      outline: none;
+      display: block;
+    }
+    .mobile-link.active, .mobile-link:hover {
+      color: var(--accent2);
+      background: #232733;
+    }
+    @media (max-width: 900px) {
+      .desktop-nav {
+        display: none !important;
+      }
+      .hamburger {
+        display: block !important;
+      }
+      .mobile-nav {
+        display: none;
+      }
+      .mobile-nav.open {
+        display: flex !important;
+      }
+    }
     :root {
       --bg-main: #181d24;
       --card-glass: rgba(26,29,38,0.93);
@@ -886,7 +946,7 @@
   <div class="navbar">
     <div class="navbar-inner">
       <a class="logo" href="#">Echoday</a>
-      <nav>
+      <nav class="desktop-nav">
         <div class="dropdown" id="dropdownServicios">
           <button class="dropdown-toggle" id="dropdownToggle">
             Servicios <i class="fa-solid fa-chevron-down"></i>
@@ -908,6 +968,24 @@
         </div>
         <a href="#" id="aboutNavBtn" onclick="showAboutModal();return false;">About</a>
         <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
+        <i class="fa fa-bars"></i>
+      </button>
+      <nav class="mobile-nav" id="mobileNav">
+        <a href="#" class="mobile-link" onclick="showAboutModal();return false;">About</a>
+        <a href="#contacto" class="mobile-link">Contacto</a>
+        <div class="dropdown" id="dropdownServiciosMobile">
+          <button class="dropdown-toggle" id="dropdownToggleMobile">
+            Servicios <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">Automatización IA</a>
+            <a href="#" class="dropdown-item">Desarrollo Web</a>
+            <a href="#" class="dropdown-item">Presentaciones de Impacto</a>
+            <a href="#" class="dropdown-item">Creación de Apps Móviles</a>
+          </div>
+        </div>
       </nav>
     </div>
   </div>
@@ -1218,6 +1296,37 @@
   </style>
 
   <script>
+  // Menú hamburguesa responsive
+  document.addEventListener('DOMContentLoaded', function() {
+    var hamburgerBtn = document.getElementById('hamburgerBtn');
+    var mobileNav = document.getElementById('mobileNav');
+    hamburgerBtn.addEventListener('click', function() {
+      mobileNav.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!mobileNav.contains(e.target) && e.target !== hamburgerBtn) {
+        mobileNav.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') mobileNav.classList.remove('open');
+    });
+    // Dropdown en menú móvil
+    var dropdownToggleMobile = document.getElementById('dropdownToggleMobile');
+    var dropdownServiciosMobile = document.getElementById('dropdownServiciosMobile');
+    dropdownToggleMobile.addEventListener('click', function(e) {
+      e.preventDefault();
+      dropdownServiciosMobile.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!dropdownServiciosMobile.contains(e.target) && dropdownServiciosMobile.classList.contains('open')) {
+        dropdownServiciosMobile.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') dropdownServiciosMobile.classList.remove('open');
+    });
+  });
   // Dropdown Servicios interactividad
   document.addEventListener('DOMContentLoaded', function() {
     var dropdownToggle = document.getElementById('dropdownToggle');
