@@ -7,66 +7,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Montserrat:wght@700;900&family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* --- MENÚ HAMBURGUESA RESPONSIVE --- */
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 2rem;
-      cursor: pointer;
-      margin-left: 12px;
-      z-index: 101;
-    }
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 78vw;
-      max-width: 340px;
-      height: 100vh;
-      background: rgba(22,25,35,0.98);
-      box-shadow: -2px 0 18px #0007;
-      z-index: 200;
-      padding: 48px 24px 24px 24px;
-      gap: 22px;
-      animation: fadeup 0.3s;
-    }
-    .mobile-link {
-      color: #fff;
-      font-family: 'Poppins', Arial, sans-serif;
-      font-weight: 600;
-      font-size: 1.15rem;
-      text-decoration: none;
-      padding: 8px 0;
-      border-radius: 7px;
-      transition: background 0.14s, color 0.16s;
-      cursor: pointer;
-      background: none;
-      border: none;
-      outline: none;
-      display: block;
-    }
-    .mobile-link.active, .mobile-link:hover {
-      color: var(--accent2);
-      background: #232733;
-    }
-    @media (max-width: 900px) {
-      .desktop-nav {
-        display: none !important;
-      }
-      .hamburger {
-        display: block !important;
-      }
-      .mobile-nav {
-        display: none;
-      }
-      .mobile-nav.open {
-        display: flex !important;
-      }
-    }
     :root {
       --bg-main: #181d24;
       --card-glass: rgba(26,29,38,0.93);
@@ -543,17 +483,18 @@
       height: 36px;
       font-size: 1.3rem;
       cursor: pointer;
-      z-index: 10;
+      z-index: 1000;
       box-shadow: 0 2px 8px #0003;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: background 0.18s, color 0.18s, transform 0.13s;
+      pointer-events: auto !important;
     }
     .simulador-close-btn:hover {
       background: var(--accent4);
       color: #fff;
-      transform: scale(1.12) rotate(8deg);
+      transform: scale(1.1);
     }
     .sim-iphone-box {
       display: flex;
@@ -946,7 +887,7 @@
   <div class="navbar">
     <div class="navbar-inner">
       <a class="logo" href="#">Echoday</a>
-      <nav class="desktop-nav">
+      <nav>
         <div class="dropdown" id="dropdownServicios">
           <button class="dropdown-toggle" id="dropdownToggle">
             Servicios <i class="fa-solid fa-chevron-down"></i>
@@ -968,24 +909,6 @@
         </div>
         <a href="#" id="aboutNavBtn" onclick="showAboutModal();return false;">About</a>
         <a href="#contacto">Contacto</a>
-      </nav>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
-        <i class="fa fa-bars"></i>
-      </button>
-      <nav class="mobile-nav" id="mobileNav">
-        <a href="#" class="mobile-link" onclick="showAboutModal();return false;">About</a>
-        <a href="#contacto" class="mobile-link">Contacto</a>
-        <div class="dropdown" id="dropdownServiciosMobile">
-          <button class="dropdown-toggle" id="dropdownToggleMobile">
-            Servicios <i class="fa-solid fa-chevron-down"></i>
-          </button>
-          <div class="dropdown-menu">
-            <a href="#" class="dropdown-item">Automatización IA</a>
-            <a href="#" class="dropdown-item">Desarrollo Web</a>
-            <a href="#" class="dropdown-item">Presentaciones de Impacto</a>
-            <a href="#" class="dropdown-item">Creación de Apps Móviles</a>
-          </div>
-        </div>
       </nav>
     </div>
   </div>
@@ -1120,9 +1043,10 @@
         </form>
         <div class="contact-info">
           <div style="margin-bottom:12px;"><b>Email:</b> <span style="color:var(--accent2);">hola@echoday.com</span></div>
-          <div style="margin:10px 0;"><b>WhatsApp:</b> <a style="color:var(--accent1);font-weight:700" href="https://wa.me/595991234567" target="_blank"><i class="fab fa-whatsapp"></i> Escríbeme ahora</a></div>
+          <div style="margin:10px 0;"><b>WhatsApp:</b> <a style="color:var(--accent1);font-weight:700" href="https://wa.me/34643032807" target="_blank"><i class="fab fa-whatsapp"></i> Escríbeme ahora</a></div>
           <div>
             <b>Redes:</b>
+            <a href="https://github.com/cleonaia" target="_blank" style="color:var(--accent2);margin:0 7px;" title="GitHub"><i class="fab fa-github fa-lg"></i></a>
             <a href="#" style="color:var(--accent2);margin:0 7px;"><i class="fab fa-linkedin fa-lg"></i></a>
             <a href="#" style="color:var(--accent1);margin:0 7px;"><i class="fab fa-twitter fa-lg"></i></a>
             <a href="#" style="color:#42fa7a;margin:0 7px;"><i class="fab fa-instagram fa-lg"></i></a>
@@ -1296,37 +1220,6 @@
   </style>
 
   <script>
-  // Menú hamburguesa responsive
-  document.addEventListener('DOMContentLoaded', function() {
-    var hamburgerBtn = document.getElementById('hamburgerBtn');
-    var mobileNav = document.getElementById('mobileNav');
-    hamburgerBtn.addEventListener('click', function() {
-      mobileNav.classList.toggle('open');
-    });
-    document.addEventListener('click', function(e) {
-      if (!mobileNav.contains(e.target) && e.target !== hamburgerBtn) {
-        mobileNav.classList.remove('open');
-      }
-    });
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape') mobileNav.classList.remove('open');
-    });
-    // Dropdown en menú móvil
-    var dropdownToggleMobile = document.getElementById('dropdownToggleMobile');
-    var dropdownServiciosMobile = document.getElementById('dropdownServiciosMobile');
-    dropdownToggleMobile.addEventListener('click', function(e) {
-      e.preventDefault();
-      dropdownServiciosMobile.classList.toggle('open');
-    });
-    document.addEventListener('click', function(e) {
-      if (!dropdownServiciosMobile.contains(e.target) && dropdownServiciosMobile.classList.contains('open')) {
-        dropdownServiciosMobile.classList.remove('open');
-      }
-    });
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape') dropdownServiciosMobile.classList.remove('open');
-    });
-  });
   // Dropdown Servicios interactividad
   document.addEventListener('DOMContentLoaded', function() {
     var dropdownToggle = document.getElementById('dropdownToggle');
@@ -1675,38 +1568,72 @@ También puedes llamarnos al <b>(021) 123-456</b> 📞
       document.getElementById('startBtn').style.display = 'block';
       iphoneCurrentStep = 'idle';
     }
-    // SIMULADOR EMBEBIDO: Mostrar/ocultar por card
-    document.getElementById('servicio-automatizacion').addEventListener('click', function() {
-      const cont = document.getElementById('simuladorContainer');
-      if(cont.classList.contains('active')) {
-        cont.classList.remove('active');
-        resetIphoneDemo();
-      } else {
-        cont.classList.add('active');
-        resetIphoneDemo();
-        setTimeout(function(){
-          cont.scrollIntoView({behavior: "smooth", block: "center"});
-        }, 120);
+    // SIMULADOR EMBEBIDO: Todo en DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // SIMULADOR EMBEBIDO: Mostrar/ocultar por card
+      const servicioAuto = document.getElementById('servicio-automatizacion');
+      const menuAutoWhatsapp = document.getElementById('menu-auto-whatsapp');
+      const simuladorContainer = document.getElementById('simuladorContainer');
+      const simuladorCloseBtn = document.getElementById('simuladorCloseBtn');
+      
+      // Debug: verificar que los elementos existen
+      console.log('Elementos encontrados:', {
+        servicioAuto: !!servicioAuto,
+        menuAutoWhatsapp: !!menuAutoWhatsapp,
+        simuladorContainer: !!simuladorContainer,
+        simuladorCloseBtn: !!simuladorCloseBtn
+      });
+      
+      if (servicioAuto && simuladorContainer) {
+        servicioAuto.addEventListener('click', function() {
+          if(simuladorContainer.classList.contains('active')) {
+            simuladorContainer.classList.remove('active');
+            resetIphoneDemo();
+          } else {
+            simuladorContainer.classList.add('active');
+            resetIphoneDemo();
+            setTimeout(function(){
+              simuladorContainer.scrollIntoView({behavior: "smooth", block: "center"});
+            }, 120);
+          }
+        });
       }
-    });
-    // SIMULADOR EMBEBIDO: Mostrar por menú dropdown
-    document.getElementById('menu-auto-whatsapp').addEventListener('click', function(e) {
-      e.preventDefault();
-      const cont = document.getElementById('simuladorContainer');
-      if(!cont.classList.contains('active')) {
-        cont.classList.add('active');
-        resetIphoneDemo();
-        setTimeout(function(){
-          cont.scrollIntoView({behavior: "smooth", block: "center"});
-        }, 120);
+      
+      // SIMULADOR EMBEBIDO: Mostrar por menú dropdown
+      if (menuAutoWhatsapp && simuladorContainer) {
+        menuAutoWhatsapp.addEventListener('click', function(e) {
+          e.preventDefault();
+          if(!simuladorContainer.classList.contains('active')) {
+            simuladorContainer.classList.add('active');
+            resetIphoneDemo();
+            setTimeout(function(){
+              simuladorContainer.scrollIntoView({behavior: "smooth", block: "center"});
+            }, 120);
+          }
+          // Cierra el dropdown después de click
+          const dropdown = document.getElementById('dropdownServicios');
+          if (dropdown) dropdown.classList.remove('open');
+        });
       }
-      // Cierra el dropdown después de click
-      document.getElementById('dropdownServicios').classList.remove('open');
-    });
-    // SIMULADOR: Cerrar con la cruz
-    document.getElementById('simuladorCloseBtn').addEventListener('click', function() {
-      document.getElementById('simuladorContainer').classList.remove('active');
-      resetIphoneDemo();
+      
+      // SIMULADOR: Cerrar con la cruz
+      if (simuladorCloseBtn && simuladorContainer) {
+        simuladorCloseBtn.addEventListener('click', function(e) {
+          console.log('Cerrando simulador...'); // Para debug
+          e.preventDefault();
+          e.stopPropagation();
+          simuladorContainer.classList.remove('active');
+          resetIphoneDemo();
+        });
+      }
+      
+      // SIMULADOR: Cerrar con ESC
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && simuladorContainer && simuladorContainer.classList.contains('active')) {
+          simuladorContainer.classList.remove('active');
+          resetIphoneDemo();
+        }
+      });
     });
     // Dropdown toggle manual para mobile/click
     const dropdownToggle = document.getElementById('dropdownToggle');
