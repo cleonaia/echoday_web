@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Echoday - Soluciones Creativas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Montserrat:wght@700;900&family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #181d24;
+      --card-glass: rgba(26,29,38,0.93);
+      --accent1: #23ffe3;
+      --accent2: #60a8ff;
+      --accent3: #42fa7a;
+      --accent4: #e96479;
+      --accent5: #bc82ff;
+      --gray: #c8d0dd;
+      --gray2: #6e7a8a;
+      --logo-main1: #60a8ff;
+      --logo-main2: #42fa7a;
+      --glow: 0 0 0 4px #23ffe3, 0 0 16px 1px #23ffe366;
+    }
+    html, body {
+      margin: 0; padding: 0;
+      min-height: 100vh;
+      background: var(--bg-main);
+      font-family: 'Inter', 'Poppins', Arial, sans-serif;
+      color: #fff;
+      position: relative;
+      overflow-x: hidden;
+      /* AÑADE ESTO: */
+      height: 100%;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+    main {
+      flex: 1 0 auto;
+    }
+    .code-bg-left {
+      position: fixed;
+      left: 0; top: 0;
+      width: 50vw;
+      height: 100vh;
+      min-width: 240px;
+      max-width: 600px;
+      z-index: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow: hidden;
+      opacity: 1;
+      background: linear-gradient(90deg, #181d24 70%, #181d2400 96%);
+    }
+    .code-content {
+      font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+      font-size: 1rem;
+      color: #6cf7e4;
+      line-height: 1.56;
+      padding: 34px 18px 0 28px;
+      white-space: pre;
+      opacity: 0.26;
+      user-select: none;
+      letter-spacing: 0.01em;
+      text-shadow: 0 0 8px #23ffe3bb, 0 0 3px #23ffe3;
+      box-sizing: border-box;
+      pointer-events: none;
+      width: 100%;
+      min-width: 0;
+      max-width: 700px;
+    }
+    .wave-sep {
+      width: 100%;
+      height: 40px;
+      background: none;
+      border: 0;
+      display: block;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+    .hero-section {
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding: 120px 0 0 0;
+      z-index: 2;
+      position: relative;
+      background: none;
+    }
+    .hero-content {
+      flex: 1 1 340px;
+      min-width: 320px;
+      max-width: 620px;
+      z-index: 2;
+      animation: fadeup 1s cubic-bezier(.23,1.05,.32,1);
+    }
+    .hero-glass {
+      background: var(--card-glass);
+      border-radius: 32px;
+      box-shadow: 0 10px 64px #23ffe319, 0 0px 0px 1.5px #23273333;
+      backdrop-filter: blur(13px);
+      -webkit-backdrop-filter: blur(13px);
+      padding: 48px 38px 38px 38px;
+      border: 1.7px solid #222733;
+      border-bottom: 2.5px solid var(--accent2);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-title-gradient {
+      font-size: 3.1rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 900;
+      background: linear-gradient(90deg, #60a8ff 30%, #42fa7a 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 1px 25px #60a8ff44);
+      margin-bottom: 18px;
+      letter-spacing: 1.5px;
+      animation: fadeup 0.9s cubic-bezier(.23,1.05,.32,1);
+      line-height: 1.1;
+    }
+    .hero-sub {
+      font-size: 1.3rem;
+      font-family: 'Poppins', Arial, sans-serif;
+      color: #a8e3e0;
+      margin-bottom: 26px;
+      margin-top: 0;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      animation: fadeup 1.2s cubic-bezier(.23,1.05,.32,1);
+    }
+    .cta-btn {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2) 65%);
+      color: #13161d;
+      border: none;
+      border-radius: 40px;
+      padding: 13px 32px;
+      font-size: 1.12rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Montserrat', Arial, sans-serif;
+      letter-spacing: 1.1px;
+      box-shadow: 0 0 16px 2px #42fa7a66, 0 0 32px 2px #60a8ff22;
+      transition: background 0.18s, color 0.15s, transform 0.13s, box-shadow 0.2s;
+      margin-top: 7px;
+      text-shadow: none;
+      animation: ctaglowpulse 2.2s infinite alternate;
+    }
+    .cta-btn:hover {
+      background: linear-gradient(90deg, var(--accent3), var(--accent2) 80%);
+      color: #181c24;
+      transform: scale(1.06) rotate(-1deg);
+      box-shadow: 0 0 34px 7px #42fa7a88, 0 0 48px 7px #60a8ff33;
+    }
+    @keyframes ctaglowpulse {
+      from { box-shadow: 0 0 12px 2px #42fa7a44; }
+      to   { box-shadow: 0 0 24px 4px #60a8ff99; }
+    }
+    @keyframes fadeup {
+      from {opacity: 0; transform: translateY(36px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .navbar {
+      background: rgba(22,25,35,0.98);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      height: 48px; /* Más recortado */
+      box-shadow: 0 2px 16px #0005;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      max-width: 1080px;
+      padding: 0 18px; /* Un poco menos de padding */
+      margin: 0 auto;
+      gap: 20px;
+      height: 48px; /* Igual que navbar */
+    }
+    .logo {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 900;
+      font-size: 1.45rem; /* Más pequeño */
+      letter-spacing: 1.2px;
+      background: linear-gradient(97deg, var(--logo-main1) 12%, var(--logo-main2) 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      filter: drop-shadow(0 1px 16px #23ffe355);
+      transition: filter 0.2s;
+      margin-right: auto;
+      padding-left: 6px;
+      animation: logoGlow 2.5s infinite alternate;
+    }
+    @keyframes logoGlow {
+      from { filter: drop-shadow(0 1px 16px #23ffe355);}
+      to   { filter: drop-shadow(0 1px 32px #60a8ff88);}
+    }
+    nav {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+    nav a, .dropdown-toggle {
+      color: #fff;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      padding: 3px 10px;
+      border-radius: 7px;
+      transition: background 0.14s, color 0.16s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      outline: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    nav a.active, nav a:hover, .dropdown-toggle:hover, .dropdown-toggle.open {
+      color: var(--accent2);
+      background: #232733;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-toggle i {
+      font-size: 0.85em;
+      margin-left: 4px;
+      transition: transform 0.18s;
+    }
+    .dropdown-toggle.open i {
+      transform: rotate(-180deg);
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 110%;
+      left: 0;
+      min-width: 220px;
+      background: #161a23;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px #0006;
+      padding: 12px 0;
+      z-index: 222;
+      margin-top: 0.3rem;
+      animation: fadeup 0.2s;
+    }
+    .dropdown.open .dropdown-menu {
+      display: block;
+    }
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      padding: 11px 22px;
+      text-decoration: none;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-size: 1.05rem;
+      transition: background 0.15s, color 0.14s;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .dropdown-item:hover {
+      background: #232733;
+      color: var(--accent2);
+    }
+    .arrow-right {
+      margin-left: 12px;
+      color: #a8e3e0;
+      font-size: 1rem;
+    }
+    .servicios-section {
+      padding: 90px 0 75px 0;
+      z-index: 2;
+      position: relative;
+      background: none;
+    }
+    .servicios-header {
+      max-width: 700px;
+      text-align: center;
+      margin: 0 auto 40px auto;
+      animation: fadeup 1.1s cubic-bezier(.23,1.05,.32,1);
+    }
+    .servicios-header h2 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent2);
+      margin-bottom: 8px;
+      letter-spacing: 1.1px;
+      line-height: 1.1;
+      text-shadow: 0 4px 22px #23ffe266;
+      background: linear-gradient(90deg, #60a8ff 30%, #42fa7a 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    .servicios-desc {
+      color: #a8e3e0;
+      font-size: 1.19rem;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 500;
+      margin-bottom: 0;
+      margin-top: 0;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 12px #23ffe355;
+    }
+    .servicios-grid {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+      z-index: 1;
+    }
+    .servicios-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 38px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .servicios-row.row-1 { max-width: 1100px; }
+    .servicios-row.row-2 { max-width: 720px; }
+    .servicio-card {
+      position: relative;
+      z-index: 1;
+      background: var(--card-glass);
+      border-radius: 29px;
+      box-shadow: 0 6px 24px #23ffe312, 0 10px 32px #60a8ff10;
+      border: 2.2px solid transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 37px 28px 27px 28px;
+      min-width: 225px;
+      max-width: 350px;
+      flex: 1 1 210px;
+      backdrop-filter: blur(9px);
+      -webkit-backdrop-filter: blur(9px);
+      transition:
+        transform 0.18s cubic-bezier(.23,1.05,.32,1),
+        box-shadow 0.18s cubic-bezier(.23,1.05,.32,1),
+        border-color 0.19s cubic-bezier(.23,1.05,.32,1),
+        box-shadow 0.19s;
+      opacity: 0;
+      transform: translateY(35px) scale(0.98);
+      animation: reveal 0.91s forwards;
+      animation-delay: var(--delay, 0s);
+      cursor: pointer;
+      overflow: visible;
+      text-align: left;
+      font-family: 'Montserrat', Arial, sans-serif;
+      will-change: transform;
+      perspective: 700px;
+    }
+    .servicio-card.highlight-card {
+      border: 2.2px solid transparent;
+      box-shadow: 0 6px 24px #23ffe312, 0 10px 32px #60a8ff10;
+      background: var(--card-glass);
+    }
+    .servicio-card:hover, .servicio-card:focus {
+      box-shadow: 0 0 0 2.5px #23ffe322, 0 10px 32px #60a8ff22, 0 6px 24px #23ffe312;
+      border-color: var(--accent1);
+      z-index: 2;
+      transform: scale(1.03) translateY(-4px);
+    }
+    .servicio-card .click-hint {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      background: linear-gradient(90deg, #60a8ff 30%, #42fa7a 90%);
+      color: #181d24;
+      font-size: 1.08rem;
+      font-weight: 700;
+      border-radius: 18px;
+      padding: 7px 17px 7px 13px;
+      box-shadow: 0 1.5px 16px #60a8ff99, 0 0 12px #23ffe355;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      animation: bounceX 1.5s infinite;
+      pointer-events: none;
+      user-select: none;
+      border: none;
+      outline: none;
+      text-shadow: 0 1px 4px #fff8;
+      letter-spacing: 0.04em;
+    }
+    @keyframes bounceX {
+      0%, 100% { transform: translateY(0);}
+      50% { transform: translateY(-9px);}
+    }
+    .servicio-icono {
+      font-size: 2.3rem;
+      margin-bottom: 16px;
+      margin-top: 0;
+      align-self: flex-start;
+      filter: drop-shadow(0 2.5px 12px #23ffe330);
+      transition: filter 0.2s;
+    }
+    .servicio-card .servicio-icono { color: #fff;}
+    .servicio-card h3 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 12px;
+      font-weight: 900;
+      letter-spacing: 0.15px;
+      margin-top: 0;
+      line-height: 1.15;
+      text-shadow: 0 4px 16px #181c2422;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .servicio-card p {
+      color: var(--gray);
+      font-size: 1.19rem;
+      font-family: 'Poppins', Arial, sans-serif;
+      margin-bottom: 0;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-top: 0;
+    }
+    @keyframes reveal {
+      from {opacity: 0; transform: translateY(35px) scale(0.98);}
+      to {opacity: 1; transform: translateY(0) scale(1);}
+    }
+
+    /* Simulador de WhatsApp */
+    .simulador-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 38px auto 0 auto;
+      display: none;
+      flex-direction: row;
+      gap: 28px;
+      align-items: flex-start;
+      justify-content: center;
+      transition: max-height 0.3s;
+      opacity: 0;
+      pointer-events: none;
+      position: relative;
+    }
+    .simulador-container.active {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .simulador-close-btn {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      background: #232733;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 2px 8px #0003;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.18s, color 0.18s, transform 0.13s;
+    }
+    .simulador-close-btn:hover {
+      background: var(--accent4);
+      color: #fff;
+      transform: scale(1.12) rotate(8deg);
+    }
+    .sim-iphone-box {
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      width: 100%;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .iphone-mockup {
+      background: #222733;
+      border-radius: 36px;
+      box-shadow: 0 8px 32px #23ffe322, 0 2px 16px #60a8ff22;
+      width: 320px;
+      min-width: 220px;
+      max-width: 340px;
+      padding: 18px 10px 18px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .iphone-screen {
+      background: #e5ddd5;
+      border-radius: 28px;
+      width: 100%;
+      height: 480px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 12px #0002;
+      position: relative;
+    }
+    .whatsapp-header {
+      background: linear-gradient(90deg, #075e54 70%, #25d366 100%);
+      color: #fff;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .whatsapp-header-avatar {
+      background: #fff;
+      color: #075e54;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 2px 8px #0002;
+    }
+    .whatsapp-header-info {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.97rem;
+      line-height: 1.1;
+    }
+    .whatsapp-header-info span:last-child {
+      font-size: 0.85rem;
+      color: #c8ffe3;
+    }
+    .iphone-chat-messages {
+      flex: 1;
+      padding: 16px 10px 10px 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #ece5dd;
+    }
+    .iphone-message {
+      max-width: 85%;
+      padding: 9px 14px;
+      border-radius: 16px;
+      font-size: 1.01rem;
+      line-height: 1.45;
+      margin-bottom: 2px;
+      word-break: break-word;
+      box-shadow: 0 1px 6px #0001;
+    }
+    .iphone-bot-message {
+      background: #fff;
+      color: #222;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .iphone-user-message {
+      background: #dcf8c6;
+      color: #222;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .iphone-typing-indicator {
+      display: none;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      font-size: 0.97rem;
+      color: #888;
+      background: #fff;
+      border-radius: 14px;
+      margin: 7px 0 7px 0;
+      align-self: flex-start;
+    }
+    .typing-dots {
+      display: flex;
+      gap: 2px;
+    }
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: #bbb;
+      border-radius: 50%;
+      animation: typing-bounce 1s infinite alternate;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing-bounce {
+      0% { transform: translateY(0);}
+      100% { transform: translateY(-4px);}
+    }
+    .simulador-pdf-attachment {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 6px 10px;
+      box-shadow: 0 1px 4px #0001;
+    }
+    .simulador-pdf-icon {
+      background: #e96479;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 0.95rem;
+      margin-right: 4px;
+    }
+    .simulador-panel {
+      background: var(--card-glass);
+      border-radius: 24px;
+      box-shadow: 0 4px 24px #23ffe315;
+      padding: 32px 28px 22px 28px;
+      min-width: 270px;
+      max-width: 420px;
+      flex: 1 1 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .simulador-panel h2 {
+      font-size: 1.3rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--accent2);
+      margin: 0 0 8px 0;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .simulador-panel p {
+      color: #a8e3e0;
+      font-size: 1.05rem;
+      margin: 0 0 8px 0;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+    .simulador-panel ul {
+      margin: 7px 0 0 18px;
+      color: #c8d0dd;
+      font-size: 0.99rem;
+    }
+    .simulador-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .simulador-btn {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2) 80%);
+      color: #181d24;
+      border: none;
+      border-radius: 22px;
+      padding: 10px 18px;
+      font-size: 1.07rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Montserrat', Arial, sans-serif;
+      letter-spacing: 0.7px;
+      box-shadow: 0 0 8px 1px #42fa7a33;
+      transition: background 0.18s, color 0.15s, transform 0.13s, box-shadow 0.2s;
+    }
+    .simulador-btn:hover {
+      background: linear-gradient(90deg, var(--accent3), var(--accent2) 80%);
+      color: #181c24;
+      transform: scale(1.04);
+      box-shadow: 0 0 18px 2px #42fa7a66;
+    }
+
+    /* Contacto */
+    .contact-section {
+      background: #181d24;
+      padding: 80px 0 60px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .contact-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-glass);
+      border-radius: 28px;
+      box-shadow: 0 4px 32px #23ffe315;
+      padding: 38px 28px 32px 28px;
+    }
+    .contact-title {
+      font-size: 2rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 900;
+      color: var(--accent2);
+      margin-bottom: 8px;
+      letter-spacing: 1.1px;
+      text-shadow: 0 4px 22px #23ffe266;
+    }
+    .contact-subtitle {
+      color: #a8e3e0;
+      font-size: 1.19rem;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 500;
+      margin-bottom: 24px;
+      margin-top: 0;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+    }
+    .contact-grid {
+      display: flex;
+      flex-direction: row;
+      gap: 38px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-form {
+      flex: 1 1 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 220px;
+      max-width: 340px;
+    }
+    .contact-form label {
+      font-family: 'Poppins', Arial, sans-serif;
+      font-size: 1.01rem;
+      color: #a8e3e0;
+      margin-bottom: 2px;
+      margin-top: 7px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      background: #232733;
+      color: #fff;
+      border: 1.5px solid #232733;
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 1.05rem;
+      font-family: 'Inter', Arial, sans-serif;
+      margin-bottom: 7px;
+      transition: border 0.15s;
+      resize: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border: 1.5px solid var(--accent2);
+      outline: none;
+    }
+    .contact-form button {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2) 80%);
+      color: #181d24;
+      border: none;
+      border-radius: 22px;
+      padding: 10px 18px;
+      font-size: 1.07rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Montserrat', Arial, sans-serif;
+      letter-spacing: 0.7px;
+      box-shadow: 0 0 8px 1px #42fa7a33;
+      transition: background 0.18s, color 0.15s, transform 0.13s, box-shadow 0.2s;
+      margin-top: 10px;
+    }
+    .contact-form button:hover {
+      background: linear-gradient(90deg, var(--accent3), var(--accent2) 80%);
+      color: #181c24;
+      transform: scale(1.04);
+      box-shadow: 0 0 18px 2px #42fa7a66;
+    }
+    .contact-info {
+      flex: 1 1 180px;
+      font-size: 1.08rem;
+      color: #c8d0dd;
+      font-family: 'Poppins', Arial, sans-serif;
+      margin-top: 8px;
+    }
+    .contact-info a {
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .contact-info a:hover {
+      color: var(--accent2);
+    }
+
+    /* Footer */
+    footer {
+      color: #6ee7fa;
+      background: none;
+      text-align: center;
+      font-size: 1.05rem;
+      padding: 32px 0 38px 0; /* Aumenta el padding-bottom para que no se corte */
+      font-family: 'Inter', 'Poppins', Arial, sans-serif;
+      letter-spacing: 0.01em;
+      font-weight: 500;
+      position: relative;
+      z-index: 10;
+    }
+    .footer-madeby,
+    .footer-bulb,
+    .footer-code,
+    .footer-author {
+      color: inherit !important; /* Unifica el color en todo el texto del footer */
+      filter: none !important;
+      font-weight: inherit !important;
+      letter-spacing: inherit !important;
+    }
+
+    /* --- QUITAR GLOW AZUL AL HACER FOCUS EN .servicio-card --- */
+    .servicio-card:focus, .servicio-card:active {
+      outline: none !important;
+      box-shadow: 0 0 0 2.5px #60a8ffcc, 0 10px 32px #60a8ff22, 0 6px 24px #23ffe312;
+      border-color: var(--accent2);
+    }
+
+    /* --- MODAL ABOUT RESPONSIVE --- */
+    @media (max-width: 700px) {
+      #aboutModal > div {
+        max-width: 98vw !important;
+        padding: 18px 7vw 18px 7vw !important;
+        font-size: 1rem !important;
+      }
+    }
+    @media (max-width: 500px) {
+      #aboutModal > div {
+        max-width: 99vw !important;
+        padding: 10px 2vw 10px 2vw !important;
+        font-size: 0.97rem !important;
+      }
+    }
+
+    /* --- MEJORAS RESPONSIVE Y LEGIBILIDAD GLOBAL --- */
+    html {
+      font-size: clamp(15px, 2vw, 18px);
+      scroll-behavior: smooth;
+    }
+    body {
+      background: var(--bg-main);
+      color: #fff;
+      font-size: 1rem;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .hero-title-gradient, .servicios-header h2 {
+      word-break: break-word;
+      hyphens: auto;
+    }
+    .servicio-card p, .contact-subtitle, .servicios-desc {
+      max-width: 95vw;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="code-bg-left">
+    <pre class="code-content" id="codeContent"></pre>
+  </div>
+  <!-- NAVBAR Y HERO IGUAL QUE ANTES -->
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="logo" href="#">Echoday</a>
+      <nav>
+        <div class="dropdown" id="dropdownServicios">
+          <button class="dropdown-toggle" id="dropdownToggle">
+            Servicios <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item" id="menu-auto-ia">
+              Automatización IA <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+            <a href="#" class="dropdown-item">
+              Desarrollo Web <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+            <a href="#" class="dropdown-item">
+              Presentaciones de Impacto <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+            <a href="#" class="dropdown-item">
+              Creación de Apps Móviles <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+          </div>
+        </div>
+        <a href="#" id="aboutNavBtn" onclick="showAboutModal();return false;">About</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </div>
+  <section class="hero-section" id="inicio">
+    <div class="hero-content">
+      <div class="hero-glass">
+        <h1 class="hero-title-gradient">El futuro es hoy,<br>Echoday</h1>
+        <p class="hero-sub">Transformación digital y creatividad para empresas que quieren destacar.</p>
+        <button class="cta-btn" onclick="window.location.href='#contacto'">
+          ¡Hablemos de tu próximo proyecto! <i class="fa fa-rocket"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+  <div class="wave-sep">
+    <svg viewBox="0 0 1440 40" xmlns="http://www.w3.org/2000/svg"><path fill="#181d24" d="M0,24 C360,48 1080,0 1440,24 L1440,40 L0,40 Z"></path></svg>
+  </div>
+  <section class="servicios-section" id="servicios">
+    <div class="servicios-header">
+      <h2>¿Qué hacemos en Echoday?</h2>
+      <p class="servicios-desc">
+        Creamos experiencias digitales que inspiran, transforman y hacen crecer tu empresa. Evoluciona, destaca y lidera.
+      </p>
+    </div>
+    <div class="servicios-grid">
+      <div class="servicios-row row-1">
+        <div class="servicio-card highlight-card" id="servicio-automatizacion" style="--delay: .04s">
+          <span class="click-hint"><i class="fa-solid fa-hand-pointer"></i> ¡Haz clic!</span>
+          <div class="servicio-icono"><i class="fa-solid fa-robot"></i></div>
+          <h3>Automatización IA</h3>
+          <p>Automatiza procesos con inteligencia artificial, bots avanzados y sistemas inteligentes para transformar tu empresa.</p>
+        </div>
+        <div class="servicio-card" style="--delay: .08s">
+          <div class="servicio-icono"><i class="fa-solid fa-code"></i></div>
+          <h3>Desarrollo Web</h3>
+          <p>Webs, apps, chatbots y dashboards con tecnología de punta y diseño atractivo, listos para crecer contigo.</p>
+        </div>div>
+        <div class="servicio-card" style="--delay: .12s">
+          <div class="servicio-icono"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3>Apps Móviles</h3>
+          <p>Desarrollo de apps móviles para iOS y Android, personalizadas para tu negocio y clientes.</p>
+        </div>
+      </div>
+      <div class="simulador-container" id="simuladorContainer">
+        <button class="simulador-close-btn" id="simuladorCloseBtn" title="Cerrar simulador"><i class="fa fa-times"></i></button>
+        <div class="sim-iphone-box">
+          <div class="iphone-mockup">
+            <div class="iphone-screen">
+              <div class="whatsapp-header">
+                <div class="whatsapp-header-avatar">C</div>
+                <div class="whatsapp-header-info"></div>
+              </div>
+              <div class="iphone-chat-messages" id="iphoneChatMessages"></div>
+              <div class="iphone-typing-indicator" id="iphoneTypingIndicator">
+                <span>Escribiendo</span>
+                <div class="typing-dots">
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                  <span class="typing-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="simulador-panel">
+            <h2>Simulador de WhatsApp <i class="fab fa-whatsapp"></i></h2>
+            <p>
+              Esta demo te permite interactuar como si fueras un cliente en WhatsApp, viendo paso a paso cómo funciona la automatización de atención y solicitud de préstamos.<br>
+              <ul>
+                <li>Haz clic en las opciones para avanzar.</li>
+                <li>¡No es real, es solo una demo!</li>
+              </ul>
+            </p>
+            <div class="simulador-btns">
+              <button class="simulador-btn" onclick="startIphoneDemo()" id="startBtn">
+                Iniciar simulación
+              </button>
+              <button class="simulador-btn option" onclick="sendIphoneOption('1')" id="opt1" style="display:none;">
+                1️⃣ Consultar estado de mi solicitud
+              </button>
+              <button class="simulador-btn option" onclick="sendIphoneOption('2')" id="opt2" style="display:none;">
+                2️⃣ Solicitar nuevo préstamo
+              </button>
+              <button class="simulador-btn option" onclick="sendIphoneOption('3')" id="opt3" style="display:none;">
+                3️⃣ Hablar con un agente
+              </button>
+              <button class="simulador-btn" onclick="sendIphoneLoanData()" id="loanBtn" style="display:none;">
+                Enviar mis datos de préstamo
+              </button>
+              <button class="simulador-btn" onclick="acceptIphoneTerms()" id="acceptBtn" style="display:none;">
+                SÍ, acepto condiciones
+              </button>
+              <button class="simulador-btn" onclick="rejectIphoneTerms()" id="rejectBtn" style="display:none;">
+                NO, tengo dudas
+              </button>
+              <button class="simulador-btn" onclick="resetIphoneDemo()" id="resetBtn" style="display:none;">
+                Reiniciar simulador
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="servicios-row row-2">
+        <div class="servicio-card" style="--delay: .16s">
+          <div class="servicio-icono"><i class="fa-solid fa-handshake-angle"></i></div>
+          <h3>Consultoría para Empresarios</h3>
+          <p>Diagnóstico, ideas, implementación y capacitación: conviértete en referente digital en tu sector.</p>
+        </div>
+        <div class="servicio-card" style="--delay: .2s">
+          <div class="servicio-icono"><i class="fa-solid fa-rocket"></i></div>
+          <h3>Presentaciones de Impacto</h3>
+          <p>Convierte tu pitch, demo o evento en una experiencia memorable. Sorprende a tu audiencia desde el primer minuto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact-section">
+    <div class="contact-container">
+      <div class="contact-title">¡Conversemos!</div>
+      <div class="contact-subtitle">¿Listo para transformar tu empresa? ¡Hagamos juntos algo grande!</div>
+      <div class="contact-grid">
+        <form class="contact-form" autocomplete="off" onsubmit="enviarMensaje(event)">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" required placeholder="¿Cómo te llamas?">
+          <label for="empresa">Empresa</label>
+          <input id="empresa" placeholder="¿Dónde trabajas? (opcional)">
+          <label for="email">Email</label>
+          <input id="email" type="email" required placeholder="Tu correo de contacto">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" required placeholder="¿En qué puedo ayudarte?"></textarea>
+          <button type="submit"><i class="fa fa-paper-plane"></i> Enviar mensaje</button>
+        </form>
+        <div class="contact-info">
+          <div style="margin-bottom:12px;"><b>Email:</b> <span style="color:var(--accent2);">hola@echoday.com</span></div>
+          <div style="margin:10px 0;"><b>WhatsApp:</b> <a style="color:var(--accent1);font-weight:700" href="https://wa.me/595991234567" target="_blank"><i class="fab fa-whatsapp"></i> Escríbeme ahora</a></div>
+          <div>
+            <b>Redes:</b>
+            <a href="#" style="color:var(--accent2);margin:0 7px;"><i class="fab fa-linkedin fa-lg"></i></a>
+            <a href="#" style="color:var(--accent1);margin:0 7px;"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" style="color:#42fa7a;margin:0 7px;"><i class="fab fa-instagram fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    &copy; 2025 Echoday | Innovación + Tecnología + Creatividad | 
+    <span class="footer-madeby">
+      Hecho con <span class="footer-code">&lt;/&gt;</span> por <span class="footer-author">cleonaia</span>
+    </span>
+  </footer>
+  <!-- Añade esto justo antes de </body> -->
+  <div id="contactoGraciasModal" style="
+    display:none;
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    z-index:9999;
+    background:rgba(24,29,36,0.82);
+    backdrop-filter: blur(2px);
+    justify-content:center;
+    align-items:center;
+  ">
+    <div style="
+      background:rgba(26,29,38,0.98);
+      border-radius:28px;
+      box-shadow:0 8px 48px #23ffe355, 0 2px 16px #60a8ff22;
+      padding:38px 32px 32px 32px;
+      max-width:340px;
+      width:90vw;
+      text-align:center;
+      color:#fff;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:1.25rem;
+      position:relative;
+      animation: fadeup 0.6s cubic-bezier(.23,1.05,.32,1);
+    ">
+      <div style="font-size:2.3rem;margin-bottom:12px;color:#42fa7a;">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <div style="font-weight:900;font-size:1.35rem;margin-bottom:10px;">
+        ¡Gracias por tu mensaje!
+      </div>
+      <div style="font-size:1.08rem;color:#a8e3e0;margin-bottom:18px;">
+        Tomaste una gran decisión.<br>
+        Nos pondremos en contacto contigo lo más rápido posible.
+      </div>
+      <button onclick="document.getElementById('contactoGraciasModal').style.display='none';" style="
+        background:linear-gradient(90deg,#23ffe3,#60a8ff 80%);
+        color:#181d24;
+        border:none;
+        border-radius:22px;
+        padding:10px 28px;
+        font-size:1.07rem;
+        font-weight:700;
+        cursor:pointer;
+        font-family:'Montserrat',Arial,sans-serif;
+        margin-top:8px;
+        box-shadow:0 0 8px 1px #42fa7a33;
+        transition:background 0.18s, color 0.15s, transform 0.13s, box-shadow 0.2s;
+      ">Cerrar</button>
+    </div>
+  </div>
+  <!-- MODAL ABOUT: visible en todas las pantallas, info profesional y motivadora -->
+  <div id="aboutModal" style="
+    display:none;
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    z-index:9998;
+    background:rgba(24,29,36,0.92);
+    backdrop-filter: blur(4px);
+    justify-content:center;
+    align-items:center;
+    transition: opacity 0.3s;
+  ">
+    <div id="aboutModalContent" style="
+      background:rgba(26,29,38,0.98);
+      border-radius:28px;
+      box-shadow:0 8px 48px #23ffe355, 0 2px 16px #60a8ff22;
+      padding:38px 32px 32px 32px;
+      max-width:480px;
+      width:90vw;
+      max-height:80vh;
+      overflow-y:auto;
+      text-align:left;
+      color:#fff;
+      font-family:'Montserrat',Arial,sans-serif;
+      font-size:1.08rem;
+      position:relative;
+      animation: aboutFadeIn 0.6s cubic-bezier(.23,1.05,.32,1);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    ">
+      <button onclick="closeAboutModal()" style="
+        position:absolute;
+        top:12px;
+        right:18px;
+        background:none;
+        color:#fff;
+        border:none;
+        font-size:1.2rem;
+        cursor:pointer;
+        transition: color 0.15s;
+        z-index:2;
+      ">
+        <i class="fa fa-times"></i>
+      </button>
+      <div style="font-size:2rem;margin-bottom:10px;color:#60a8ff;font-weight:900;text-align:center;">
+        <i class="fa-solid fa-info-circle fa-spin"></i> Sobre Echoday
+      </div>
+      <div style="line-height:1.6;">
+        <span id="aboutText"></span>
+      </div>
+    </div>
+  </div>
+
+  <style>
+  @keyframes aboutFadeIn {
+    from { opacity: 0; transform: scale(0.92) translateY(30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes aboutFadeOut {
+    from { opacity: 1; transform: scale(1) translateY(0); }
+    to { opacity: 0; transform: scale(0.92) translateY(30px); }
+  }
+  #aboutModal[closing] #aboutModalContent {
+    animation: aboutFadeOut 0.4s forwards;
+  }
+  #aboutModal {
+    align-items: center;
+    justify-content: center;
+  }
+  #aboutModalContent {
+    margin: 0 auto;
+  }
+  /* --- PERSONALIZACIÓN SCROLLBAR DEL MODAL ABOUT --- */
+  #aboutModalContent::-webkit-scrollbar {
+    width: 10px;
+    background: rgba(26,29,38,0.98);
+    border-radius: 12px;
+  }
+  #aboutModalContent::-webkit-scrollbar-thumb {
+    background: linear-gradient(120deg, #181d24 70%, #23ffe3 100%);
+    border-radius: 12px;
+    border: 2px solid #181d24;
+  }
+  #aboutModalContent::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(120deg, #23ffe3 60%, #60a8ff 100%);
+  }
+  #aboutModalContent {
+    scrollbar-color: #23ffe3 #181d24;
+    scrollbar-width: thin;
+  }
+  @media (max-width: 700px) {
+    #aboutModalContent {
+      max-width: 98vw !important;
+      padding: 18px 7vw 18px 7vw !important;
+      font-size: 1rem !important;
+    }
+  }
+  @media (max-width: 500px) {
+    #aboutModalContent {
+      max-width: 99vw !important;
+      padding: 10px 2vw 10px 2vw !important;
+      font-size: 0.97rem !important;
+    }
+  }
+  </style>
+
+  <script>
+  // Dropdown Servicios interactividad
+  document.addEventListener('DOMContentLoaded', function() {
+    var dropdownToggle = document.getElementById('dropdownToggle');
+    var dropdown = document.getElementById('dropdownServicios');
+    dropdownToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      dropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+  });
+
+  function showAboutModal() {
+    var modal = document.getElementById('aboutModal');
+    var aboutText = window.aboutText || `¡Hola! Soy un estudiante de Ingeniería de Datos con una profunda pasión por la innovación, el aprendizaje continuo y el desarrollo tecnológico. Mi objetivo es aportar soluciones creativas y eficientes que impulsen la transformación digital, especialmente en Sudamérica, una región llena de potencial y oportunidades para abrir nuevos horizontes de conocimiento.\n\nCreo en la tecnología como motor de cambio social y económico. Me motiva crear herramientas y plataformas que faciliten la vida de las personas y las empresas, utilizando datos, inteligencia artificial y automatización para resolver desafíos reales.\n\nMis causas y valores: democratizar el acceso a la tecnología, fomentar la educación digital, y contribuir a una sociedad más conectada, inclusiva y preparada para el futuro.\n\nMi visión es colaborar con equipos multidisciplinarios, compartir el conocimiento adquirido y ayudar a construir una región más competitiva y sostenible. Si compartes esta pasión por innovar y transformar, ¡conversemos y creemos juntos el próximo gran proyecto!`;
+    var el = document.getElementById('aboutText');
+    if (el) {
+      el.innerHTML = '';
+      let i = 0;
+      function typeWriter() {
+        if (i < aboutText.length) {
+          el.innerHTML += aboutText.charAt(i) === '\n' ? '<br>' : aboutText.charAt(i);
+          i++;
+          setTimeout(typeWriter, aboutText.charAt(i-1) === '.' ? 32 : 13);
+        }
+      }
+      typeWriter();
+    }
+    modal.style.display = 'flex';
+  }
+  function closeAboutModal() {
+    var modal = document.getElementById('aboutModal');
+    if (modal) {
+      modal.setAttribute('closing', '');
+      setTimeout(function(){
+        modal.style.display = 'none';
+        modal.removeAttribute('closing');
+      }, 400);
+    }
+  }
+  document.getElementById('aboutNavBtn').onclick = function(e){
+    e.preventDefault();
+    showAboutModal();
+  };
+  document.getElementById('aboutModal').addEventListener('click', function(e){
+    if(e.target === this) closeAboutModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeAboutModal();
+  });
+  </script>
+
+  <!-- ANIMACIÓN DE FONDO CON PARTÍCULAS (Canvas) -->
+  <canvas id="particlesBg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;"></canvas>
+  <script>
+  // Partículas animadas para fondo
+  const canvas = document.getElementById('particlesBg');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+  function createParticles() {
+    particles = [];
+    for(let i=0;i<38;i++){
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*2.5+1.5,
+        dx: (Math.random()-0.5)*0.7,
+        dy: (Math.random()-0.5)*0.7,
+        c: `rgba(${60+Math.random()*120},${200+Math.random()*55},${255},${0.18+Math.random()*0.18})`
+      });
+    }
+  }
+  createParticles();
+  function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let p of particles){
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,2*Math.PI);
+      ctx.fillStyle=p.c;
+      ctx.fill();
+      p.x+=p.dx;p.y+=p.dy;
+      if(p.x<0||p.x>canvas.width)p.dx*=-1;
+      if(p.y<0||p.y>canvas.height)p.dy*=-1;
+    }
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+  </script>
+  <script>
+  // Personaliza el texto del About aquí:
+  window.aboutText = `¡Hola! Soy un estudiante de Ingeniería de Datos con una profunda pasión por la innovación, el aprendizaje continuo y el desarrollo tecnológico. Mi objetivo es aportar soluciones creativas y eficientes que impulsen la transformación digital, especialmente en Sudamérica, una región llena de potencial y oportunidades para abrir nuevos horizontes de conocimiento.\n\nCreo en la tecnología como motor de cambio social y económico. Me motiva crear herramientas y plataformas que faciliten la vida de las personas y las empresas, utilizando datos, inteligencia artificial y automatización para resolver desafíos reales.\n\nMis causas y valores: democratizar el acceso a la tecnología, fomentar la educación digital, y contribuir a una sociedad más conectada, inclusiva y preparada para el futuro.\n\nMi visión es colaborar con equipos multidisciplinarios, compartir el conocimiento adquirido y ayudar a construir una región más competitiva y sostenible. Si compartes esta pasión por innovar y transformar, ¡conversemos y creemos juntos el próximo gran proyecto!`;
+
+    // Reveal animation on scroll
+    function revealOnScroll() {
+      document.querySelectorAll('.servicio-card').forEach(function(card) {
+        var rect = card.getBoundingClientRect();
+        if(rect.top < window.innerHeight-30) card.style.opacity = '1';
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+    // MODIFICA la función enviarMensaje para mostrar el modal
+    function enviarMensaje(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+      if(nombre && email && mensaje){
+        document.getElementById('contactoGraciasModal').style.display = 'flex';
+        e.target.reset();
+      }
+    }
+
+    // FONDO DE CÓDIGO LEGIBLE Y VISIBLE SOLO IZQUIERDA
+    const codeLines = [
+      "body {",
+      "    font-family: 'Inter', Arial, sans-serif;",
+      "}",
+      ".cta-btn:hover {",
+      "    background: linear-gradient(90deg, #ffcb67, #60a8ff);",
+      "}",
+      "def transformar(digital, empresa):",
+      "    if digital and empresa:",
+      "        return 'Innovación lista para crecer'",
+      "class Echoday:",
+      "    def __init__(self):",
+      "        self.creatividad = True",
+      "        self.automatizacion = True",
+      "    def destacar(self, marca):",
+      "        print(f\"{marca} ahora es más innovadora que nunca.\")",
+      "background: linear-gradient(120deg, #181d24 70%, #23ffe3 100%);",
+      "color: #fff;",
+      "# ¿Listo para innovar?",
+      ".servicio-card {",
+      "    box-shadow: 0 6px 32px #23ffe319;",
+      "    border-radius: 19px;",
+      "    background: rgba(26,29,38,0.93);",
+      "}",
+      "// Soluciones digitales audaces",
+      "// para empresarios y startups."
+    ];
+    let offset = 0;
+    function rotateCodeBg() {
+      const el = document.getElementById('codeContent');
+      if (!el) return;
+      let out = "";
+      for(let i=0; i<9; i++) {
+        out += (codeLines[(offset + i) % codeLines.length]) + "\n";
+      }
+      el.textContent = out;
+      offset = (offset + 1) % codeLines.length;
+      setTimeout(rotateCodeBg, 900);
+    }
+    document.addEventListener('DOMContentLoaded', rotateCodeBg);
+
+    // --- SIMULADOR INTERACTIVO DE WHATSAPP EN MOVIL ---
+    let iphoneProcessedCount = 0;
+    let iphoneCurrentStep = 'idle';
+    function addIphoneMessage(text, isUser = false, hasAttachment = false) {
+      const chatMessages = document.getElementById('iphoneChatMessages');
+      const message = document.createElement('div');
+      message.className = isUser ? 'iphone-message iphone-user-message' : 'iphone-message iphone-bot-message';
+      let content = text;
+      if (hasAttachment) {
+        content += `
+          <div class="simulador-pdf-attachment">
+            <div class="simulador-pdf-icon">PDF</div>
+            <div>
+              <div style="font-weight: bold;">Condiciones del Préstamo</div>
+              <div style="font-size: 12px; color: #666;">247 KB</div>
+            </div>
+          </div>
+        `;
+      }
+      message.innerHTML = content;
+      chatMessages.appendChild(message);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    function showIphoneTyping() {
+      document.getElementById('iphoneTypingIndicator').style.display = 'flex';
+      document.getElementById('iphoneChatMessages').scrollTop = document.getElementById('iphoneChatMessages').scrollHeight;
+    }
+    function hideIphoneTyping() {
+      document.getElementById('iphoneTypingIndicator').style.display = 'none';
+    }
+    function hideAllIphoneOptions() {
+      document.getElementById('opt1').style.display = 'none';
+      document.getElementById('opt2').style.display = 'none';
+      document.getElementById('opt3').style.display = 'none';
+      document.getElementById('loanBtn').style.display = 'none';
+      document.getElementById('acceptBtn').style.display = 'none';
+      document.getElementById('rejectBtn').style.display = 'none';
+      document.getElementById('resetBtn').style.display = 'none';
+    }
+    function startIphoneDemo() {
+      hideAllIphoneOptions();
+      document.getElementById('startBtn').style.display = 'none';
+      showIphoneTyping();
+      setTimeout(() => {
+        hideIphoneTyping();
+        addIphoneMessage(`👋 ¡Bienvenido al sistema de préstamos de la Cooperativa Medalla!
+
+Responde con una opción:
+1️⃣ Consultar estado de mi solicitud
+2️⃣ Solicitar nuevo préstamo  
+3️⃣ Hablar con un agente
+
+¿En qué podemos ayudarte hoy?`);
+        document.getElementById('opt1').style.display = 'block';
+        document.getElementById('opt2').style.display = 'block';
+        document.getElementById('opt3').style.display = 'block';
+        iphoneCurrentStep = 'menu';
+      }, 1200);
+    }
+    function sendIphoneOption(option) {
+      hideAllIphoneOptions();
+      addIphoneMessage(option, true);
+      showIphoneTyping();
+      setTimeout(() => {
+        hideIphoneTyping();
+        if (option === '1') {
+          addIphoneMessage(`📋 Hola Juan Carlos Pérez!
+
+<b>Estado actual de tu solicitud:</b> ✅ Aprobada<br>
+<b>Monto:</b> Gs. 15.000.000<br>
+<b>Plazo:</b> 24 meses<br>
+<b>Fecha de solicitud:</b> 15/06/2025<br>
+<b>Fecha de aprobación:</b> 20/06/2025
+
+¡Puedes pasar por nuestra oficina para firmar el contrato! 🎉`);
+          iphoneProcessedCount++;
+          document.getElementById('resetBtn').style.display = 'block';
+        } else if (option === '2') {
+          addIphoneMessage(`📝 Perfecto! Para procesar tu solicitud de préstamo necesitamos los siguientes datos:
+
+Por favor, envíanos en un solo mensaje:
+• <b>Nombre completo</b>
+• <b>Monto solicitado</b> (en guaraníes)
+• <b>Plazo deseado</b> (en meses)
+• <b>Correo electrónico</b>
+
+Ejemplo: "María González, 10000000, 12 meses, maria@gmail.com"`);
+          document.getElementById('loanBtn').style.display = 'block';
+          iphoneCurrentStep = 'loan_data';
+        } else if (option === '3') {
+          addIphoneMessage(`👨‍💼 Un agente se pondrá en contacto contigo dentro de los próximos 15 minutos.
+
+Mientras tanto, puedes:
+• Preparar tu documentación
+• Revisar nuestras tasas en www.coopmedalla.com
+• Llamarnos al (021) 123-456
+
+¡Gracias por contactarnos! 😊`);
+          iphoneProcessedCount++;
+          document.getElementById('resetBtn').style.display = 'block';
+        }
+      }, 1000);
+    }
+    function sendIphoneLoanData() {
+      hideAllIphoneOptions();
+      addIphoneMessage("Carlos Mendoza, 8000000, 18 meses, carlos.mendoza@gmail.com", true);
+      showIphoneTyping();
+      setTimeout(() => {
+        hideIphoneTyping();
+        addIphoneMessage(`✅ ¡Excelente Carlos Mendoza! Tus datos fueron registrados correctamente:
+
+<b>Nombre:</b> Carlos Mendoza<br>
+<b>Monto solicitado:</b> Gs. 8.000.000<br>
+<b>Plazo:</b> 18 meses<br>
+<b>Email:</b> carlos.mendoza@gmail.com<br>
+<b>Teléfono:</b> +595 981 123 456
+
+Te enviaremos un PDF con las condiciones específicas para tu préstamo. 📄`);
+        setTimeout(() => {
+          addIphoneMessage(`📋 Adjunto: Condiciones del préstamo
+
+<b>Condiciones para tu préstamo:</b>
+• Tasa de interés: 18% anual
+• Cuota mensual: Gs. 580.000
+• Requisitos mínimos cumplidos ✅
+
+Por favor, responde <b>SÍ</b> para aceptar estas condiciones y continuar, o <b>NO</b> si tienes dudas.`, false, true);
+          document.getElementById('acceptBtn').style.display = 'block';
+          document.getElementById('rejectBtn').style.display = 'block';
+          iphoneCurrentStep = 'terms';
+        }, 1300);
+      }, 1400);
+    }
+    function acceptIphoneTerms() {
+      hideAllIphoneOptions();
+      addIphoneMessage("SÍ", true);
+      showIphoneTyping();
+      setTimeout(() => {
+        hideIphoneTyping();
+        addIphoneMessage(`🎉 ¡Perfecto Carlos! 
+
+Tu solicitud de préstamo ha sido <b>aceptada</b> y está siendo procesada por nuestro equipo de análisis crediticio.
+
+<b>Próximos pasos:</b>
+1. Análisis crediticio (24-48 horas)
+2. Te contactaremos para coordinar la entrega
+3. Firma del contrato en sucursal
+
+<b>Número de solicitud:</b> #PR-2025-001547
+
+¡Gracias por confiar en Cooperativa Medalla! 🚀`);
+        iphoneProcessedCount++;
+        document.getElementById('resetBtn').style.display = 'block';
+      }, 1200);
+    }
+    function rejectIphoneTerms() {
+      hideAllIphoneOptions();
+      addIphoneMessage("NO, tengo algunas dudas", true);
+      showIphoneTyping();
+      setTimeout(() => {
+        hideIphoneTyping();
+        addIphoneMessage(`👨‍💼 Perfecto Carlos, entendemos que quieras aclarar tus dudas.
+
+Un <b>agente especializado</b> se pondrá en contacto contigo en los próximos 15 minutos para resolver todas tus consultas sobre:
+
+• Tasas de interés
+• Condiciones de pago  
+• Requisitos adicionales
+• Beneficios exclusivos
+
+También puedes llamarnos al <b>(021) 123-456</b> 📞
+
+¡Estamos aquí para ayudarte! 😊`);
+        iphoneProcessedCount++;
+        document.getElementById('resetBtn').style.display = 'block';
+      }, 1100);
+    }
+    function resetIphoneDemo() {
+      document.getElementById('iphoneChatMessages').innerHTML = '';
+      hideAllIphoneOptions();
+      document.getElementById('startBtn').style.display = 'block';
+      iphoneCurrentStep = 'idle';
+    }
+    // SIMULADOR EMBEBIDO: Mostrar/ocultar por card
+    document.getElementById('servicio-automatizacion').addEventListener('click', function() {
+      const cont = document.getElementById('simuladorContainer');
+      if(cont.classList.contains('active')) {
+        cont.classList.remove('active');
+        resetIphoneDemo();
+      } else {
+        cont.classList.add('active');
+        resetIphoneDemo();
+        setTimeout(function(){
+          cont.scrollIntoView({behavior: "smooth", block: "center"});
+        }, 120);
+      }
+    });
+    // SIMULADOR EMBEBIDO: Mostrar por menú dropdown
+    document.getElementById('menu-auto-whatsapp').addEventListener('click', function(e) {
+      e.preventDefault();
+      const cont = document.getElementById('simuladorContainer');
+      if(!cont.classList.contains('active')) {
+        cont.classList.add('active');
+        resetIphoneDemo();
+        setTimeout(function(){
+          cont.scrollIntoView({behavior: "smooth", block: "center"});
+        }, 120);
+      }
+      // Cierra el dropdown después de click
+      document.getElementById('dropdownServicios').classList.remove('open');
+    });
+    // SIMULADOR: Cerrar con la cruz
+    document.getElementById('simuladorCloseBtn').addEventListener('click', function() {
+      document.getElementById('simuladorContainer').classList.remove('active');
+      resetIphoneDemo();
+    });
+    // Dropdown toggle manual para mobile/click
+    const dropdownToggle = document.getElementById('dropdownToggle');
+    const dropdown = document.getElementById('dropdownServicios');
+    dropdownToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      dropdown.classList.toggle('open');
+    });
+    // Cerrar dropdown al hacer click fuera
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target) && dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+      }
+    });
+    // Cerrar dropdown con escape
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') dropdown.classList.remove('open');
+    });
+  </script>
+  <script>
+// Efecto tilt 3D en las tarjetas de servicio
+document.querySelectorAll('.servicio-card').forEach(card => {
+  card.addEventListener('mousemove', function(e) {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+    card.style.transform = `scale(1.03) rotateY(${x/18}deg) rotateX(${-y/18}deg)`;
+  });
+  card.addEventListener('mouseleave', function() {
+    card.style.transform = '';
+  });
+});
+</script>
+</body>
+</html>
