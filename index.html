@@ -508,7 +508,7 @@
       opacity: 0;
       pointer-events: none;
       position: relative;
-      padding: 0 15px;
+      padding: 0 20px;
       box-sizing: border-box;
     }
     .simulador-container.active {
@@ -552,7 +552,7 @@
     .iphone-mockup {
   background: #222733;
   border-radius: 36px;
-  box-shadow: 0 8px 32px #23ffe322, 0 2px 16px #60a8ff22;
+  box-shadow: 0 8px 32px rgba(35,255,227,0.13), 0 2px 16px rgba(96,168,255,0.13);
   width: 100%;
   max-width: 340px;
   min-width: 0;
@@ -563,22 +563,6 @@
   flex-shrink: 1;
   box-sizing: border-box;
 }
-@media (max-width: 700px) {
-  .iphone-mockup {
-    max-width: 98vw;
-    min-width: 0;
-    padding: 8px 2px;
-    border-radius: 18px;
-  }
-}
-@media (max-width: 500px) {
-  .iphone-mockup {
-    max-width: 99vw;
-    min-width: 0;
-    padding: 2px 0;
-    border-radius: 8px;
-  }
-}
     .iphone-screen {
   background: #e5ddd5;
   border-radius: 28px;
@@ -588,21 +572,9 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 12px #0002;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
   position: relative;
   box-sizing: border-box;
-}
-@media (max-width: 700px) {
-  .iphone-screen {
-    height: 320px;
-    border-radius: 14px;
-  }
-}
-@media (max-width: 500px) {
-  .iphone-screen {
-    height: 180px;
-    border-radius: 7px;
-  }
 }
     .whatsapp-header {
       background: linear-gradient(90deg, #075e54 70%, #25d366 100%);
@@ -790,32 +762,39 @@
       .simulador-container {
         flex-direction: column;
         gap: 20px;
-        max-width: 90vw;
+        max-width: 95vw;
         align-items: center;
-        padding: 0 20px;
+        padding: 0 15px;
+        margin: 20px auto 0 auto;
       }
       .sim-iphone-box {
         flex-direction: column;
         gap: 20px;
         width: 100%;
+        align-items: center;
       }
       .simulador-panel {
         max-width: 100%;
         min-width: 0;
         order: 1;
+        margin: 0 auto;
       }
       .iphone-mockup {
         order: 2;
         margin: 0 auto;
+        display: flex;
+        align-self: center;
       }
     }
 
     @media (max-width: 700px) {
       .simulador-container {
-        max-width: 95vw;
-        margin: 20px auto 0 auto;
-        padding: 0 10px;
+        max-width: 98vw;
+        margin: 15px auto 0 auto;
+        padding: 0 8px;
         gap: 15px;
+        align-items: center;
+        justify-content: center;
       }
       .simulador-close-btn {
         top: 5px;
@@ -827,6 +806,9 @@
       .simulador-panel {
         padding: 20px 15px 15px 15px;
         border-radius: 16px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
       }
       .simulador-panel h2 {
         font-size: 1.1rem;
@@ -838,6 +820,12 @@
         font-size: 0.95rem;
         padding: 8px 15px;
         min-height: 40px;
+      }
+      .iphone-mockup {
+        margin: 0 auto;
+        display: flex;
+        align-self: center;
+        justify-self: center;
       }
       .whatsapp-header {
         padding: 8px 12px;
@@ -862,14 +850,19 @@
 
     @media (max-width: 500px) {
       .simulador-container {
-        max-width: 98vw;
-        margin: 15px auto 0 auto;
-        padding: 0 5px;
+        max-width: 99vw;
+        margin: 10px auto 0 auto;
+        padding: 0 3px;
         gap: 12px;
+        align-items: center;
+        justify-content: center;
       }
       .simulador-panel {
         padding: 15px 10px 10px 10px;
         border-radius: 12px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
       }
       .simulador-panel h2 {
         font-size: 1rem;
@@ -885,6 +878,13 @@
         font-size: 0.9rem;
         padding: 7px 12px;
         min-height: 36px;
+      }
+      .iphone-mockup {
+        margin: 0 auto;
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        max-width: 95vw;
       }
       .whatsapp-header {
         padding: 6px 10px;
@@ -1174,141 +1174,20 @@
     /* --- MODAL ABOUT RESPONSIVE --- */
     @media (max-width: 700px) {
       #aboutModal > div {
-        max-width: 85vw !important;
-        width: 85vw !important;
-        padding: 25px 30px 25px 30px !important;
+        max-width: 98vw !important;
+        padding: 18px 9vw 18px 9vw !important;
         font-size: 1rem !important;
       }
     }
     @media (max-width: 500px) {
       #aboutModal > div {
-        max-width: 88vw !important;
-        width: 88vw !important;
-        padding: 20px 25px 20px 25px !important;
-        font-size: 0.95rem !important;
-      }
-    }
-    @media (max-width: 400px) {
-      #aboutModal > div {
-        max-width: 90vw !important;
-        width: 90vw !important;
-        padding: 18px 22px 18px 22px !important;
-        font-size: 0.9rem !important;
+        max-width: 99vw !important;
+        padding: 10px 4vw 10px 4vw !important;
+        font-size: 0.97rem !important;
       }
     }
 
     /* --- MEJORAS RESPONSIVE CONSERVANDO DISEÑO ORIGINAL --- */
-/* === MEJORAS RESPONSIVE UNIFICADAS === */
-@media (max-width: 700px) {
-  .servicios-grid {
-    gap: 28px;
-    padding: 0 8px;
-  }
-  .servicios-row {
-    flex-direction: column !important;
-    gap: 22px;
-    align-items: stretch !important;
-    max-width: 100%;
-  }
-  .servicio-card {
-    max-width: 98vw;
-    min-width: 0;
-    padding: 18px 8px 14px 8px;
-    font-size: 1rem;
-    border-radius: 18px;
-  }
-  .servicio-card h3 {
-    font-size: 1.18rem;
-    margin-bottom: 8px;
-  }
-  .servicio-card p {
-    font-size: 1rem;
-  }
-  .servicio-features {
-    gap: 6px;
-    margin-top: 10px;
-  }
-  .servicio-feature {
-    font-size: 0.95rem;
-  }
-  .servicio-icono {
-    font-size: 1.7rem;
-    margin-bottom: 10px;
-  }
-  .servicios-header h2 {
-    font-size: 1.3rem;
-    margin-bottom: 4px;
-  }
-  .servicios-desc {
-    font-size: 1rem;
-  }
-  .hero-section {
-    padding: 60px 0 30px 0;
-    gap: 18px;
-  }
-  .hero-content {
-    min-width: 0;
-    max-width: 98vw;
-    padding: 0 8px;
-  }
-  .hero-title-gradient {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  .hero-sub {
-    font-size: 1rem;
-    margin-bottom: 14px;
-  }
-  .cta-btn {
-    font-size: 1rem;
-    padding: 10px 18px;
-  }
-  .navbar-inner {
-    padding: 0 6px;
-  }
-  .logo {
-    font-size: 1.1rem;
-    padding-left: 2px;
-  }
-}
-@media (max-width: 500px) {
-  .servicio-card {
-    padding: 10px 2px 8px 2px;
-    border-radius: 10px;
-  }
-  .servicio-card h3 {
-    font-size: 0.95rem;
-  }
-  .servicio-card p {
-    font-size: 0.92rem;
-  }
-  .servicio-icono {
-    font-size: 1.2rem;
-  }
-  .servicio-feature {
-    font-size: 0.88rem;
-  }
-  .hero-title-gradient {
-    font-size: 1.3rem;
-  }
-  .hero-sub {
-    font-size: 0.92rem;
-  }
-  .cta-btn {
-    font-size: 0.92rem;
-    padding: 8px 12px;
-  }
-  .navbar {
-    height: 38px;
-  }
-  .navbar-inner {
-    height: 38px;
-    padding: 0 2px;
-  }
-  .logo {
-    font-size: 0.92rem;
-  }
-}
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -1332,38 +1211,60 @@ body {
 @media (max-width: 900px) {
   .navbar-inner { max-width: 98vw; padding: 0 8px; }
   .hero-section { flex-direction: column; padding: 80px 0 40px 0; gap: 18px; }
-  .servicios-row { flex-direction: column; align-items: center; gap: 18px; }
-  .servicio-card { max-width: 98vw; min-width: 220px; }
+  .servicios-row { flex-direction: column; align-items: center; gap: 18px; justify-content: center; }
+  .servicios-grid { align-items: center; padding: 0 15px; }
+  .servicio-card { max-width: 95vw; min-width: 0; margin: 0 auto; }
   .contact-grid { flex-direction: column; gap: 18px; }
   .contact-container { padding: 24px 8px; }
   .proyectos-grid { grid-template-columns: 1fr; gap: 18px; }
 }
+
 @media (max-width: 700px) {
   .navbar { height: 44px; }
-  .navbar-inner { height: 44px; gap: 10px; }
+  .navbar-inner { height: 44px; gap: 10px; padding: 0 6px; }
   .logo { font-size: 1.1rem; padding-left: 2px; }
-  .hero-title-gradient { font-size: 2.1rem; }
+  .hero-title-gradient { font-size: 2rem; margin-bottom: 10px; }
   .hero-content, .hero-glass { padding: 24px 10px; }
+  .hero-sub { font-size: 1rem; margin-bottom: 14px; }
+  .cta-btn { font-size: 1rem; padding: 10px 18px; }
   .servicios-section, .contact-section, .proyectos-section { padding: 38px 0 28px 0; }
-  .servicio-card { padding: 18px 10px; border-radius: 18px; }
-  .servicio-card h3 { font-size: 1.1rem; }
+  .servicios-grid { gap: 28px; padding: 0 15px; align-items: center; }
+  .servicios-row { flex-direction: column !important; gap: 22px; align-items: center !important; justify-content: center; }
+  .servicio-card { max-width: 95vw; padding: 20px 15px 16px 15px; margin: 0 auto; border-radius: 18px; }
+  .servicio-card h3 { font-size: 1.18rem; margin-bottom: 8px; }
   .servicio-card p { font-size: 1rem; }
+  .servicio-features { gap: 6px; margin-top: 10px; }
+  .servicio-feature { font-size: 0.95rem; }
+  .servicio-icono { font-size: 1.7rem; margin-bottom: 10px; }
+  .servicios-header h2 { font-size: 1.3rem; margin-bottom: 4px; }
+  .servicios-desc { font-size: 1rem; }
+  .iphone-mockup { max-width: 98vw; padding: 8px 2px; border-radius: 18px; }
+  .iphone-screen { height: 320px; border-radius: 14px; }
   .proyecto-card { padding: 14px; border-radius: 12px; }
   .proyecto-card h3 { font-size: 1.1rem; }
   .proyecto-card p { font-size: 0.98rem; }
   footer { font-size: 0.95rem; padding: 18px 0 22px 0; }
 }
+
 @media (max-width: 500px) {
   html, body { font-size: 15px; }
   .navbar { height: 38px; }
   .navbar-inner { height: 38px; gap: 6px; padding: 0 2px; }
-  .logo { font-size: 0.95rem; }
+  .logo { font-size: 0.92rem; }
   .hero-title-gradient { font-size: 1.3rem; }
   .hero-content, .hero-glass { padding: 10px 2px; }
+  .hero-sub { font-size: 0.92rem; }
+  .cta-btn { font-size: 0.92rem; padding: 8px 12px; }
   .servicios-section, .contact-section, .proyectos-section { padding: 18px 0 12px 0; }
-  .servicio-card { padding: 8px 2px; border-radius: 10px; }
-  .servicio-card h3 { font-size: 0.95rem; }
-  .servicio-card p { font-size: 0.92rem; }
+  .servicios-grid { gap: 20px; padding: 0 10px; align-items: center; }
+  .servicios-row { flex-direction: column !important; gap: 18px; align-items: center !important; justify-content: center; }
+  .servicio-card { padding: 15px 12px 12px 12px; border-radius: 12px; max-width: 92vw; margin: 0 auto; }
+  .servicio-card h3 { font-size: 1rem; }
+  .servicio-card p { font-size: 0.95rem; }
+  .servicio-icono { font-size: 1.4rem; }
+  .servicio-feature { font-size: 0.9rem; }
+  .iphone-mockup { max-width: 99vw; padding: 2px 0; border-radius: 8px; }
+  .iphone-screen { height: 180px; border-radius: 7px; }
   .proyecto-card { padding: 6px; border-radius: 7px; }
   .proyecto-card h3 { font-size: 0.95rem; }
   .proyecto-card p { font-size: 0.92rem; }
@@ -2812,29 +2713,6 @@ body {
   #aboutModalContent {
     margin: 0 auto;
   }
-  
-  /* === SOBRESCRIBIR ESTILOS INLINE DEL MODAL === */
-  @media (max-width: 700px) {
-    #aboutModal div[id="aboutModalContent"] {
-      max-width: 85vw !important;
-      width: 85vw !important;
-      padding: 25px 30px !important;
-    }
-  }
-  @media (max-width: 500px) {
-    #aboutModal div[id="aboutModalContent"] {
-      max-width: 88vw !important;
-      width: 88vw !important;
-      padding: 20px 25px !important;
-    }
-  }
-  @media (max-width: 400px) {
-    #aboutModal div[id="aboutModalContent"] {
-      max-width: 90vw !important;
-      width: 90vw !important;
-      padding: 18px 22px !important;
-    }
-  }
   /* --- PERSONALIZACIÓN SCROLLBAR DEL MODAL ABOUT --- */
   #aboutModalContent::-webkit-scrollbar {
     width: 10px;
@@ -2907,28 +2785,17 @@ body {
   
   @media (max-width: 700px) {
     #aboutModalContent {
-      max-width: 85vw !important;
-      width: 85vw !important;
-      padding: 25px 30px 25px 30px !important;
+      max-width: 90vw !important;
+      padding: 20px 25px !important;
       font-size: 1rem !important;
       margin: 20px auto !important;
     }
   }
   @media (max-width: 500px) {
     #aboutModalContent {
-      max-width: 88vw !important;
-      width: 88vw !important;
-      padding: 20px 25px 20px 25px !important;
+      max-width: 94vw !important;
+      padding: 15px 20px !important;
       font-size: 0.95rem !important;
-      margin: 15px auto !important;
-    }
-  }
-  @media (max-width: 400px) {
-    #aboutModalContent {
-      max-width: 90vw !important;
-      width: 90vw !important;
-      padding: 18px 22px 18px 22px !important;
-      font-size: 0.9rem !important;
       margin: 10px auto !important;
     }
   }
@@ -3558,4 +3425,3 @@ También puedes llamarnos al <b>(021) 123-456</b> 📞
 </script>
 </body>
 </html>
-  
