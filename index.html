@@ -1174,16 +1174,26 @@
     /* --- MODAL ABOUT RESPONSIVE --- */
     @media (max-width: 700px) {
       #aboutModal > div {
-        max-width: 98vw !important;
-        padding: 18px 9vw 18px 9vw !important;
+        max-width: 85vw !important;
+        width: 85vw !important;
+        padding: 25px 30px 25px 30px !important;
         font-size: 1rem !important;
       }
     }
     @media (max-width: 500px) {
       #aboutModal > div {
-        max-width: 99vw !important;
-        padding: 10px 4vw 10px 4vw !important;
-        font-size: 0.97rem !important;
+        max-width: 88vw !important;
+        width: 88vw !important;
+        padding: 20px 25px 20px 25px !important;
+        font-size: 0.95rem !important;
+      }
+    }
+    @media (max-width: 400px) {
+      #aboutModal > div {
+        max-width: 90vw !important;
+        width: 90vw !important;
+        padding: 18px 22px 18px 22px !important;
+        font-size: 0.9rem !important;
       }
     }
 
@@ -2802,6 +2812,29 @@ body {
   #aboutModalContent {
     margin: 0 auto;
   }
+  
+  /* === SOBRESCRIBIR ESTILOS INLINE DEL MODAL === */
+  @media (max-width: 700px) {
+    #aboutModal div[id="aboutModalContent"] {
+      max-width: 85vw !important;
+      width: 85vw !important;
+      padding: 25px 30px !important;
+    }
+  }
+  @media (max-width: 500px) {
+    #aboutModal div[id="aboutModalContent"] {
+      max-width: 88vw !important;
+      width: 88vw !important;
+      padding: 20px 25px !important;
+    }
+  }
+  @media (max-width: 400px) {
+    #aboutModal div[id="aboutModalContent"] {
+      max-width: 90vw !important;
+      width: 90vw !important;
+      padding: 18px 22px !important;
+    }
+  }
   /* --- PERSONALIZACIÓN SCROLLBAR DEL MODAL ABOUT --- */
   #aboutModalContent::-webkit-scrollbar {
     width: 10px;
@@ -2874,17 +2907,28 @@ body {
   
   @media (max-width: 700px) {
     #aboutModalContent {
-      max-width: 90vw !important;
-      padding: 20px 25px !important;
+      max-width: 85vw !important;
+      width: 85vw !important;
+      padding: 25px 30px 25px 30px !important;
       font-size: 1rem !important;
       margin: 20px auto !important;
     }
   }
   @media (max-width: 500px) {
     #aboutModalContent {
-      max-width: 94vw !important;
-      padding: 15px 20px !important;
+      max-width: 88vw !important;
+      width: 88vw !important;
+      padding: 20px 25px 20px 25px !important;
       font-size: 0.95rem !important;
+      margin: 15px auto !important;
+    }
+  }
+  @media (max-width: 400px) {
+    #aboutModalContent {
+      max-width: 90vw !important;
+      width: 90vw !important;
+      padding: 18px 22px 18px 22px !important;
+      font-size: 0.9rem !important;
       margin: 10px auto !important;
     }
   }
