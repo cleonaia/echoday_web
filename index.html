@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="htmlLang">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
@@ -8,6 +8,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Echoday - Soluciones Creativas</title>
+  <meta name="description" content="Transformación digital y creatividad para empresas que quieren destacar. Automatización IA, desarrollo web, apps móviles y más." />
+  <meta name="keywords" content="desarrollo web, automatización IA, apps móviles, transformación digital, consultoría empresarial" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Montserrat:wght@700;900&family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -141,6 +143,9 @@
       letter-spacing: 1.5px;
       animation: fadeup 0.9s cubic-bezier(.23,1.05,.32,1);
       line-height: 1.1;
+      word-wrap: break-word;
+      hyphens: auto;
+      text-align: center;
     }
     .hero-sub {
       font-size: 1.3rem;
@@ -301,6 +306,164 @@
       margin-left: 12px;
       color: #a8e3e0;
       font-size: 1rem;
+    }
+
+    /* ===== SELECTOR DE IDIOMAS ===== */
+    .language-selector {
+      position: relative;
+      display: inline-block;
+      margin-left: 12px;
+    }
+    
+    .language-toggle {
+      background: rgba(35, 39, 51, 0.9);
+      border: 1.5px solid rgba(96, 168, 255, 0.3);
+      border-radius: 20px;
+      color: #fff;
+      padding: 8px 14px;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(35, 255, 227, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .language-toggle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(96, 168, 255, 0.2), transparent);
+      transition: left 0.6s;
+    }
+    
+    .language-toggle:hover::before {
+      left: 100%;
+    }
+    
+    .language-toggle:hover {
+      background: rgba(96, 168, 255, 0.15);
+      border-color: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(35, 255, 227, 0.3);
+    }
+    
+    .current-lang {
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--accent1);
+      text-shadow: 0 0 8px rgba(35, 255, 227, 0.5);
+    }
+    
+    .language-toggle i {
+      font-size: 1rem;
+      color: var(--accent2);
+      transition: transform 0.3s;
+    }
+    
+    .language-toggle.open i {
+      transform: rotate(180deg);
+    }
+    
+    .language-menu {
+      display: none;
+      position: absolute;
+      top: 120%;
+      right: 0;
+      min-width: 180px;
+      background: rgba(22, 25, 35, 0.98);
+      border: 1.5px solid rgba(96, 168, 255, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(35, 255, 227, 0.2);
+      padding: 8px 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      animation: languageMenuFadeIn 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .language-selector.open .language-menu {
+      display: block;
+    }
+    
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 18px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      width: 100%;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .language-option::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(96, 168, 255, 0.1), transparent);
+      transition: left 0.4s;
+    }
+    
+    .language-option:hover::before {
+      left: 100%;
+    }
+    
+    .language-option:hover {
+      background: rgba(96, 168, 255, 0.1);
+      color: var(--accent1);
+      transform: translateX(5px);
+    }
+    
+    .language-option.active {
+      background: rgba(35, 255, 227, 0.1);
+      color: var(--accent1);
+      font-weight: 600;
+    }
+    
+    .lang-icon {
+      font-size: 1.1rem;
+      margin-right: 2px;
+      filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+      transition: transform 0.2s;
+    }
+    
+    .language-option:hover .lang-icon {
+      transform: scale(1.1);
+    }
+    
+    .lang-text {
+      transition: color 0.2s;
+    }
+    
+    @keyframes languageMenuFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
     .servicios-section {
       padding: 80px 0 75px 0; /* Igualado al espaciado de contacto */
@@ -1203,11 +1366,13 @@ body {
 }
 
 /* === RESPONSIVE BREAKPOINTS === */
+
 @media (max-width: 1200px) {
   .proyectos-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
   .servicios-row { gap: 24px; }
   .servicios-grid { gap: 32px; }
 }
+
 @media (max-width: 900px) {
   .navbar-inner { max-width: 98vw; padding: 0 8px; }
   .hero-section { flex-direction: column; padding: 80px 0 40px 0; gap: 18px; }
@@ -1284,6 +1449,32 @@ body {
   .mobile-menu-toggle { display: inline-flex; }
   nav { display: none; }
   .navbar-inner.open nav { display: flex; flex-direction: column; gap: 8px; position: absolute; top: 44px; left: 0; background: #161a23; width: 100vw; padding: 18px 0; z-index: 999; }
+  
+  /* Selector de idiomas responsive */
+  .language-selector {
+    margin-left: 8px;
+    margin-right: -4px;
+  }
+  
+  .language-toggle {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    border-radius: 16px;
+  }
+  
+  .language-menu {
+    min-width: 160px;
+    right: -10px;
+  }
+  
+  .language-option {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .flag {
+    font-size: 1.1rem;
+  }
 }
 .mobile-menu-toggle:hover {
   color: var(--accent2);
@@ -1659,9 +1850,10 @@ body {
       .hero-title-gradient {
         font-size: clamp(1.8rem, 6vw, 2.2rem);
         letter-spacing: 0.5px;
-        line-height: 1.1;
+        line-height: 1.2;
         margin-bottom: 15px;
         text-align: center;
+        word-spacing: 0.1em;
       }
       .hero-sub {
         font-size: clamp(1rem, 4vw, 1.2rem);
@@ -1914,6 +2106,8 @@ body {
       .hero-title-gradient {
         font-size: clamp(1.6rem, 7vw, 2rem);
         margin-bottom: 12px;
+        line-height: 1.2;
+        word-spacing: 0.1em;
       }
       .hero-sub {
         font-size: clamp(0.95rem, 4vw, 1.1rem);
@@ -1996,6 +2190,32 @@ body {
         padding: 20px 15px 25px 15px;
         font-size: clamp(0.85rem, 3vw, 0.95rem);
       }
+
+      /* ---- SELECTOR DE IDIOMAS MÓVIL 480px ---- */
+      .language-selector {
+        margin-left: 6px;
+        margin-right: -6px;
+      }
+      
+      .language-toggle {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+        border-radius: 14px;
+      }
+      
+      .language-menu {
+        min-width: 150px;
+        right: -8px;
+      }
+      
+      .language-option {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+      }
+      
+      .flag {
+        font-size: 1rem;
+      }
     }
 
     /* === MÓVILES MUY PEQUEÑOS (360px y menos) === */
@@ -2012,6 +2232,8 @@ body {
       .hero-title-gradient {
         font-size: clamp(1.4rem, 8vw, 1.8rem);
         margin-bottom: 10px;
+        line-height: 1.25;
+        word-spacing: 0.1em;
       }
       .hero-sub {
         font-size: clamp(0.85rem, 4vw, 1rem);
@@ -2113,6 +2335,124 @@ body {
         padding: 18px 12px 22px 12px;
         font-size: clamp(0.8rem, 3vw, 0.9rem);
       }
+
+      /* ---- SELECTOR DE IDIOMAS MÓVIL 360px ---- */
+      .language-selector {
+        margin-left: 4px;
+        margin-right: -8px;
+      }
+      
+      .language-toggle {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        border-radius: 12px;
+        gap: 6px;
+        min-height: 32px;
+      }
+      
+      .current-lang {
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+      }
+      
+      .language-toggle i {
+        font-size: 0.8rem;
+      }
+      
+      .language-menu {
+        min-width: 140px;
+        right: -10px;
+        font-size: 0.85rem;
+      }
+      
+      .language-option {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        min-height: 36px;
+      }
+      
+      .flag {
+        font-size: 0.9rem;
+      }
+      
+      .lang-text {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* === PANTALLAS ULTRA PEQUEÑAS (320px y menos) === */
+    @media (max-width: 320px) {
+      .navbar-inner {
+        padding: 0 12px;
+        gap: 15px;
+      }
+      
+      .logo {
+        font-size: 1.2rem;
+      }
+      
+      /* ---- SELECTOR DE IDIOMAS ULTRA PEQUEÑO ---- */
+      .language-selector {
+        margin-left: 2px;
+        margin-right: -10px;
+      }
+      
+      .language-toggle {
+        padding: 3px 6px;
+        font-size: 0.7rem;
+        border-radius: 10px;
+        gap: 4px;
+        min-height: 28px;
+      }
+      
+      .current-lang {
+        font-size: 0.7rem;
+        letter-spacing: 0.3px;
+      }
+      
+      .language-toggle i {
+        font-size: 0.7rem;
+      }
+      
+      .language-menu {
+        min-width: 130px;
+        right: -12px;
+        font-size: 0.8rem;
+      }
+      
+      .language-option {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+        min-height: 32px;
+      }
+      
+      .flag {
+        font-size: 0.85rem;
+      }
+      
+      .lang-text {
+        font-size: 0.75rem;
+      }
+      
+      /* Hero section ultra pequeño */
+      .hero-title-gradient {
+        font-size: clamp(1.2rem, 8.5vw, 1.6rem);
+        line-height: 1.2;
+        letter-spacing: 0.8px;
+        text-align: center;
+        word-spacing: 0.1em;
+      }
+      
+      .hero-sub {
+        font-size: clamp(0.8rem, 4vw, 0.95rem);
+        text-align: center;
+      }
+      
+      .cta-btn {
+        font-size: clamp(0.75rem, 3.5vw, 0.85rem);
+        padding: 8px 16px;
+        text-align: center;
+      }
     }
 
     /*
@@ -2188,28 +2528,50 @@ body {
   <div class="navbar">
     <div class="navbar-inner">
       <a class="logo" href="#">Echoday</a>
+      <!-- Selector de idiomas -->
+      <div class="language-selector">
+        <button class="language-toggle" id="languageToggle">
+          <span class="current-lang">ES</span>
+          <i class="fa-solid fa-globe"></i>
+        </button>
+        <div class="language-menu" id="languageMenu">
+          <button class="language-option" data-lang="es">
+            <i class="fas fa-globe" style="color: #60a8ff;"></i>
+            <span class="lang-text">Español</span>
+          </button>
+          <button class="language-option" data-lang="en">
+            <i class="fas fa-globe-americas" style="color: #42fa7a;"></i>
+            <span class="lang-text">English</span>
+          </button>
+          <button class="language-option" data-lang="pt">
+            <i class="fas fa-globe-europe" style="color: #23ffe3;"></i>
+            <span class="lang-text">Português</span>
+          </button>
+        </div>
+      </div>
+      
       <nav>
         <div class="dropdown" id="dropdownServicios">
           <button class="dropdown-toggle" id="dropdownToggle">
-            Servicios <i class="fa-solid fa-chevron-down"></i>
+            <span data-translate="nav_services">Servicios</span> <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="dropdown-menu">
             <a href="#" class="dropdown-item" id="menu-auto-whatsapp">
-              Automatización IA <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
+              <span data-translate="nav_automation">Automatización IA</span> <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
             <a href="#" class="dropdown-item">
-              Desarrollo Web <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
+              <span data-translate="nav_web_dev">Desarrollo Web</span> <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
             <a href="#" class="dropdown-item">
-              Presentaciones de Impacto <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
+              <span data-translate="nav_presentations">Presentaciones de Impacto</span> <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
             <a href="#" class="dropdown-item">
-              Creación de Apps Móviles <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
+              <span data-translate="nav_mobile_apps">Creación de Apps Móviles</span> <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
           </div>
         </div>
-        <a href="#" id="aboutNavBtn" onclick="showAboutModal();return false;">About</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#" id="aboutNavBtn" onclick="showAboutModal();return false;"><span data-translate="nav_about">About</span></a>
+        <a href="#contacto"><span data-translate="nav_contact">Contacto</span></a>
       </nav>
       <button class="mobile-menu-toggle" id="mobileMenuToggle">
         <i class="fa-solid fa-bars"></i>
@@ -2219,10 +2581,10 @@ body {
   <section class="hero-section" id="inicio">
     <div class="hero-content">
       <div class="hero-glass">
-        <h1 class="hero-title-gradient">El futuro es hoy,<br>Echoday</h1>
-        <p class="hero-sub">Transformación digital y creatividad para empresas que quieren destacar.</p>
+        <h1 class="hero-title-gradient" data-translate="hero_title">El futuro es hoy, Echoday</h1>
+        <p class="hero-sub" data-translate="hero_subtitle">Transformación digital y creatividad para empresas que quieren destacar.</p>
         <button class="cta-btn" onclick="window.location.href='#contacto'">
-          ¡Hablemos de tu próximo proyecto! <i class="fa fa-rocket"></i>
+          <span data-translate="hero_cta">¡Hablemos de tu próximo proyecto!</span> <i class="fa fa-rocket"></i>
         </button>
       </div>
     </div>
@@ -2232,92 +2594,92 @@ body {
   </div>
   <section class="servicios-section" id="servicios">
     <div class="servicios-header">
-      <h2>¿Qué hacemos en Echoday?</h2>
-      <p class="servicios-desc">
+      <h2 data-translate="services_title">¿Qué hacemos en Echoday?</h2>
+      <p class="servicios-desc" data-translate="services_description">
         Creamos experiencias digitales que inspiran, transforman y hacen crecer tu empresa. Evoluciona, destaca y lidera.
       </p>
     </div>
     <div class="servicios-grid">
       <div class="servicios-row row-1">
         <div class="servicio-card highlight-card" id="servicio-automatizacion" style="--delay: .04s">
-          <span class="click-hint"><i class="fa-solid fa-hand-pointer"></i> ¡Haz clic!</span>
+          <span class="click-hint"><i class="fa-solid fa-hand-pointer"></i> <span data-translate="click_hint">¡Haz clic!</span></span>
           <div class="servicio-icono robot-icon"><i class="fa-solid fa-robot"></i></div>
-          <h3>Automatización IA</h3>
-          <p>Automatiza procesos con inteligencia artificial, bots avanzados y sistemas inteligentes para transformar tu empresa.</p>
+          <h3 data-translate="service1_title">Automatización IA</h3>
+          <p data-translate="service1_description">Automatiza procesos con inteligencia artificial, bots avanzados y sistemas inteligentes para transformar tu empresa.</p>
           <div class="servicio-features">
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Chatbots inteligentes con IA</span>
+              <span data-translate="service1_feature1">Chatbots inteligentes con IA</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Integración WhatsApp Business</span>
+              <span data-translate="service1_feature2">Integración WhatsApp Business</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Automatización de tareas repetitivas</span>
+              <span data-translate="service1_feature3">Automatización de tareas repetitivas</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Análisis de datos en tiempo real</span>
+              <span data-translate="service1_feature4">Análisis de datos en tiempo real</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Workflows personalizados</span>
+              <span data-translate="service1_feature5">Workflows personalizados</span>
             </div>
           </div>
         </div>
         <div class="servicio-card" style="--delay: .08s">
           <div class="servicio-icono code-icon"><i class="fa-solid fa-code"></i></div>
-          <h3>Desarrollo Web</h3>
-          <p>Webs, apps, chatbots y dashboards con tecnología de punta y diseño atractivo, listos para crecer contigo.</p>
+          <h3 data-translate="service2_title">Desarrollo Web</h3>
+          <p data-translate="service2_description">Webs, apps, chatbots y dashboards con tecnología de punta y diseño atractivo, listos para crecer contigo.</p>
           <div class="servicio-features">
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Diseño responsive y moderno</span>
+              <span data-translate="service2_feature1">Diseño responsive y moderno</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Optimización SEO avanzada</span>
+              <span data-translate="service2_feature2">Optimización SEO avanzada</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Integración con APIs</span>
+              <span data-translate="service2_feature3">Integración con APIs</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Panel de administración</span>
+              <span data-translate="service2_feature4">Panel de administración</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Velocidad de carga optimizada</span>
+              <span data-translate="service2_feature5">Velocidad de carga optimizada</span>
             </div>
           </div>
         </div>
         <div class="servicio-card" style="--delay: .12s">
           <div class="servicio-icono mobile-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-          <h3>Apps Móviles</h3>
-          <p>Desarrollo de apps móviles para iOS y Android, personalizadas para tu negocio y clientes.</p>
+          <h3 data-translate="service3_title">Apps Móviles</h3>
+          <p data-translate="service3_description">Desarrollo de apps móviles para iOS y Android, personalizadas para tu negocio y clientes.</p>
           <div class="servicio-features">
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Desarrollo iOS y Android</span>
+              <span data-translate="service3_feature1">Desarrollo iOS y Android</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Interfaz intuitiva y atractiva</span>
+              <span data-translate="service3_feature2">Interfaz intuitiva y atractiva</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Notificaciones push</span>
+              <span data-translate="service3_feature3">Notificaciones push</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Sincronización en tiempo real</span>
+              <span data-translate="service3_feature4">Sincronización en tiempo real</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Publicación en tiendas</span>
+              <span data-translate="service3_feature5">Publicación en tiendas</span>
             </div>
           </div>
         </div>
@@ -2343,38 +2705,38 @@ body {
             </div>
           </div>
           <div class="simulador-panel">
-            <h2>Simulador de WhatsApp <i class="fab fa-whatsapp"></i></h2>
+            <h2><span data-translate="simulator_title">Simulador de WhatsApp</span> <i class="fab fa-whatsapp"></i></h2>
             <p>
-              Esta demo te permite interactuar como si fueras un cliente en WhatsApp, viendo paso a paso cómo funciona la automatización de atención y solicitud de préstamos.<br>
+              <span data-translate="simulator_description">Esta demo te permite interactuar como si fueras un cliente en WhatsApp, viendo paso a paso cómo funciona la automatización de atención y solicitud de préstamos.</span><br>
               <ul>
-                <li>Haz clic en las opciones para avanzar.</li>
-                <li>¡No es real, es solo una demo!</li>
+                <li data-translate="simulator_instruction1">Haz clic en las opciones para avanzar.</li>
+                <li data-translate="simulator_instruction2">¡No es real, es solo una demo!</li>
               </ul>
             </p>
             <div class="simulador-btns">
               <button class="simulador-btn" onclick="startIphoneDemo()" id="startBtn">
-                Iniciar simulación
+                <span data-translate="simulator_start">Iniciar simulación</span>
               </button>
               <button class="simulador-btn option" onclick="sendIphoneOption('1')" id="opt1" style="display:none;">
-                1️⃣ Consultar estado de mi solicitud
+                <span data-translate="simulator_option1">1️⃣ Consultar estado de mi solicitud</span>
               </button>
               <button class="simulador-btn option" onclick="sendIphoneOption('2')" id="opt2" style="display:none;">
-                2️⃣ Solicitar nuevo préstamo
+                <span data-translate="simulator_option2">2️⃣ Solicitar nuevo préstamo</span>
               </button>
               <button class="simulador-btn option" onclick="sendIphoneOption('3')" id="opt3" style="display:none;">
-                3️⃣ Hablar con un agente
+                <span data-translate="simulator_option3">3️⃣ Hablar con un agente</span>
               </button>
               <button class="simulador-btn" onclick="sendIphoneLoanData()" id="loanBtn" style="display:none;">
-                Enviar mis datos de préstamo
+                <span data-translate="simulator_send_data">Enviar mis datos de préstamo</span>
               </button>
               <button class="simulador-btn" onclick="acceptIphoneTerms()" id="acceptBtn" style="display:none;">
-                SÍ, acepto condiciones
+                <span data-translate="simulator_accept">SÍ, acepto condiciones</span>
               </button>
               <button class="simulador-btn" onclick="rejectIphoneTerms()" id="rejectBtn" style="display:none;">
-                NO, tengo dudas
+                <span data-translate="simulator_reject">NO, tengo dudas</span>
               </button>
               <button class="simulador-btn" onclick="resetIphoneDemo()" id="resetBtn" style="display:none;">
-                Reiniciar simulador
+                <span data-translate="simulator_reset">Reiniciar simulador</span>
               </button>
             </div>
           </div>
@@ -2383,55 +2745,55 @@ body {
       <div class="servicios-row row-2">
         <div class="servicio-card" style="--delay: .16s">
           <div class="servicio-icono handshake-icon"><i class="fa-solid fa-handshake-angle"></i></div>
-          <h3>Consultoría para Empresarios</h3>
-          <p>Diagnóstico, ideas, implementación y capacitación: conviértete en referente digital en tu sector.</p>
+          <h3 data-translate="service4_title">Consultoría para Empresarios</h3>
+          <p data-translate="service4_description">Diagnóstico, ideas, implementación y capacitación: conviértete en referente digital en tu sector.</p>
           <div class="servicio-features">
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Diagnóstico digital completo</span>
+              <span data-translate="service4_feature1">Diagnóstico digital completo</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Estrategia de transformación</span>
+              <span data-translate="service4_feature2">Estrategia de transformación</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Implementación personalizada</span>
+              <span data-translate="service4_feature3">Implementación personalizada</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Capacitación del equipo</span>
+              <span data-translate="service4_feature4">Capacitación del equipo</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Soporte continuo</span>
+              <span data-translate="service4_feature5">Soporte continuo</span>
             </div>
           </div>
         </div>
         <div class="servicio-card" style="--delay: .2s">
           <div class="servicio-icono rocket-icon"><i class="fa-solid fa-rocket"></i></div>
-          <h3>Presentaciones de Impacto</h3>
-          <p>Convierte tu pitch, demo o evento en una experiencia memorable. Sorprende a tu audiencia desde el primer minuto.</p>
+          <h3 data-translate="service5_title">Presentaciones de Impacto</h3>
+          <p data-translate="service5_description">Convierte tu pitch, demo o evento en una experiencia memorable. Sorprende a tu audiencia desde el primer minuto.</p>
           <div class="servicio-features">
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Diseño visual impactante</span>
+              <span data-translate="service5_feature1">Diseño visual impactante</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Animaciones y transiciones</span>
+              <span data-translate="service5_feature2">Animaciones y transiciones</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Contenido persuasivo</span>
+              <span data-translate="service5_feature3">Contenido persuasivo</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Interactividad avanzada</span>
+              <span data-translate="service5_feature4">Interactividad avanzada</span>
             </div>
             <div class="servicio-feature">
               <i class="fa-solid fa-check"></i>
-              <span>Adaptado a tu audiencia</span>
+              <span data-translate="service5_feature5">Adaptado a tu audiencia</span>
             </div>
           </div>
         </div>
@@ -2441,8 +2803,8 @@ body {
 
   <section class="proyectos-section">
     <div class="proyectos-header">
-      <h2>Proyectos Destacados</h2>
-      <p class="proyectos-desc">
+      <h2 data-translate="projects_title">Proyectos Destacados</h2>
+      <p class="proyectos-desc" data-translate="projects_description">
         Algunos de nuestros trabajos más recientes que demuestran nuestra capacidad de innovación y calidad.
       </p>
     </div>
@@ -2556,25 +2918,25 @@ body {
 
   <section id="contacto" class="contact-section">
     <div class="contact-container">
-      <div class="contact-title">¡Conversemos!</div>
-      <div class="contact-subtitle">¿Listo para transformar tu empresa? ¡Hagamos juntos algo grande!</div>
+      <div class="contact-title" data-translate="contact_title">¡Conversemos!</div>
+      <div class="contact-subtitle" data-translate="contact_subtitle">¿Listo para transformar tu empresa? ¡Hagamos juntos algo grande!</div>
       <div class="contact-grid">
         <form class="contact-form" autocomplete="off" onsubmit="enviarMensaje(event)">
-          <label for="nombre">Nombre</label>
-          <input id="nombre" required placeholder="¿Cómo te llamas?">
-          <label for="empresa">Empresa</label>
-          <input id="empresa" placeholder="¿Dónde trabajas? (opcional)">
-          <label for="email">Email</label>
-          <input id="email" type="email" required placeholder="Tu correo de contacto">
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" required placeholder="¿En qué puedo ayudarte?"></textarea>
-          <button type="submit"><i class="fa fa-paper-plane"></i> Enviar mensaje</button>
+          <label for="nombre" data-translate="contact_name_label">Nombre</label>
+          <input id="nombre" required data-translate-placeholder="contact_name_placeholder">
+          <label for="empresa" data-translate="contact_company_label">Empresa</label>
+          <input id="empresa" data-translate-placeholder="contact_company_placeholder">
+          <label for="email" data-translate="contact_email_label">Email</label>
+          <input id="email" type="email" required data-translate-placeholder="contact_email_placeholder">
+          <label for="mensaje" data-translate="contact_message_label">Mensaje</label>
+          <textarea id="mensaje" required data-translate-placeholder="contact_message_placeholder"></textarea>
+          <button type="submit"><i class="fa fa-paper-plane"></i> <span data-translate="contact_send_button">Enviar mensaje</span></button>
         </form>
         <div class="contact-info">
           <div style="margin-bottom:12px;"><b>Email:</b> <span style="color:var(--accent2);">contact@echoday.tech</span></div>
-          <div style="margin:10px 0;"><b>WhatsApp:</b> <a style="color:var(--accent1);font-weight:700" href="https://wa.me/34643032807" target="_blank"><i class="fab fa-whatsapp"></i> Escríbeme ahora</a></div>
+          <div style="margin:10px 0;"><b>WhatsApp:</b> <a style="color:var(--accent1);font-weight:700" href="https://wa.me/34643032807" target="_blank"><i class="fab fa-whatsapp"></i> <span data-translate="contact_whatsapp">Escríbeme ahora</span></a></div>
           <div>
-            <b>Redes:</b>
+            <b data-translate="contact_social">Redes:</b>
             <a href="https://github.com/cleonaia" target="_blank" style="color:var(--accent2);margin:0 7px;" title="GitHub"><i class="fab fa-github fa-lg"></i></a>
             <a href="#" style="color:var(--accent1);margin:0 7px;"><i class="fab fa-twitter fa-lg"></i></a>
             <a href="#" style="color:#42fa7a;margin:0 7px;"><i class="fab fa-instagram fa-lg"></i></a>
@@ -2584,9 +2946,9 @@ body {
     </div>
   </section>
   <footer>
-    &copy; 2025 Echoday | Innovación + Tecnología + Creatividad | 
+    &copy; 2025 Echoday | <span data-translate="footer_tagline">Innovación + Tecnología + Creatividad</span> | 
     <span class="footer-madeby">
-      Hecho con <span class="footer-code">&lt;/&gt;</span> por <span class="footer-author">cleonaia</span>
+      <span data-translate="footer_made_with">Hecho con</span> <span class="footer-code">&lt;/&gt;</span> <span data-translate="footer_by">por</span> <span class="footer-author">cleonaia</span>
     </span>
   </footer>
   <!-- Añade esto justo antes de </body> -->
@@ -2618,11 +2980,11 @@ body {
         <i class="fa-solid fa-circle-check"></i>
       </div>
       <div style="font-weight:900;font-size:1.35rem;margin-bottom:10px;">
-        ¡Gracias por tu mensaje!
+        <span data-translate="modal_thanks_title">¡Gracias por tu mensaje!</span>
       </div>
       <div style="font-size:1.08rem;color:#a8e3e0;margin-bottom:18px;">
-        Tomaste una gran decisión.<br>
-        Nos pondremos en contacto contigo lo más rápido posible.
+        <span data-translate="modal_thanks_message">Tomaste una gran decisión.<br>
+        Nos pondremos en contacto contigo lo más rápido posible.</span>
       </div>
       <button onclick="document.getElementById('contactoGraciasModal').style.display='none';" style="
         background:linear-gradient(90deg,#23ffe3,#60a8ff 80%);
@@ -2637,7 +2999,7 @@ body {
         margin-top:8px;
         box-shadow:0 0 8px 1px #42fa7a33;
         transition:background 0.18s, color 0.15s, transform 0.13s, box-shadow 0.2s;
-      ">Cerrar</button>
+      "><span data-translate="modal_close">Cerrar</span></button>
     </div>
   </div>
   <!-- MODAL ABOUT: visible en todas las pantallas, info profesional y motivadora -->
@@ -2686,7 +3048,7 @@ body {
         <i class="fa fa-times"></i>
       </button>
       <div style="font-size:2rem;margin-bottom:10px;color:#60a8ff;font-weight:900;text-align:center;">
-        <i class="fa-solid fa-info-circle fa-spin"></i> Sobre Echoday
+        <i class="fa-solid fa-info-circle fa-spin"></i> <span data-translate="modal_about_title">Sobre Echoday</span>
       </div>
       <div style="line-height:1.6;">
         <span id="aboutText"></span>
@@ -3423,5 +3785,88 @@ También puedes llamarnos al <b>(021) 123-456</b> 📞
       });
     });
 </script>
+
+<!-- Sistema de traducciones -->
+<script src="translations.js"></script>
+
+<!-- Actualización de aboutModal.js para soporte de traducciones -->
+<script>
+// Override de la función showAboutModal para soportar traducciones
+function showAboutModal() {
+  let modal = document.getElementById('aboutModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'aboutModal';
+    modal.style = `
+      display:flex;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;
+      background:rgba(24,29,36,0.82);backdrop-filter:blur(2px);justify-content:center;align-items:center;`;
+    modal.innerHTML = `
+      <div style="background:rgba(26,29,38,0.98);border-radius:28px;box-shadow:0 8px 48px #23ffe355,0 2px 16px #60a8ff22;padding:44px 38px 38px 38px;max-width:520px;width:92vw;text-align:left;color:#fff;font-family:'Montserrat',Arial,sans-serif;font-size:1.13rem;position:relative;animation:fadeup 0.7s cubic-bezier(.23,1.05,.32,1);overflow:hidden;line-height:1.7;letter-spacing:0.01em;margin:0 auto;box-sizing:border-box;">
+        <div style='font-size:2.1rem;margin-bottom:18px;color:#23ffe3;font-weight:900;letter-spacing:1.1px;text-align:center;'>
+          <span data-translate="modal_about_title">Sobre Echoday</span> 
+          <span style='font-size:1.2rem;vertical-align:middle;margin-left:7px;'><i class='fa-solid fa-user-graduate fa-bounce'></i></span>
+        </div>
+        <div id='aboutText' style='color:#a8e3e0;font-size:1.13rem;font-family:"Poppins",Arial,sans-serif;font-weight:500;line-height:1.7;letter-spacing:0.01em;max-width:440px;margin:0 auto;text-align:left;'></div>
+        <button id='closeAboutBtn' style='background:linear-gradient(90deg,#23ffe3,#60a8ff 80%);color:#181d24;border:none;border-radius:22px;padding:10px 28px;font-size:1.07rem;font-weight:700;cursor:pointer;font-family:"Montserrat",Arial,sans-serif;margin-top:28px;box-shadow:0 0 8px 1px #42fa7a33;transition:background 0.18s, color 0.15s, transform 0.13s, box-shadow 0.2s;display:block;margin-left:auto;margin-right:auto;'>
+          <span data-translate="modal_close">Cerrar</span>
+        </button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    document.getElementById('closeAboutBtn').onclick = function() {
+      modal.style.display = 'none';
+    };
+    modal.addEventListener('click', function(e){
+      if(e.target === modal) modal.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') modal.style.display = 'none';
+    });
+  } else {
+    modal.style.display = 'flex';
+  }
+  
+  // Actualizar traducciones del modal si el language manager está disponible
+  if (window.languageManager) {
+    const titleElement = modal.querySelector('[data-translate="modal_about_title"]');
+    const closeElement = modal.querySelector('[data-translate="modal_close"]');
+    
+    if (titleElement) {
+      titleElement.textContent = window.languageManager.getTranslation('modal_about_title');
+    }
+    if (closeElement) {
+      closeElement.textContent = window.languageManager.getTranslation('modal_close');
+    }
+  }
+  
+  // Obtener el texto traducido
+  const aboutText = window.languageManager ? 
+    window.languageManager.getTranslation('about_text') : 
+    `¡Hola! Soy un estudiante de Ingeniería de Datos con una profunda pasión por la innovación y el desarrollo tecnológico. Mi objetivo es aportar soluciones creativas y eficientes que impulsen la transformación digital, especialmente en Sudamérica, una región llena de potencial y oportunidades para abrir nuevos horizontes de conocimiento.\n\nMe motiva crear herramientas y plataformas que faciliten la vida de las personas y las empresas, utilizando datos, inteligencia artificial y automatización para resolver desafíos reales. Creo firmemente que la tecnología es un motor de cambio positivo, y por eso busco estar siempre a la vanguardia, aprendiendo y aplicando las mejores prácticas del sector.\n\nMi visión es contribuir al desarrollo de una región más competitiva, conectada y preparada para el futuro, colaborando con equipos multidisciplinarios y compartiendo el conocimiento adquirido. Si compartes esta pasión por innovar y transformar, ¡conversemos y creemos juntos el próximo gran proyecto!`;
+  
+  const el = document.getElementById('aboutText');
+  if (el) {
+    el.innerHTML = '';
+    let i = 0;
+    function typeWriter() {
+      if (i < aboutText.length) {
+        el.innerHTML += aboutText.charAt(i) === '\n' ? '<br>' : aboutText.charAt(i);
+        i++;
+        setTimeout(typeWriter, aboutText.charAt(i-1) === '.' ? 32 : 13);
+      }
+    }
+    typeWriter();
+  }
+}
+
+function closeAboutModal() {
+  const modal = document.getElementById('aboutModal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+</script>
+
 </body>
 </html>
