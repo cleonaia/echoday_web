@@ -83,6 +83,31 @@ const translations = {
     // Proyectos
     projects_title: "Proyectos Destacados",
     projects_description: "Algunos de nuestros trabajos más recientes que demuestran nuestra capacidad de innovación y calidad.",
+    
+    // Proyectos específicos
+    project1_title: "E-commerce Innovador",
+    project1_description: "Plataforma de comercio electrónico con automatización completa y experiencia de usuario excepcional.",
+    project1_feature1: "Diseño responsive y moderno",
+    project1_feature2: "Optimización SEO avanzada",
+    project1_feature3: "Integración con APIs",
+    project1_feature4: "Panel de administración",
+    project1_feature5: "Velocidad de carga optimizada",
+    
+    project2_title: "App de Gestión",
+    project2_description: "Aplicación móvil para gestión empresarial con integraciones avanzadas y análisis en tiempo real.",
+    project2_feature1: "Interfaz intuitiva multiplataforma",
+    project2_feature2: "Sincronización en tiempo real",
+    project2_feature3: "Notificaciones push personalizadas",
+    project2_feature4: "Modo offline funcional",
+    project2_feature5: "Seguridad biométrica avanzada",
+    
+    project3_title: "Sistema de Automatización",
+    project3_description: "Plataforma de automatización empresarial que redujo costos operativos en un 60%.",
+    project3_feature1: "Machine Learning predictivo",
+    project3_feature2: "Procesamiento de datos masivo",
+    project3_feature3: "Dashboards analíticos avanzados",
+    project3_feature4: "Integración con sistemas legacy",
+    project3_feature5: "Escalabilidad en la nube",
 
     // Contacto
     contact_title: "¡Conversemos!",
@@ -197,6 +222,31 @@ const translations = {
     // Projects
     projects_title: "Featured Projects",
     projects_description: "Some of our most recent work that demonstrates our capacity for innovation and quality.",
+    
+    // Specific projects
+    project1_title: "Innovative E-commerce",
+    project1_description: "E-commerce platform with complete automation and exceptional user experience.",
+    project1_feature1: "Responsive and modern design",
+    project1_feature2: "Advanced SEO optimization",
+    project1_feature3: "API integration",
+    project1_feature4: "Admin panel",
+    project1_feature5: "Optimized loading speed",
+    
+    project2_title: "Management App",
+    project2_description: "Mobile application for business management with advanced integrations and real-time analytics.",
+    project2_feature1: "Intuitive multiplatform interface",
+    project2_feature2: "Real-time synchronization",
+    project2_feature3: "Personalized push notifications",
+    project2_feature4: "Functional offline mode",
+    project2_feature5: "Advanced biometric security",
+    
+    project3_title: "Automation System",
+    project3_description: "Business automation platform that reduced operational costs by 60%.",
+    project3_feature1: "Predictive Machine Learning",
+    project3_feature2: "Massive data processing",
+    project3_feature3: "Advanced analytical dashboards",
+    project3_feature4: "Legacy system integration",
+    project3_feature5: "Cloud scalability",
 
     // Contact
     contact_title: "Let's talk!",
@@ -309,8 +359,33 @@ const translations = {
     simulator_reset: "Reiniciar simulador",
 
     // Projetos
-    projects_title: "Projetos Destacados",
+    projects_title: "Projetos em Destaque",
     projects_description: "Alguns dos nossos trabalhos mais recentes que demonstram nossa capacidade de inovação e qualidade.",
+    
+    // Projetos específicos
+    project1_title: "E-commerce Inovador",
+    project1_description: "Plataforma de comércio eletrônico com automação completa e experiência do usuário excepcional.",
+    project1_feature1: "Design responsivo e moderno",
+    project1_feature2: "Otimização SEO avançada",
+    project1_feature3: "Integração com APIs",
+    project1_feature4: "Painel de administração",
+    project1_feature5: "Velocidade de carregamento otimizada",
+    
+    project2_title: "App de Gestão",
+    project2_description: "Aplicativo móvel para gestão empresarial com integrações avançadas e análise em tempo real.",
+    project2_feature1: "Interface intuitiva multiplataforma",
+    project2_feature2: "Sincronização em tempo real",
+    project2_feature3: "Notificações push personalizadas",
+    project2_feature4: "Modo offline funcional",
+    project2_feature5: "Segurança biométrica avançada",
+    
+    project3_title: "Sistema de Automação",
+    project3_description: "Plataforma de automação empresarial que reduziu custos operacionais em 60%.",
+    project3_feature1: "Machine Learning preditivo",
+    project3_feature2: "Processamento de dados massivo",
+    project3_feature3: "Dashboards analíticos avançados",
+    project3_feature4: "Integração com sistemas legados",
+    project3_feature5: "Escalabilidade na nuvem",
 
     // Contato
     contact_title: "Vamos conversar!",
