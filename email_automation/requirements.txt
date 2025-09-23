@@ -1,0 +1,375 @@
+# Echoday Email Automation System - Python Dependencies
+
+# Core dependencies
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+pandas>=2.0.0
+sqlite3  # Built-in with Python
+
+# Email sending
+smtplib  # Built-in with Python
+email  # Built-in with Python
+
+# Web scraping and data extraction
+selenium>=4.15.0
+webdriver-manager>=4.0.0
+lxml>=4.9.0
+html5lib>=1.1
+
+# Data processing and analysis
+numpy>=1.24.0
+python-dateutil>=2.8.0
+
+# API integrations
+google-api-python-client>=2.100.0
+google-auth-httplib2>=0.1.0
+google-auth-oauthlib>=1.0.0
+
+# Email service providers
+mailchimp-marketing>=3.0.80
+mailchimp-transactional>=1.0.57
+
+# LinkedIn API (unofficial)
+linkedin-api>=2.0.0
+
+# Job scheduling
+schedule>=1.2.0
+
+# Logging and monitoring
+colorlog>=6.7.0
+
+# Configuration and environment
+python-dotenv>=1.0.0
+
+# Data validation
+email-validator>=2.0.0
+phonenumbers>=8.13.0
+
+# Text processing
+unidecode>=1.3.0
+regex>=2023.8.0
+
+# HTTP requests with retries
+requests-oauthlib>=1.3.0
+urllib3>=2.0.0
+
+# Database utilities
+sqlalchemy>=2.0.0  # Optional, for advanced database operations
+
+# Async support (optional)
+aiohttp>=3.8.0
+asyncio  # Built-in with Python
+
+# Development and testing dependencies
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.7.0
+flake8>=6.0.0
+
+# Security
+cryptography>=41.0.0
+
+# Rate limiting
+ratelimit>=2.2.0
+
+# User agents rotation
+fake-useragent>=1.4.0
+
+# WHOIS lookup for domain analysis
+python-whois>=0.8.0
+
+# Image processing (for analyzing website screenshots)
+Pillow>=10.0.0
+
+# CSV/Excel file handling
+openpyxl>=3.1.0
+xlsxwriter>=3.1.0
+
+# Progress bars
+tqdm>=4.66.0
+
+# Timezone handling
+pytz>=2023.3
+
+# JSON schema validation
+jsonschema>=4.19.0
+
+# HTML/XML parsing alternatives
+selectolax>=0.3.16  # Faster alternative to BeautifulSoup
+
+# Proxy support (optional)
+requests-tor>=1.0.0
+PySocks>=1.7.1
+
+# Statistical analysis
+scipy>=1.11.0
+
+# Machine learning for email optimization (optional)
+scikit-learn>=1.3.0
+
+# Natural language processing for email personalization
+textblob>=0.17.1
+
+# IP geolocation
+geoip2>=4.7.0
+
+# Social media APIs
+tweepy>=4.14.0  # Twitter API
+facebook-sdk>=3.1.0  # Facebook API
+
+# Additional email validation
+py3-validate-email>=1.0.5
+
+# Configuration management
+configparser  # Built-in with Python
+argparse  # Built-in with Python
+
+# Backup and compression
+zipfile  # Built-in with Python
+tarfile  # Built-in with Python
+
+# Performance monitoring
+psutil>=5.9.0
+
+# Retry mechanisms
+tenacity>=8.2.0
+
+# UUID generation
+uuid  # Built-in with Python
+
+# Random data generation for testing
+faker>=19.6.0
+
+# Logging enhancements
+structlog>=23.1.0
+
+# API documentation
+pydantic>=2.3.0
+
+# Environment variable management
+python-decouple>=3.8
+
+# Advanced HTTP client
+httpx>=0.24.0
+
+# DNS resolution
+dnspython>=2.4.0
+
+# URL parsing and validation
+validators>=0.22.0
+
+# File type detection
+python-magic>=0.4.27
+
+# Templating engine (alternative to string formatting)
+jinja2>=3.1.0
+
+# Command line interface (for manual operations)
+click>=8.1.0
+
+# Progress tracking
+alive-progress>=3.1.0
+
+# Memory optimization
+memory-profiler>=0.60.0
+
+# Caching
+cachetools>=5.3.0
+
+# Phone number validation and formatting
+phonenumberslite>=8.13.0
+
+# Language detection
+langdetect>=1.0.9
+
+# Text similarity for duplicate detection
+fuzzywuzzy>=0.18.0
+python-Levenshtein>=0.21.0
+
+# RSS feed parsing (for content ideas)
+feedparser>=6.0.10
+
+# QR code generation (for WhatsApp links)
+qrcode>=7.4.0
+
+# Markdown processing
+markdown>=3.4.0
+
+# YAML configuration support
+PyYAML>=6.0.1
+
+# Advanced CSV processing
+csvkit>=1.1.1
+
+# Git integration (for version control of templates)
+GitPython>=3.1.32
+
+# Advanced email parsing
+mailparser>=4.1.0
+
+# IP address utilities
+ipaddress  # Built-in with Python
+
+# Platform detection
+platform  # Built-in with Python
+
+# Process management
+subprocess  # Built-in with Python
+
+# File operations
+shutil  # Built-in with Python
+pathlib  # Built-in with Python
+
+# Regular expressions
+re  # Built-in with Python
+
+# String operations
+string  # Built-in with Python
+
+# Mathematical operations
+math  # Built-in with Python
+statistics  # Built-in with Python
+
+# Concurrent processing
+concurrent.futures  # Built-in with Python
+threading  # Built-in with Python
+multiprocessing  # Built-in with Python
+
+# Network operations
+socket  # Built-in with Python
+ssl  # Built-in with Python
+
+# Base64 encoding
+base64  # Built-in with Python
+
+# Hash generation
+hashlib  # Built-in with Python
+
+# Random number generation
+random  # Built-in with Python
+secrets  # Built-in with Python
+
+# Operating system interface
+os  # Built-in with Python
+sys  # Built-in with Python
+
+# Time operations
+time  # Built-in with Python
+datetime  # Built-in with Python
+
+# Collections
+collections  # Built-in with Python
+itertools  # Built-in with Python
+
+# Functional programming
+functools  # Built-in with Python
+
+# Type hints
+typing  # Built-in with Python
+
+# Data classes
+dataclasses  # Built-in with Python (Python 3.7+)
+
+# Copy operations
+copy  # Built-in with Python
+
+# Weak references
+weakref  # Built-in with Python
+
+# Abstract base classes
+abc  # Built-in with Python
+
+# Context managers
+contextlib  # Built-in with Python
+
+# Warnings
+warnings  # Built-in with Python
+
+# Logging
+logging  # Built-in with Python
+
+# Pickle serialization
+pickle  # Built-in with Python
+
+# JSON handling
+json  # Built-in with Python
+
+# CSV handling
+csv  # Built-in with Python
+
+# URL parsing
+urllib.parse  # Built-in with Python
+urllib.request  # Built-in with Python
+urllib.error  # Built-in with Python
+
+# HTTP server (for webhooks)
+http.server  # Built-in with Python
+
+# MIME types
+mimetypes  # Built-in with Python
+
+# Locale support
+locale  # Built-in with Python
+
+# Internationalization
+gettext  # Built-in with Python
+
+# Calendar operations
+calendar  # Built-in with Python
+
+# Decimal arithmetic
+decimal  # Built-in with Python
+
+# Fractions
+fractions  # Built-in with Python
+
+# Compression
+gzip  # Built-in with Python
+bz2  # Built-in with Python
+lzma  # Built-in with Python
+
+# Archive handling
+zipapp  # Built-in with Python
+
+# Configuration parsing
+configparser  # Built-in with Python
+
+# Testing utilities
+unittest  # Built-in with Python
+doctest  # Built-in with Python
+
+# Debugging
+pdb  # Built-in with Python
+
+# Code analysis
+ast  # Built-in with Python
+dis  # Built-in with Python
+
+# Inspection
+inspect  # Built-in with Python
+
+# Tracing
+trace  # Built-in with Python
+
+# Profiling
+cProfile  # Built-in with Python
+profile  # Built-in with Python
+
+# Memory management
+gc  # Built-in with Python
+
+# System specific parameters
+sysconfig  # Built-in with Python
+
+# Token handling
+token  # Built-in with Python
+tokenize  # Built-in with Python
+
+# Keyword detection
+keyword  # Built-in with Python
+
+# Built-in functions
+builtins  # Built-in with Python
+
+# Operator functions
+operator  # Built-in with Python
