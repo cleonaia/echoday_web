@@ -53,6 +53,6 @@ Puedes navegar desde cualquier dispositivo, la experiencia es totalmente respons
 
 ## Contacto
 
-- Email: contacto@echoday.tech
+- Email: contact@echoday.tech
 - WhatsApp: [Escríbeme ahora](https://wa.me/643032807)
 - LinkedIn, Twitter, Instagram (enlaces en la web)
