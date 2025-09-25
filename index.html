@@ -49,6 +49,7 @@
       min-height: 100vh;
       position: relative;
       z-index: 1;
+      padding-top: 48px; /* Compensar navbar fixed */
     }
     main {
       flex: 1 0 auto;
@@ -189,27 +190,27 @@
       to {opacity: 1; transform: translateY(0);}
     }
     .navbar {
-      background: rgba(22,25,35,0.98);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      height: 48px; /* Más recortado */
-      box-shadow: 0 2px 16px #0005;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(22,25,35,0.98);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(102, 217, 239, 0.1);
+      height: 48px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
     }
     .navbar-inner {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      width: 100%;
-      max-width: 1080px;
-      padding: 0 18px; /* Un poco menos de padding */
+      justify-content: space-between;
+      max-width: 1300px;
       margin: 0 auto;
+      padding: 0 32px;
+      height: 100%;
       gap: 20px;
-      height: 48px; /* Igual que navbar */
     }
     .logo {
       font-family: 'Montserrat', Arial, sans-serif;
@@ -318,17 +319,17 @@
     .language-toggle {
       background: rgba(35, 39, 51, 0.9);
       border: 1.5px solid rgba(96, 168, 255, 0.3);
-      border-radius: 20px;
+      border-radius: 19px;
       color: #fff;
-      padding: 8px 14px;
+      padding: 7.5px 13.5px;
       font-family: 'Poppins', Arial, sans-serif;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7.5px;
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 12px rgba(35, 255, 227, 0.1);
       position: relative;
@@ -403,7 +404,7 @@
       border: none;
       color: #fff;
       font-family: 'Poppins', Arial, sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.25s ease;
@@ -504,6 +505,24 @@
       letter-spacing: 0.02em;
       text-shadow: 0 2px 12px #23ffe355;
     }
+    .servicios-desc a.asesoria-link {
+      color: #42fa7a;
+      font-weight: 700;
+      font-size: 1.45rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+    .servicios-desc a.asesoria-link:hover {
+      color: #23ffe3;
+      transform: translateY(-2px);
+      text-shadow: 0 4px 15px #42fa7a55;
+    }
+    .servicios-desc a.asesoria-link:active {
+      transform: translateY(0px);
+    }
     .servicios-grid {
       width: 100%;
       max-width: 1160px;
@@ -511,14 +530,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 48px;
+      gap: 20px;
       z-index: 1;
     }
     .servicios-row {
       display: flex;
       flex-direction: row;
       justify-content: center;
-      gap: 38px;
+      gap: 18px;
       width: 100%;
       margin: 0 auto;
     }
@@ -615,7 +634,7 @@
     .servicio-features {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7.5px;
       margin-top: 15px;
     }
 
@@ -655,435 +674,6 @@
     @keyframes reveal {
       from {opacity: 0; transform: translateY(35px) scale(0.98);}
       to {opacity: 1; transform: translateY(0) scale(1);}
-    }
-
-    /* Simulador de WhatsApp */
-    .simulador-container {
-      width: 100%;
-      max-width: 700px;
-      margin: 38px auto 0 auto;
-      display: none;
-      flex-direction: row;
-      gap: 28px;
-      align-items: flex-start;
-      justify-content: center;
-      transition: max-height 0.3s;
-      opacity: 0;
-      pointer-events: none;
-      position: relative;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-    .simulador-container.active {
-      display: flex;
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .simulador-close-btn {
-      position: absolute;
-      top: 12px;
-      right: 18px;
-      background: #232733;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      font-size: 1.3rem;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 2px 8px #0003;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.18s, color 0.18s, transform 0.13s;
-      pointer-events: auto !important;
-    }
-    .simulador-close-btn:hover {
-      background: var(--accent4);
-      color: #fff;
-      transform: scale(1.1);
-    }
-    .sim-iphone-box {
-      display: flex;
-      flex-direction: row;
-      gap: 32px;
-      width: 100%;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .iphone-mockup {
-  background: #222733;
-  border-radius: 36px;
-  box-shadow: 0 8px 32px rgba(35,255,227,0.13), 0 2px 16px rgba(96,168,255,0.13);
-  width: 100%;
-  max-width: 340px;
-  min-width: 0;
-  padding: 18px 10px 18px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 1;
-  box-sizing: border-box;
-}
-    .iphone-screen {
-  background: #e5ddd5;
-  border-radius: 28px;
-  width: 100%;
-  max-width: 100%;
-  height: 480px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
-  position: relative;
-  box-sizing: border-box;
-}
-    .whatsapp-header {
-      background: linear-gradient(90deg, #075e54 70%, #25d366 100%);
-      color: #fff;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-    .whatsapp-header-avatar {
-      background: #fff;
-      color: #075e54;
-      font-weight: bold;
-      border-radius: 50%;
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      box-shadow: 0 2px 8px #0002;
-      flex-shrink: 0;
-    }
-    .whatsapp-header-info {
-      display: flex;
-      flex-direction: column;
-      font-size: 0.97rem;
-      line-height: 1.1;
-    }
-    .whatsapp-header-info span:last-child {
-      font-size: 0.85rem;
-      color: #c8ffe3;
-    }
-    .iphone-chat-messages {
-      flex: 1;
-      padding: 16px 10px 10px 10px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background: #ece5dd;
-      min-height: 0;
-    }
-    .iphone-message {
-      max-width: 85%;
-      padding: 9px 14px;
-      border-radius: 16px;
-      font-size: 1.01rem;
-      line-height: 1.45;
-      margin-bottom: 2px;
-      word-break: break-word;
-      box-shadow: 0 1px 6px #0001;
-      hyphens: auto;
-    }
-    .iphone-bot-message {
-      background: #fff;
-      color: #222;
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-    .iphone-user-message {
-      background: #dcf8c6;
-      color: #222;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-    .iphone-typing-indicator {
-      display: none;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 14px;
-      font-size: 0.97rem;
-      color: #888;
-      background: #fff;
-      border-radius: 14px;
-      margin: 7px 0 7px 0;
-      align-self: flex-start;
-    }
-    .typing-dots {
-      display: flex;
-      gap: 2px;
-    }
-    .typing-dot {
-      width: 6px;
-      height: 6px;
-      background: #bbb;
-      border-radius: 50%;
-      animation: typing-bounce 1s infinite alternate;
-    }
-    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typing-bounce {
-      0% { transform: translateY(0);}
-      100% { transform: translateY(-4px);}
-    }
-    .simulador-pdf-attachment {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 8px;
-      background: #f5f5f5;
-      border-radius: 8px;
-      padding: 6px 10px;
-      box-shadow: 0 1px 4px #0001;
-    }
-    .simulador-pdf-icon {
-      background: #e96479;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 4px;
-      padding: 2px 7px;
-      font-size: 0.95rem;
-      margin-right: 4px;
-      flex-shrink: 0;
-    }
-    .simulador-panel {
-      background: var(--card-glass);
-      border-radius: 24px;
-      box-shadow: 0 4px 24px #23ffe315;
-      padding: 32px 28px 22px 28px;
-      min-width: 270px;
-      max-width: 420px;
-      flex: 1 1 220px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .simulador-panel h2 {
-      font-size: 1.3rem;
-      font-family: 'Montserrat', Arial, sans-serif;
-      color: var(--accent2);
-      margin: 0 0 8px 0;
-      font-weight: 900;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .simulador-panel p {
-      color: #a8e3e0;
-      font-size: 1.05rem;
-      margin: 0 0 8px 0;
-      font-family: 'Poppins', Arial, sans-serif;
-    }
-    .simulador-panel ul {
-      margin: 7px 0 0 18px;
-      color: #c8d0dd;
-      font-size: 0.99rem;
-    }
-    .simulador-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 18px;
-    }
-    .simulador-btn {
-      background: linear-gradient(90deg, var(--accent1), var(--accent2) 80%);
-      color: #181d24;
-      border: none;
-      border-radius: 22px;
-      padding: 10px 18px;
-      font-size: 1.07rem;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: 'Montserrat', Arial, sans-serif;
-      letter-spacing: 0.7px;
-      box-shadow: 0 0 8px 1px #42fa7a33;
-      transition: background 0.18s, color 0.15s, transform 0.13s, box-shadow 0.2s;
-      text-align: center;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .simulador-btn:hover {
-      background: linear-gradient(90deg, var(--accent3), var(--accent2) 80%);
-      color: #181c24;
-      transform: scale(1.04);
-      box-shadow: 0 0 18px 2px #42fa7a66;
-    }
-
-    /* === RESPONSIVE PARA SIMULADOR === */
-    @media (max-width: 900px) {
-      .simulador-container {
-        flex-direction: column;
-        gap: 20px;
-        max-width: 95vw;
-        align-items: center;
-        padding: 0 15px;
-        margin: 20px auto 0 auto;
-      }
-      .sim-iphone-box {
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-        align-items: center;
-      }
-      .simulador-panel {
-        max-width: 100%;
-        min-width: 0;
-        order: 1;
-        margin: 0 auto;
-      }
-      .iphone-mockup {
-        order: 2;
-        margin: 0 auto;
-        display: flex;
-        align-self: center;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .simulador-container {
-        max-width: 98vw;
-        margin: 15px auto 0 auto;
-        padding: 0 8px;
-        gap: 15px;
-        align-items: center;
-        justify-content: center;
-      }
-      .simulador-close-btn {
-        top: 5px;
-        right: 10px;
-        width: 32px;
-        height: 32px;
-        font-size: 1.1rem;
-      }
-      .simulador-panel {
-        padding: 20px 15px 15px 15px;
-        border-radius: 16px;
-        margin: 0 auto;
-        width: 100%;
-        max-width: 100%;
-      }
-      .simulador-panel h2 {
-        font-size: 1.1rem;
-      }
-      .simulador-panel p {
-        font-size: 0.95rem;
-      }
-      .simulador-btn {
-        font-size: 0.95rem;
-        padding: 8px 15px;
-        min-height: 40px;
-      }
-      .iphone-mockup {
-        margin: 0 auto;
-        display: flex;
-        align-self: center;
-        justify-self: center;
-      }
-      .whatsapp-header {
-        padding: 8px 12px;
-      }
-      .whatsapp-header-avatar {
-        width: 28px;
-        height: 28px;
-        font-size: 1.1rem;
-      }
-      .whatsapp-header-info {
-        font-size: 0.85rem;
-      }
-      .iphone-chat-messages {
-        padding: 12px 8px 8px 8px;
-        gap: 8px;
-      }
-      .iphone-message {
-        font-size: 0.9rem;
-        padding: 7px 12px;
-      }
-    }
-
-    @media (max-width: 500px) {
-      .simulador-container {
-        max-width: 99vw;
-        margin: 10px auto 0 auto;
-        padding: 0 3px;
-        gap: 12px;
-        align-items: center;
-        justify-content: center;
-      }
-      .simulador-panel {
-        padding: 15px 10px 10px 10px;
-        border-radius: 12px;
-        margin: 0 auto;
-        width: 100%;
-        max-width: 100%;
-      }
-      .simulador-panel h2 {
-        font-size: 1rem;
-      }
-      .simulador-panel p {
-        font-size: 0.9rem;
-      }
-      .simulador-panel ul {
-        font-size: 0.85rem;
-        margin: 5px 0 0 15px;
-      }
-      .simulador-btn {
-        font-size: 0.9rem;
-        padding: 7px 12px;
-        min-height: 36px;
-      }
-      .iphone-mockup {
-        margin: 0 auto;
-        display: flex;
-        align-self: center;
-        justify-self: center;
-        max-width: 95vw;
-      }
-      .whatsapp-header {
-        padding: 6px 10px;
-      }
-      .whatsapp-header-avatar {
-        width: 24px;
-        height: 24px;
-        font-size: 1rem;
-      }
-      .whatsapp-header-info {
-        font-size: 0.8rem;
-      }
-      .whatsapp-header-info span:last-child {
-        font-size: 0.75rem;
-      }
-      .iphone-chat-messages {
-        padding: 10px 6px 6px 6px;
-        gap: 6px;
-      }
-      .iphone-message {
-        font-size: 0.85rem;
-        padding: 6px 10px;
-        border-radius: 12px;
-      }
-      .iphone-typing-indicator {
-        font-size: 0.85rem;
-        padding: 5px 10px;
-      }
-      .simulador-pdf-attachment {
-        padding: 4px 8px;
-        margin-top: 6px;
-      }
-      .simulador-pdf-icon {
-        font-size: 0.85rem;
-        padding: 1px 5px;
-      }
     }
 
     /* Contacto */
@@ -1279,7 +869,7 @@
 
     .proyecto-card {
       background: var(--card-glass);
-      border-radius: 20px;
+      border-radius: 19px;
       padding: 30px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
@@ -1320,7 +910,7 @@
     .proyecto-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7.5px;
       margin-top: 20px;
     }
 
@@ -1328,7 +918,7 @@
       background: rgba(35, 255, 227, 0.1);
       color: var(--accent1);
       padding: 6px 12px;
-      border-radius: 20px;
+      border-radius: 19px;
       font-size: 0.85rem;
       font-weight: 500;
       border: 1px solid rgba(35, 255, 227, 0.3);
@@ -1399,7 +989,7 @@ body {
   .servicio-card h3 { font-size: 1.18rem; margin-bottom: 8px; }
   .servicio-card p { font-size: 1rem; }
   .servicio-features { gap: 6px; margin-top: 10px; }
-  .servicio-feature { font-size: 0.95rem; }
+  .servicio-feature { font-size: 0.92rem; }
   .servicio-icono { font-size: 1.7rem; margin-bottom: 10px; }
   .servicios-header h2 { font-size: 1.3rem; margin-bottom: 4px; }
   .servicios-desc { font-size: 1rem; }
@@ -1408,7 +998,7 @@ body {
   .proyecto-card { padding: 14px; border-radius: 12px; }
   .proyecto-card h3 { font-size: 1.1rem; }
   .proyecto-card p { font-size: 0.98rem; }
-  footer { font-size: 0.95rem; padding: 18px 0 22px 0; }
+  footer { font-size: 0.92rem; padding: 18px 0 22px 0; }
 }
 
 @media (max-width: 500px) {
@@ -1425,17 +1015,16 @@ body {
   .servicios-row { flex-direction: column !important; gap: 18px; align-items: center !important; justify-content: center; }
   .servicio-card { padding: 15px 12px 12px 12px; border-radius: 12px; max-width: 92vw; margin: 0 auto; }
   .servicio-card h3 { font-size: 1rem; }
-  .servicio-card p { font-size: 0.95rem; }
+  .servicio-card p { font-size: 0.92rem; }
   .servicio-icono { font-size: 1.4rem; }
   .servicio-feature { font-size: 0.9rem; }
   .iphone-mockup { max-width: 99vw; padding: 2px 0; border-radius: 8px; }
   .iphone-screen { height: 180px; border-radius: 7px; }
   .proyecto-card { padding: 6px; border-radius: 7px; }
-  .proyecto-card h3 { font-size: 0.95rem; }
+  .proyecto-card h3 { font-size: 0.92rem; }
   .proyecto-card p { font-size: 0.92rem; }
   footer { font-size: 0.85rem; padding: 8px 0 10px 0; }
 }
-/* Menú hamburguesa - visible solo en móviles */
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -1448,7 +1037,7 @@ body {
 @media (max-width: 700px) {
   .mobile-menu-toggle { display: inline-flex; }
   nav { display: none; }
-  .navbar-inner.open nav { display: flex; flex-direction: column; gap: 8px; position: absolute; top: 44px; left: 0; background: #161a23; width: 100vw; padding: 18px 0; z-index: 999; }
+  .navbar-inner.open nav { display: flex; flex-direction: column; gap: 7.5px; position: absolute; top: 44px; left: 0; background: #161a23; width: 100vw; padding: 18px 0; z-index: 999; }
   
   /* Selector de idiomas responsive */
   .language-selector {
@@ -1497,7 +1086,7 @@ body {
     }
 
     /* Mantener consistencia en botones táctiles */
-    button, .cta-btn, .simulador-btn, input[type="submit"] {
+    button, .cta-btn, input[type="submit"] {
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -1843,7 +1432,7 @@ body {
       }
       .hero-glass {
         padding: 30px 20px 25px 20px;
-        border-radius: 20px;
+        border-radius: 19px;
         max-width: 100%;
         overflow: hidden;
       }
@@ -1923,7 +1512,7 @@ body {
         max-width: 100%;
         width: 100%;
         padding: 25px 20px 20px 20px;
-        border-radius: 20px;
+        border-radius: 19px;
         margin: 0 auto;
         position: relative;
         overflow: visible;
@@ -1939,7 +1528,7 @@ body {
         margin-bottom: 15px;
       }
       .servicio-features {
-        gap: 8px;
+        gap: 7.5px;
         margin-top: 15px;
       }
       .servicio-feature {
@@ -1960,7 +1549,7 @@ body {
       }
       .contact-container {
         padding: 30px 20px 25px 20px;
-        border-radius: 20px;
+        border-radius: 19px;
         max-width: 100%;
         margin: 0 auto;
       }
@@ -2028,7 +1617,7 @@ body {
       /* ---- FOOTER MÓVIL ---- */
       footer {
         padding: 25px 15px 30px 15px;
-        font-size: 0.95rem;
+        font-size: 0.92rem;
       }
 
       /* ---- PARTÍCULAS OPTIMIZADAS ---- */
@@ -2082,7 +1671,7 @@ body {
       }
       .proyecto-tags {
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 7.5px;
         margin-top: 15px;
       }
       .proyecto-tag {
@@ -2092,132 +1681,31 @@ body {
       }
     }
 
-    /* === MÓVILES PEQUEÑOS (480px y menos) === */
-    @media (max-width: 480px) {
-      /* ---- ESPACIADO COMPACTO PARA MÓVILES PEQUEÑOS ---- */
-      .hero-section {
-        padding: 70px 15px 40px 15px;
-        margin-bottom: 12px;
-        min-height: 55vh;
-      }
-      .hero-glass {
-        padding: 25px 18px 20px 18px;
-      }
-      .hero-title-gradient {
-        font-size: clamp(1.6rem, 7vw, 2rem);
-        margin-bottom: 12px;
-        line-height: 1.2;
-        word-spacing: 0.1em;
-      }
-      .hero-sub {
-        font-size: clamp(0.95rem, 4vw, 1.1rem);
-        margin-bottom: 20px;
-      }
-      .cta-btn {
-        padding: 12px 24px;
-        font-size: clamp(0.85rem, 3.5vw, 1rem);
-      }
-      
-      .servicios-section {
-        padding: 50px 15px 40px 15px;
-        margin-top: 12px;
-      }
-      .servicios-header h2 {
-        font-size: clamp(1.3rem, 6vw, 1.6rem);
-      }
-      .servicios-desc {
-        font-size: clamp(0.9rem, 3.5vw, 1rem);
-        padding: 0 5px;
-      }
-      .servicios-grid {
-        padding: 0 5px;
-      }
-      .servicio-card {
-        padding: 20px 15px 18px 15px;
-      }
-      .servicio-feature {
-        font-size: clamp(0.75rem, 3vw, 0.85rem);
-      }
-      .click-hint {
-        font-size: clamp(0.8rem, 3vw, 0.9rem);
-        padding: 5px 10px;
-        right: 8px;
-        top: 8px;
-      }
-      
-      .wave-sep {
-        height: 32px;
-        margin: 10px 0 10px 0;
-      }
-      
-      .contact-section {
-        padding: 45px 15px 35px 15px;
-      }
-      .contact-container {
-        padding: 25px 15px 20px 15px;
-      }
-      .contact-title {
-        font-size: clamp(1.3rem, 5vw, 1.6rem);
-      }
-      .contact-subtitle {
-        font-size: clamp(0.9rem, 3.5vw, 1rem);
-      }
-      .contact-form input,
-      .contact-form textarea {
-        padding: 10px 12px;
-        font-size: clamp(0.85rem, 3.5vw, 0.95rem);
-      }
-      .contact-form button {
-        padding: 12px 18px;
-        font-size: clamp(0.85rem, 3.5vw, 0.95rem);
-      }
-      
-      .proyectos-section {
-        padding: 45px 15px 40px 15px;
-      }
-      .proyectos-grid {
-        padding: 0 5px;
-      }
-      .proyecto-card {
-        padding: 20px 15px;
-      }
-      
-      #particlesBg {
-        opacity: 0.25 !important;
-      }
-      
-      footer {
-        padding: 20px 15px 25px 15px;
-        font-size: clamp(0.85rem, 3vw, 0.95rem);
-      }
-
-      /* ---- SELECTOR DE IDIOMAS MÓVIL 480px ---- */
-      .language-selector {
-        margin-left: 6px;
-        margin-right: -6px;
-      }
-      
-      .language-toggle {
-        padding: 5px 8px;
-        font-size: 0.8rem;
-        border-radius: 14px;
-      }
-      
-      .language-menu {
-        min-width: 150px;
-        right: -8px;
-      }
-      
-      .language-option {
-        padding: 8px 12px;
-        font-size: 0.85rem;
-      }
-      
-      .flag {
-        font-size: 1rem;
-      }
+    /* --- SELECTOR DE IDIOMAS MÓVIL 480px ---- */
+    .language-selector {
+      margin-left: 6px;
+      margin-right: -6px;
     }
-
+    
+    .language-toggle {
+      padding: 5px 8px;
+      font-size: 0.8rem;
+      border-radius: 14px;
+    }
+    
+    .language-menu {
+      min-width: 150px;
+      right: -8px;
+    }
+    
+    .language-option {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+    
+    .flag {
+      font-size: 1rem;
+    }
     /* === MÓVILES MUY PEQUEÑOS (360px y menos) === */
     @media (max-width: 360px) {
       /* ---- AJUSTES PARA PANTALLAS MUY PEQUEÑAS ---- */
@@ -2391,7 +1879,7 @@ body {
         font-size: 1.2rem;
       }
       
-      /* ---- SELECTOR DE IDIOMAS ULTRA PEQUEÑO ---- */
+      /* ---- SELECTOR DE IDIOMAS
       .language-selector {
         margin-left: 2px;
         margin-right: -10px;
@@ -2471,7 +1959,7 @@ body {
 
     /* === PANTALLAS TÁCTILES === */
     @media (pointer: coarse) and (max-width: 600px) {
-      .servicio-card, .cta-btn, .simulador-btn, .contact-form button {
+      .servicio-card, .cta-btn, .contact-form button {
         min-height: 44px; /* Tamaño mínimo táctil recomendado */
       }
       .cta-btn {
@@ -2524,48 +2012,36 @@ body {
   <div class="code-bg-left">
     <pre class="code-content" id="codeContent"></pre>
   </div>
-  <!-- NAVBAR Y HERO IGUAL QUE ANTES -->
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="logo" href="#">Echoday</a>
-      <!-- Selector de idiomas -->
+      <a class="logo" href="index.html">Echoday</a>
       <div class="language-selector">
-        <button class="language-toggle" id="languageToggle">
-          <span class="current-lang">ES</span>
-          <i class="fa-solid fa-globe"></i>
+        <button class="language-toggle" id="languageToggle" aria-label="Seleccionar idioma" style="background: rgba(35, 39, 51, 0.9);border: 1.5px solid rgba(96, 168, 255, 0.3);border-radius: 19px;color: #fff;padding: 7.5px 13.5px;font-family: 'Poppins', Arial, sans-serif;font-weight: 600;font-size: 0.92rem;cursor: pointer;transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);display: flex;align-items: center;gap: 7.5px;backdrop-filter: blur(10px);box-shadow: 0 4px 12px rgba(35, 255, 227, 0.1);position: relative;overflow: hidden;">
+          <span class="current-lang" style="font-size:1.08rem;letter-spacing:1.2px;"></span>
+          <i class="fa-solid fa-globe" style="font-size:1.18rem;filter:drop-shadow(0 0 8px #23ffe3);margin-left:6px;"></i>
         </button>
-        <div class="language-menu" id="languageMenu">
-          <button class="language-option" data-lang="es">
-            <i class="fas fa-globe" style="color: #60a8ff;"></i>
-            <span class="lang-text">Español</span>
-          </button>
-          <button class="language-option" data-lang="en">
-            <i class="fas fa-globe-americas" style="color: #42fa7a;"></i>
-            <span class="lang-text">English</span>
-          </button>
-          <button class="language-option" data-lang="pt">
-            <i class="fas fa-globe-europe" style="color: #23ffe3;"></i>
-            <span class="lang-text">Português</span>
-          </button>
+        <div class="language-menu" id="languageMenu" style="border:2px solid #23ffe3;box-shadow:0 8px 32px #23ffe355,0 0 0 2px #60a8ff22;">
+          <button class="language-option" data-lang="es" style="transition:all 0.18s; font-weight:700; font-size:1.08rem; padding:8px 18px; border-radius:12px; margin-bottom:6px; background:transparent; color:#23ffe3;">Español</button>
+          <button class="language-option" data-lang="en" style="transition:all 0.18s; font-weight:700; font-size:1.08rem; padding:8px 18px; border-radius:12px; margin-bottom:6px; background:transparent; color:#60a8ff;">English</button>
+          <button class="language-option" data-lang="pt" style="transition:all 0.18s; font-weight:700; font-size:1.08rem; padding:8px 18px; border-radius:12px; margin-bottom:6px; background:transparent; color:#42fa7a;">Português</button>
         </div>
       </div>
-      
       <nav>
         <div class="dropdown" id="dropdownServicios">
           <button class="dropdown-toggle" id="dropdownToggle">
             <span data-translate="nav_services">Servicios</span> <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="dropdown-menu">
-            <a href="#" class="dropdown-item" id="menu-auto-whatsapp">
+            <a href="servicios/automatizacion-ia.html" class="dropdown-item" id="menu-auto-whatsapp">
               <span data-translate="nav_automation">Automatización IA</span> <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
-            <a href="#" class="dropdown-item">
+            <a href="servicios/desarrollo-web.html" class="dropdown-item">
               <span data-translate="nav_web_dev">Desarrollo Web</span> <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
-            <a href="#" class="dropdown-item">
+            <a href="servicios/presentaciones-impacto.html" class="dropdown-item">
               <span data-translate="nav_presentations">Presentaciones de Impacto</span> <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
-            <a href="#" class="dropdown-item">
+            <a href="servicios/apps-moviles.html" class="dropdown-item">
               <span data-translate="nav_mobile_apps">Creación de Apps Móviles</span> <span class="arrow-right"><i class="fa-solid fa-chevron-right"></i></span>
             </a>
           </div>
@@ -2580,12 +2056,13 @@ body {
   </div>
   <section class="hero-section" id="inicio">
     <div class="hero-content">
-      <div class="hero-glass">
+      <div class="hero-glass" style="margin-bottom:32px;">
         <h1 class="hero-title-gradient" data-translate="hero_title">El futuro es hoy, Echoday</h1>
-        <p class="hero-sub" data-translate="hero_subtitle">Transformación digital y creatividad para empresas que quieren destacar.</p>
-        <button class="cta-btn" onclick="window.location.href='#contacto'">
-          <span data-translate="hero_cta">¡Hablemos de tu próximo proyecto!</span> <i class="fa fa-rocket"></i>
+        <p class="hero-sub" data-translate="hero_subtitle">Webs, apps, IA, consultoría y presentaciones profesionales en Catalunya y España.<br>¡Haz crecer tu negocio con tecnología y creatividad!</p>
+        <button class="cta-btn" onclick="window.location.href='#contacto'" style="margin-top:18px;">
+          <span data-translate="hero_cta">¡Solicita presupuesto!</span> <i class="fa fa-rocket"></i>
         </button>
+        <div style="margin-top:28px;font-size:1.08rem;color:#a8e3e0;" data-translate="hero_projects">Damos incremento a tu negocio de forma sotisicada y avanzada<br>Soluciones a medida, trato cercano y resultados garantizados.</div>
       </div>
     </div>
   </section>
@@ -2593,223 +2070,134 @@ body {
     <svg viewBox="0 0 1440 40" xmlns="http://www.w3.org/2000/svg"><path fill="#181d24" d="M0,24 C360,48 1080,0 1440,24 L1440,40 L0,40 Z"></path></svg>
   </div>
   <section class="servicios-section" id="servicios">
-    <div class="servicios-header">
-      <h2 data-translate="services_title">¿Qué hacemos en Echoday?</h2>
-      <p class="servicios-desc" data-translate="services_description">
-        Creamos experiencias digitales que inspiran, transforman y hacen crecer tu empresa. Evoluciona, destaca y lidera.
-      </p>
+    <div class="servicios-header" style="margin-bottom:48px;">
+  <h2 data-translate="services_header" style="font-family:'Montserrat',Arial,sans-serif;font-size:3rem;font-weight:900;letter-spacing:1.1px;text-align:center;margin-bottom:22px;line-height:1.1;background:linear-gradient(90deg,#60a8ff 30%,#42fa7a 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;">Servicios profesionales</h2>
+  <p class="servicios-desc" data-translate="services_header_desc" style="text-align:center;font-size:1.45rem;line-height:1.5;color:#b8f6f2;margin-bottom:18px;">Soluciones digitales para empresas y autónomos en Catalunya y España.<br>Consulta precios y opciones personalizadas.<br><a href="mailto:info@echoday.dev?subject=Consulta%20sobre%20servicios&body=Hola%20Leo,%0A%0AMe%20interesa%20conocer%20más%20sobre%20tus%20servicios.%20Mi%20consulta%20es:%0A%0A" class="asesoria-link">¡Solicita asesoría gratuita!</a></p>
     </div>
-    <div class="servicios-grid">
-      <div class="servicios-row row-1">
-        <div class="servicio-card highlight-card" id="servicio-automatizacion" style="--delay: .04s">
-          <span class="click-hint"><i class="fa-solid fa-hand-pointer"></i> <span data-translate="click_hint">¡Haz clic!</span></span>
-          <div class="servicio-icono robot-icon"><i class="fa-solid fa-robot"></i></div>
-          <h3 data-translate="service1_title">Automatización IA</h3>
-          <p data-translate="service1_description">Automatiza procesos con inteligencia artificial, bots avanzados y sistemas inteligentes para transformar tu empresa.</p>
-          <div class="servicio-features">
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service1_feature1">Chatbots inteligentes con IA</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service1_feature2">Integración WhatsApp Business</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service1_feature3">Automatización de tareas repetitivas</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service1_feature4">Análisis de datos en tiempo real</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service1_feature5">Workflows personalizados</span>
-            </div>
-          </div>
-        </div>
-        <div class="servicio-card" style="--delay: .08s">
+    <div class="servicios-grid" style="gap:20px;">
+      <div class="servicios-row" style="gap:18px;">
+        <div class="servicio-card highlight-card" style="padding-bottom:12px;">
           <div class="servicio-icono code-icon"><i class="fa-solid fa-code"></i></div>
-          <h3 data-translate="service2_title">Desarrollo Web</h3>
-          <p data-translate="service2_description">Webs, apps, chatbots y dashboards con tecnología de punta y diseño atractivo, listos para crecer contigo.</p>
-          <div class="servicio-features">
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service2_feature1">Diseño responsive y moderno</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service2_feature2">Optimización SEO avanzada</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service2_feature3">Integración con APIs</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service2_feature4">Panel de administración</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service2_feature5">Velocidad de carga optimizada</span>
-            </div>
-          </div>
+          <h3 data-translate="service_web_title">Web profesional</h3>
+          <p><span data-translate="service_web_desc">Desarrollo web moderno, optimizado y adaptado a tu negocio.</span><br><span style="color:#a8e3e0;font-size:0.98rem;" data-translate="service_web_includes">Incluye: diseño personalizado, SEO, integración con redes sociales y Google Analytics.</span></p>
+          <ul class="servicio-features">
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_web_feature1">Responsive y SEO</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_web_feature2">Panel de administración</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_web_feature3">Integración con APIs</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_web_feature4">Ejemplo:</span> <span style="color:var(--accent2);" data-translate="service_web_example">www.tienda-catalunya.com</span></li>
+          </ul>
+          <div style="margin-top:18px;font-weight:700;color:var(--accent2);font-size:1.1rem;" data-translate="service_web_price">Desde 1.800€</div>
         </div>
-        <div class="servicio-card" style="--delay: .12s">
+        <div class="servicio-card" style="padding-bottom:12px;">
           <div class="servicio-icono mobile-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-          <h3 data-translate="service3_title">Apps Móviles</h3>
-          <p data-translate="service3_description">Desarrollo de apps móviles para iOS y Android, personalizadas para tu negocio y clientes.</p>
-          <div class="servicio-features">
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service3_feature1">Desarrollo iOS y Android</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service3_feature2">Interfaz intuitiva y atractiva</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service3_feature3">Notificaciones push</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service3_feature4">Sincronización en tiempo real</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service3_feature5">Publicación en tiendas</span>
-            </div>
-          </div>
+          <h3 data-translate="service_app_title">App móvil</h3>
+          <p><span data-translate="service_app_desc">Apps para iOS y Android, personalizadas para tu empresa.</span><br><span style="color:#a8e3e0;font-size:0.98rem;" data-translate="service_app_includes">Incluye: publicación en tiendas, notificaciones push, soporte post-lanzamiento.</span></p>
+          <ul class="servicio-features">
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_app_feature1">Notificaciones push</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_app_feature2">Publicación en tiendas</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_app_feature3">Interfaz intuitiva</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_app_feature4">Ejemplo:</span> <span style="color:var(--accent2);" data-translate="service_app_example">AppGestión Catalunya</span></li>
+          </ul>
+          <div style="margin-top:18px;font-weight:700;color:var(--accent2);font-size:1.1rem;" data-translate="service_app_price">Desde 2.400€</div>
+        </div>
+        <div class="servicio-card" style="padding-bottom:12px;">
+          <div class="servicio-icono robot-icon"><i class="fa-solid fa-robot"></i></div>
+          <h3 data-translate="service_ai_title">Automatización IA</h3>
+          <p><span data-translate="service_ai_desc">Automatiza procesos con inteligencia artificial y bots avanzados.</span><br><span style="color:#a8e3e0;font-size:0.98rem;" data-translate="service_ai_includes">Incluye: chatbots, integración WhatsApp, análisis de datos.</span></p>
+          <ul class="servicio-features">
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_ai_feature1">Chatbots inteligentes</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_ai_feature2">Integración WhatsApp Business</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_ai_feature3">Workflows personalizados</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_ai_feature4">Ejemplo:</span> <span style="color:var(--accent2);" data-translate="service_ai_example">BotAtención Express</span></li>
+          </ul>
+          <div style="margin-top:18px;font-weight:700;color:var(--accent2);font-size:1.1rem;" data-translate="service_ai_price">Desde 900€</div>
         </div>
       </div>
-      <div class="simulador-container" id="simuladorContainer">
-        <button class="simulador-close-btn" id="simuladorCloseBtn" title="Cerrar simulador"><i class="fa fa-times"></i></button>
-        <div class="sim-iphone-box">
-          <div class="iphone-mockup">
-            <div class="iphone-screen">
-              <div class="whatsapp-header">
-                <div class="whatsapp-header-avatar">C</div>
-                <div class="whatsapp-header-info"></div>
-              </div>
-              <div class="iphone-chat-messages" id="iphoneChatMessages"></div>
-              <div class="iphone-typing-indicator" id="iphoneTypingIndicator">
-                <span>Escribiendo</span>
-                <div class="typing-dots">
-                  <span class="typing-dot"></span>
-                  <span class="typing-dot"></span>
-                  <span class="typing-dot"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="simulador-panel">
-            <h2><span data-translate="simulator_title">Simulador de WhatsApp</span> <i class="fab fa-whatsapp"></i></h2>
-            <p>
-              <span data-translate="simulator_description">Esta demo te permite interactuar como si fueras un cliente en WhatsApp, viendo paso a paso cómo funciona la automatización de atención y solicitud de préstamos.</span><br>
-              <ul>
-                <li data-translate="simulator_instruction1">Haz clic en las opciones para avanzar.</li>
-                <li data-translate="simulator_instruction2">¡No es real, es solo una demo!</li>
-              </ul>
-            </p>
-            <div class="simulador-btns">
-              <button class="simulador-btn" onclick="startIphoneDemo()" id="startBtn">
-                <span data-translate="simulator_start">Iniciar simulación</span>
-              </button>
-              <button class="simulador-btn option" onclick="sendIphoneOption('1')" id="opt1" style="display:none;">
-                <span data-translate="simulator_option1">1️⃣ Consultar estado de mi solicitud</span>
-              </button>
-              <button class="simulador-btn option" onclick="sendIphoneOption('2')" id="opt2" style="display:none;">
-                <span data-translate="simulator_option2">2️⃣ Solicitar nuevo préstamo</span>
-              </button>
-              <button class="simulador-btn option" onclick="sendIphoneOption('3')" id="opt3" style="display:none;">
-                <span data-translate="simulator_option3">3️⃣ Hablar con un agente</span>
-              </button>
-              <button class="simulador-btn" onclick="sendIphoneLoanData()" id="loanBtn" style="display:none;">
-                <span data-translate="simulator_send_data">Enviar mis datos de préstamo</span>
-              </button>
-              <button class="simulador-btn" onclick="acceptIphoneTerms()" id="acceptBtn" style="display:none;">
-                <span data-translate="simulator_accept">SÍ, acepto condiciones</span>
-              </button>
-              <button class="simulador-btn" onclick="rejectIphoneTerms()" id="rejectBtn" style="display:none;">
-                <span data-translate="simulator_reject">NO, tengo dudas</span>
-              </button>
-              <button class="simulador-btn" onclick="resetIphoneDemo()" id="resetBtn" style="display:none;">
-                <span data-translate="simulator_reset">Reiniciar simulador</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="servicios-row row-2">
-        <div class="servicio-card" style="--delay: .16s">
+      <div class="servicios-row" style="gap:18px;">
+        <div class="servicio-card" style="padding-bottom:12px;">
           <div class="servicio-icono handshake-icon"><i class="fa-solid fa-handshake-angle"></i></div>
-          <h3 data-translate="service4_title">Consultoría para Empresarios</h3>
-          <p data-translate="service4_description">Diagnóstico, ideas, implementación y capacitación: conviértete en referente digital en tu sector.</p>
-          <div class="servicio-features">
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service4_feature1">Diagnóstico digital completo</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service4_feature2">Estrategia de transformación</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service4_feature3">Implementación personalizada</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service4_feature4">Capacitación del equipo</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service4_feature5">Soporte continuo</span>
-            </div>
-          </div>
+          <h3 data-translate="service_consult_title">Consultoría digital</h3>
+          <p><span data-translate="service_consult_desc">Diagnóstico, estrategia y capacitación para empresas y autónomos.</span><br><span style="color:#a8e3e0;font-size:0.98rem;" data-translate="service_consult_includes">Incluye: auditoría digital, plan de acción, formación presencial/online.</span></p>
+          <ul class="servicio-features">
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_consult_feature1">Diagnóstico digital</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_consult_feature2">Estrategia personalizada</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_consult_feature3">Formación y soporte</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_consult_feature4">Ejemplo:</span> <span style="color:var(--accent2);" data-translate="service_consult_example">Consultoría Pyme Barcelona</span></li>
+          </ul>
+          <div style="margin-top:18px;font-weight:700;color:var(--accent2);font-size:1.1rem;" data-translate="service_consult_price">Desde 250€</div>
         </div>
-        <div class="servicio-card" style="--delay: .2s">
+        <div class="servicio-card" style="padding-bottom:12px;">
           <div class="servicio-icono rocket-icon"><i class="fa-solid fa-rocket"></i></div>
-          <h3 data-translate="service5_title">Presentaciones de Impacto</h3>
-          <p data-translate="service5_description">Convierte tu pitch, demo o evento en una experiencia memorable. Sorprende a tu audiencia desde el primer minuto.</p>
-          <div class="servicio-features">
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service5_feature1">Diseño visual impactante</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service5_feature2">Animaciones y transiciones</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service5_feature3">Contenido persuasivo</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service5_feature4">Interactividad avanzada</span>
-            </div>
-            <div class="servicio-feature">
-              <i class="fa-solid fa-check"></i>
-              <span data-translate="service5_feature5">Adaptado a tu audiencia</span>
-            </div>
-          </div>
+          <h3 data-translate="service_present_title">Presentaciones de impacto</h3>
+          <p><span data-translate="service_present_desc">Diseño de presentaciones profesionales para eventos, pitch y formación.</span><br><span style="color:#a8e3e0;font-size:0.98rem;" data-translate="service_present_includes">Incluye: animaciones, guion, asesoría en comunicación.</span></p>
+          <ul class="servicio-features">
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_present_feature1">Diseño visual y animaciones</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_present_feature2">Contenido persuasivo</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_present_feature3">Interactividad avanzada</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_present_feature4">Ejemplo:</span> <span style="color:var(--accent2);" data-translate="service_present_example">Pitch DemoTech</span></li>
+          </ul>
+          <div style="margin-top:18px;font-weight:700;color:var(--accent2);font-size:1.1rem;" data-translate="service_present_price">Desde 350€</div>
+        </div>
+        <div class="servicio-card" style="padding-bottom:12px;">
+          <div class="servicio-icono"><i class="fa-solid fa-wrench"></i></div>
+          <h3 data-translate="service_maint_title">Mantenimiento web</h3>
+          <p><span data-translate="service_maint_desc">Actualizaciones, seguridad y soporte técnico continuo.</span><br><span style="color:#a8e3e0;font-size:0.98rem;" data-translate="service_maint_includes">Incluye: copias de seguridad, monitorización, respuesta rápida.</span></p>
+          <ul class="servicio-features">
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_maint_feature1">Actualizaciones mensuales</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_maint_feature2">Soporte técnico</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_maint_feature3">Seguridad avanzada</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-translate="service_maint_feature4">Ejemplo:</span> <span style="color:var(--accent2);" data-translate="service_maint_example">MantenimientoWeb Pro</span></li>
+          </ul>
+          <div style="margin-top:18px;font-weight:700;color:var(--accent2);font-size:1.1rem;" data-translate="service_maint_price">130€/mes</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="proyectos-section">
-    <div class="proyectos-header">
-      <h2 data-translate="projects_title">Proyectos Destacados</h2>
-      <p class="proyectos-desc" data-translate="projects_description">
-        Algunos de nuestros trabajos más recientes que demuestran nuestra capacidad de innovación y calidad.
-      </p>
+  <section class="about-section" id="sobre-mi" style="padding:40px 0 24px 0;background:var(--card-glass);margin:24px 0 0 0;">
+    <div style="max-width:700px;margin:0 auto;text-align:center;">
+      <h2 data-translate="about_header" style="font-family:'Montserrat',Arial,sans-serif;font-size:2rem;font-weight:900;color:var(--accent2);margin-bottom:6px;letter-spacing:1.1px;">Sobre mí</h2>
+      <p data-translate="about_section_desc" style="color:#a8e3e0;font-size:1.12rem;font-family:'Poppins',Arial,sans-serif;font-weight:500;line-height:1.5;letter-spacing:0.02em;text-shadow:0 2px 12px #23ffe355;">Soy Leo, profesional digital con más de 3 años de experiencia en desarrollo web, apps móviles, inteligencia artificial y consultoría tecnológica. Mi misión es ayudar a empresas y autónomos a crecer y transformarse digitalmente, ofreciendo soluciones innovadoras, eficientes y adaptadas a cada cliente.<br><br><b>Valores:</b> Innovación, honestidad, compromiso y orientación al cliente.<br><b>Experiencia:</b> Varios proyectos realizados en España, Catalunya y Latinoamérica, incluyendo:<br>- App de gestión para una gestoría en Catalunya.<br>- Plataforma web para una cooperativa en Paraguay.<br>- Automatización IA para una startup en Alemania.<br><b>Enfoque internacional:</b> Conozco el mercado catalán, español y latinoamericano, adaptando cada solución a las necesidades reales de cada zona.<br><br>Si buscas un aliado tecnológico para tu negocio, <a href="#contacto" style="color:var(--accent2);text-decoration:underline;">contáctame</a> y descubre cómo podemos innovar juntos.</p>
+      <div data-translate="about_section_contact" style="margin-top:12px;color:var(--accent1);font-weight:700;font-size:1.05rem;">¿Quieres saber más? <a href="#contacto" style="color:var(--accent2);text-decoration:underline;">Contáctame</a></div>
     </div>
-    <div class="proyectos-grid">
-      <div class="proyecto-card">
+  </section>
+  <section class="testimonios-section" style="padding:60px 0 40px 0;background:var(--card-glass);margin:40px 0 0 0;">
+    <div style="max-width:700px;margin:0 auto;text-align:center;">
+      <h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2rem;font-weight:900;color:var(--accent2);margin-bottom:8px;letter-spacing:1.1px;" data-translate="testimonials_title">Testimonios</h2>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:14px;">
+        <div style="background:rgba(96,168,255,0.10);border-radius:22px;padding:18px 20px;text-align:left;box-shadow:0 4px 18px #60a8ff33;margin-bottom:0;line-height:1.7;">
+          <span style="font-size:1.12rem;color:#fff;font-weight:600;display:block;margin-bottom:8px;" data-translate="testimonial_1_text">“La app de gestión que desarrolló Leo para nuestra gestoría ha mejorado la productividad y la satisfacción de nuestros clientes.<br>Muy profesional y atento en todo el proceso.”</span>
+          <span style="color:var(--accent2);font-weight:700;display:block;margin-top:6px;" data-translate="testimonial_1_author">— Jordi, Gestoría Catalunya</span>
+        </div>
+        <div style="background:rgba(35,255,227,0.10);border-radius:22px;padding:18px 20px;text-align:left;box-shadow:0 4px 18px #23ffe344;margin-bottom:0;line-height:1.7;">
+          <span style="font-size:1.12rem;color:#fff;font-weight:600;display:block;margin-bottom:8px;" data-translate="testimonial_2_text">“La plataforma web creada por Leo para nuestra cooperativa ha facilitado la gestión y comunicación con nuestros socios.<br>Recomendamos su trabajo por la seriedad y el compromiso.”</span>
+          <span style="color:var(--accent2);font-weight:700;display:block;margin-top:6px;" data-translate="testimonial_2_author">— Lorenzo Barreto, Presidente de la Cooperativa Medalla Milagrosa (Paraguay)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="faq-section" style="padding:40px 0 24px 0;background:var(--card-glass);margin:24px 0 0 0;">
+  <div style="max-width:700px;margin:0 auto;text-align:center;">
+    <h2 data-translate="faq_title" style="font-family:'Montserrat',Arial,sans-serif;font-size:2rem;font-weight:900;color:var(--accent2);margin-bottom:18px;letter-spacing:1.1px;">Preguntas frecuentes</h2>
+    <div style="margin-top:18px;text-align:left;">
+      <b data-translate="faq_q1">¿Cuánto tarda un proyecto web?</b><br>
+      <span data-translate="faq_a1">Normalmente entre 2 y 4 semanas, dependiendo de la complejidad.</span><br><br>
+      <b data-translate="faq_q2">¿Ofreces soporte después de la entrega?</b><br>
+      <span data-translate="faq_a2">Sí, todos los proyectos incluyen soporte y mantenimiento opcional.</span><br><br>
+      <b data-translate="faq_q3">¿Trabajas solo en Catalunya?</b><br>
+      <span data-translate="faq_a3">Principalmente, pero también realizo proyectos en toda España.</span><br><br>
+      <b data-translate="faq_q4">¿Cómo se realiza el pago?</b><br>
+      <span data-translate="faq_a4">Por transferencia bancaria, con opción de pago fraccionado.</span><br>
+    </div>
+  </div>
+</section>
+<div style="height:120px;"></div>
+<div class="proyectos-header" style="margin-bottom:48px;">
+      <h2 data-translate="projects_title" style="font-size:2rem;margin-bottom:18px;margin-top:60px;">Proyectos Destacados</h2>
+      <p class="proyectos-desc" data-translate="projects_description" style="font-size:1.08rem;line-height:1.5;max-width:600px;margin:0 auto 28px auto;">Algunos de nuestros trabajos más recientes que demuestran nuestra capacidad de innovación y calidad.</p>
+    </div>
+    <div class="proyectos-grid" style="gap:18px;padding:0 8px;">
+      <div class="proyecto-card" style="padding:14px 10px;">
         <div class="proyecto-icon">
           <i class="fa-solid fa-globe" style="color: #60a8ff;"></i>
         </div>
@@ -2844,7 +2232,7 @@ body {
         </div>
       </div>
       
-      <div class="proyecto-card">
+      <div class="proyecto-card" style="padding:14px 10px;">
         <div class="proyecto-icon">
           <i class="fa-solid fa-mobile-screen-button" style="color: #60a8ff;"></i>
         </div>
@@ -2879,7 +2267,7 @@ body {
         </div>
       </div>
       
-      <div class="proyecto-card">
+      <div class="proyecto-card" style="padding:14px 10px;">
         <div class="proyecto-icon">
           <i class="fa-solid fa-cog" style="color: #60a8ff;"></i>
         </div>
@@ -2916,12 +2304,12 @@ body {
     </div>
   </section>
 
-  <section id="contacto" class="contact-section">
-    <div class="contact-container">
-      <div class="contact-title" data-translate="contact_title">¡Conversemos!</div>
-      <div class="contact-subtitle" data-translate="contact_subtitle">¿Listo para transformar tu empresa? ¡Hagamos juntos algo grande!</div>
-      <div class="contact-grid">
-        <form class="contact-form" autocomplete="off" onsubmit="enviarMensaje(event)">
+  <section id="contacto" class="contact-section" style="padding:40px 0 24px 0;">
+    <div class="contact-container" style="padding:18px 12px 12px 12px;">
+      <h2 class="contact-title" style="font-size:1.6rem;margin-bottom:6px;">Contacto</h2>
+      <p class="contact-subtitle" style="font-size:1.05rem;margin-bottom:12px;">¿Tienes dudas o quieres solicitar presupuesto? Rellena el formulario y te responderé en menos de 24h.</p>
+      <div class="contact-grid" style="gap:12px;">
+        <form class="contact-form" style="max-width:340px;gap:8px;">
           <label for="nombre" data-translate="contact_name_label">Nombre</label>
           <input id="nombre" required data-translate-placeholder="contact_name_placeholder">
           <label for="empresa" data-translate="contact_company_label">Empresa</label>
@@ -2932,8 +2320,8 @@ body {
           <textarea id="mensaje" required data-translate-placeholder="contact_message_placeholder"></textarea>
           <button type="submit"><i class="fa fa-paper-plane"></i> <span data-translate="contact_send_button">Enviar mensaje</span></button>
         </form>
-        <div class="contact-info">
-          <div style="margin-bottom:12px;"><b>Email:</b> <span style="color:var(--accent2);">contact@echoday.tech</span></div>
+        <div class="contact-info" style="font-size:1.01rem;line-height:1.5;max-width:340px;">
+          <div style="margin-bottom:12px;"><b>Email:</b> <span style="color:var(--accent2);">contacto@echoday.tech</span></div>
           <div style="margin:10px 0;"><b>WhatsApp:</b> <a style="color:var(--accent1);font-weight:700" href="https://wa.me/34643032807" target="_blank"><i class="fab fa-whatsapp"></i> <span data-translate="contact_whatsapp">Escríbeme ahora</span></a></div>
           <div>
             <b data-translate="contact_social">Redes:</b>
@@ -2945,7 +2333,7 @@ body {
       </div>
     </div>
   </section>
-  <footer>
+  <footer style="padding:16px 0 18px 0;font-size:0.95rem;">
     &copy; 2025 Echoday | <span data-translate="footer_tagline">Innovación + Tecnología + Creatividad</span> | 
     <span class="footer-madeby">
       <span data-translate="footer_made_with">Hecho con</span> <span class="footer-code">&lt;/&gt;</span> <span data-translate="footer_by">por</span> <span class="footer-author">cleonaia</span>
@@ -3015,23 +2403,24 @@ body {
     transition: opacity 0.3s;
   ">
     <div id="aboutModalContent" style="
-      background:rgba(26,29,38,0.98);
-      border-radius:28px;
-      box-shadow:0 8px 48px #23ffe355, 0 2px 16px #60a8ff22;
-      padding:38px 32px 32px 32px;
-      max-width:480px;
-      width:90vw;
+      background:linear-gradient(120deg,rgba(26,29,38,0.98) 80%,#23ffe3 100%);
+      border-radius:32px;
+      box-shadow:0 8px 48px #23ffe355,0 2px 16px #60a8ff22,0 0 0 4px #60a8ff44;
+      padding:44px 38px 38px 38px;
+      max-width:520px;
+      width:92vw;
       max-height:80vh;
       overflow-y:auto;
       text-align:left;
       color:#fff;
       font-family:'Montserrat',Arial,sans-serif;
-      font-size:1.08rem;
+      font-size:1.13rem;
       position:relative;
       animation: aboutFadeIn 0.6s cubic-bezier(.23,1.05,.32,1);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
+      border:2px solid #23ffe3;
     ">
       <button onclick="closeAboutModal()" style="
         position:absolute;
@@ -3253,7 +2642,7 @@ body {
 
   function showAboutModal() {
     var modal = document.getElementById('aboutModal');
-    var aboutText = window.aboutText || `¡Hola! Soy un estudiante de Ingeniería de Datos con una profunda pasión por la innovación, el aprendizaje continuo y el desarrollo tecnológico. Mi objetivo es aportar soluciones creativas y eficientes que impulsen la transformación digital, especialmente en Sudamérica, una región llena de potencial y oportunidades para abrir nuevos horizontes de conocimiento.\n\nCreo en la tecnología como motor de cambio social y económico. Me motiva crear herramientas y plataformas que faciliten la vida de las personas y las empresas, utilizando datos, inteligencia artificial y automatización para resolver desafíos reales.\n\nMis causas y valores: democratizar el acceso a la tecnología, fomentar la educación digital, y contribuir a una sociedad más conectada, inclusiva y preparada para el futuro.\n\nMi visión es colaborar con equipos multidisciplinarios, compartir el conocimiento adquirido y ayudar a construir una región más competitiva y sostenible. Si compartes esta pasión por innovar y transformar, ¡conversemos y creemos juntos el próximo gran proyecto!`;
+    var aboutText = window.aboutText || `¡Hola! Soy Leo, profesional digital especializado en desarrollo web, apps, inteligencia artificial y consultoría tecnológica. Mi misión es impulsar la transformación digital de empresas y autónomos en Catalunya, España y Latinoamérica, creando soluciones prácticas, innovadoras y personalizadas.\n\nMe apasiona la tecnología como motor de crecimiento y competitividad. Trabajo con honestidad, compromiso y orientación al cliente, adaptando cada proyecto a las necesidades reales de cada sector.\n\nHe colaborado en muchos proyectos, desde apps de gestión y plataformas web hasta automatizaciones IA para startups y pymes. Mi enfoque es internacional y multidisciplinar, combinando creatividad, eficiencia y trato cercano.\n\nSi buscas un aliado para llevar tu negocio al siguiente nivel, ¡hablemos y creemos juntos el próximo gran proyecto!`;
     var el = document.getElementById('aboutText');
     if (el) {
       el.innerHTML = '';
@@ -3392,9 +2781,9 @@ body {
   </script>
   <script>
   // Personaliza el texto del About aquí:
-  window.aboutText = `¡Hola! Soy un estudiante de Ingeniería de Datos con una profunda pasión por la innovación, el aprendizaje continuo y el desarrollo tecnológico. Mi objetivo es aportar soluciones creativas y eficientes que impulsen la transformación digital, especialmente en Sudamérica, una región llena de potencial y oportunidades para abrir nuevos horizontes de conocimiento.\n\nCreo en la tecnología como motor de cambio social y económico. Me motiva crear herramientas y plataformas que faciliten la vida de las personas y las empresas, utilizando datos, inteligencia artificial y automatización para resolver desafíos reales.\n\nMis causas y valores: democratizar el acceso a la tecnología, fomentar la educación digital, y contribuir a una sociedad más conectada, inclusiva y preparada para el futuro.\n\nMi visión es colaborar con equipos multidisciplinarios, compartir el conocimiento adquirido y ayudar a construir una región más competitiva y sostenible. Si compartes esta pasión por innovar y transformar, ¡conversemos y creemos juntos el próximo gran proyecto!`;
+  window.aboutText = `¡Hola! Soy un estudiante de Ingeniería de Datos con una profunda pasión por la innovación, el aprendizaje continuo y el desarrollo tecnológico. Mi objetivo es aportar soluciones creativas y eficientes que impulsen la transformación digital.\n\nMe motiva crear herramientas y plataformas que faciliten la vida de las personas y las empresas, utilizando datos, inteligencia artificial y automatización para resolver desafíos reales. Creo firmemente que la tecnología es un motor de cambio positivo, y por eso busco estar siempre a la vanguardia, aprendiendo y aplicando las mejores prácticas del sector.\n\nMi visión es contribuir al desarrollo de una región más competitiva, conectada y preparada para el futuro, colaborando con equipos multidisciplinarios y compartiendo el conocimiento adquirido. Si compartes esta pasión por innovar y transformar, ¡conversemos y creemos juntos el próximo gran proyecto!`;
 
-    // Reveal animation on scroll
+    // Reveal animation on scroll 3
     function revealOnScroll() {
       document.querySelectorAll('.servicio-card').forEach(function(card) {
         var rect = card.getBoundingClientRect();
@@ -3458,256 +2847,6 @@ body {
     }
     document.addEventListener('DOMContentLoaded', rotateCodeBg);
 
-    // --- SIMULADOR INTERACTIVO DE WHATSAPP EN MOVIL ---
-    let iphoneProcessedCount = 0;
-    let iphoneCurrentStep = 'idle';
-    function addIphoneMessage(text, isUser = false, hasAttachment = false) {
-      const chatMessages = document.getElementById('iphoneChatMessages');
-      const message = document.createElement('div');
-      message.className = isUser ? 'iphone-message iphone-user-message' : 'iphone-message iphone-bot-message';
-      let content = text;
-      if (hasAttachment) {
-        content += `
-          <div class="simulador-pdf-attachment">
-            <div class="simulador-pdf-icon">PDF</div>
-            <div>
-              <div style="font-weight: bold;">Condiciones del Préstamo</div>
-              <div style="font-size: 12px; color: #666;">247 KB</div>
-            </div>
-          </div>
-        `;
-      }
-      message.innerHTML = content;
-      chatMessages.appendChild(message);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    function showIphoneTyping() {
-      document.getElementById('iphoneTypingIndicator').style.display = 'flex';
-      document.getElementById('iphoneChatMessages').scrollTop = document.getElementById('iphoneChatMessages').scrollHeight;
-    }
-    function hideIphoneTyping() {
-      document.getElementById('iphoneTypingIndicator').style.display = 'none';
-    }
-    function hideAllIphoneOptions() {
-      document.getElementById('opt1').style.display = 'none';
-      document.getElementById('opt2').style.display = 'none';
-      document.getElementById('opt3').style.display = 'none';
-      document.getElementById('loanBtn').style.display = 'none';
-      document.getElementById('acceptBtn').style.display = 'none';
-      document.getElementById('rejectBtn').style.display = 'none';
-      document.getElementById('resetBtn').style.display = 'none';
-    }
-    function startIphoneDemo() {
-      hideAllIphoneOptions();
-      document.getElementById('startBtn').style.display = 'none';
-      showIphoneTyping();
-      setTimeout(() => {
-        hideIphoneTyping();
-        addIphoneMessage(`👋 ¡Bienvenido al sistema de préstamos de la Cooperativa Medalla!
-
-Responde con una opción:
-1️⃣ Consultar estado de mi solicitud
-2️⃣ Solicitar nuevo préstamo  
-3️⃣ Hablar con un agente
-
-¿En qué podemos ayudarte hoy?`);
-        document.getElementById('opt1').style.display = 'block';
-        document.getElementById('opt2').style.display = 'block';
-        document.getElementById('opt3').style.display = 'block';
-        iphoneCurrentStep = 'menu';
-      }, 1200);
-    }
-    function sendIphoneOption(option) {
-      hideAllIphoneOptions();
-      addIphoneMessage(option, true);
-      showIphoneTyping();
-      setTimeout(() => {
-        hideIphoneTyping();
-        if (option === '1') {
-          addIphoneMessage(`📋 Hola Juan Carlos Pérez!
-
-<b>Estado actual de tu solicitud:</b> ✅ Aprobada<br>
-<b>Monto:</b> Gs. 15.000.000<br>
-<b>Plazo:</b> 24 meses<br>
-<b>Fecha de solicitud:</b> 15/06/2025<br>
-<b>Fecha de aprobación:</b> 20/06/2025
-
-¡Puedes pasar por nuestra oficina para firmar el contrato! 🎉`);
-          iphoneProcessedCount++;
-          document.getElementById('resetBtn').style.display = 'block';
-        } else if (option === '2') {
-          addIphoneMessage(`📝 Perfecto! Para procesar tu solicitud de préstamo necesitamos los siguientes datos:
-
-Por favor, envíanos en un solo mensaje:
-• <b>Nombre completo</b>
-• <b>Monto solicitado</b> (en guaraníes)
-• <b>Plazo deseado</b> (en meses)
-• <b>Correo electrónico</b>
-
-Ejemplo: "María González, 10000000, 12 meses, maria@gmail.com"`);
-          document.getElementById('loanBtn').style.display = 'block';
-          iphoneCurrentStep = 'loan_data';
-        } else if (option === '3') {
-          addIphoneMessage(`👨‍💼 Un agente se pondrá en contacto contigo dentro de los próximos 15 minutos.
-
-Mientras tanto, puedes:
-• Preparar tu documentación
-• Revisar nuestras tasas en www.coopmedalla.com
-• Llamarnos al (021) 123-456
-
-¡Gracias por contactarnos! 😊`);
-          iphoneProcessedCount++;
-          document.getElementById('resetBtn').style.display = 'block';
-        }
-      }, 1000);
-    }
-    function sendIphoneLoanData() {
-      hideAllIphoneOptions();
-      addIphoneMessage("Carlos Mendoza, 8000000, 18 meses, carlos.mendoza@gmail.com", true);
-      showIphoneTyping();
-      setTimeout(() => {
-        hideIphoneTyping();
-        addIphoneMessage(`✅ ¡Excelente Carlos Mendoza! Tus datos fueron registrados correctamente:
-
-<b>Nombre:</b> Carlos Mendoza<br>
-<b>Monto solicitado:</b> Gs. 8.000.000<br>
-<b>Plazo:</b> 18 meses<br>
-<b>Email:</b> carlos.mendoza@gmail.com<br>
-<b>Teléfono:</b> +595 981 123 456
-
-Te enviaremos un PDF con las condiciones específicas para tu préstamo. 📄`);
-        setTimeout(() => {
-          addIphoneMessage(`📋 Adjunto: Condiciones del préstamo
-
-<b>Condiciones para tu préstamo:</b>
-• Tasa de interés: 18% anual
-• Cuota mensual: Gs. 580.000
-• Requisitos mínimos cumplidos ✅
-
-Por favor, responde <b>SÍ</b> para aceptar estas condiciones y continuar, o <b>NO</b> si tienes dudas.`, false, true);
-          document.getElementById('acceptBtn').style.display = 'block';
-          document.getElementById('rejectBtn').style.display = 'block';
-          iphoneCurrentStep = 'terms';
-        }, 1300);
-      }, 1400);
-    }
-    function acceptIphoneTerms() {
-      hideAllIphoneOptions();
-      addIphoneMessage("SÍ", true);
-      showIphoneTyping();
-      setTimeout(() => {
-        hideIphoneTyping();
-        addIphoneMessage(`🎉 ¡Perfecto Carlos! 
-
-Tu solicitud de préstamo ha sido <b>aceptada</b> y está siendo procesada por nuestro equipo de análisis crediticio.
-
-<b>Próximos pasos:</b>
-1. Análisis crediticio (24-48 horas)
-2. Te contactaremos para coordinar la entrega
-3. Firma del contrato en sucursal
-
-<b>Número de solicitud:</b> #PR-2025-001547
-
-¡Gracias por confiar en Cooperativa Medalla! 🚀`);
-        iphoneProcessedCount++;
-        document.getElementById('resetBtn').style.display = 'block';
-      }, 1200);
-    }
-    function rejectIphoneTerms() {
-      hideAllIphoneOptions();
-      addIphoneMessage("NO, tengo algunas dudas", true);
-      showIphoneTyping();
-      setTimeout(() => {
-        hideIphoneTyping();
-        addIphoneMessage(`👨‍💼 Perfecto Carlos, entendemos que quieras aclarar tus dudas.
-
-Un <b>agente especializado</b> se pondrá en contacto contigo en los próximos 15 minutos para resolver todas tus consultas sobre:
-
-• Tasas de interés
-• Condiciones de pago  
-• Requisitos adicionales
-• Beneficios exclusivos
-
-También puedes llamarnos al <b>(021) 123-456</b> 📞
-
-¡Estamos aquí para ayudarte! 😊`);
-        iphoneProcessedCount++;
-        document.getElementById('resetBtn').style.display = 'block';
-      }, 1100);
-    }
-    function resetIphoneDemo() {
-      document.getElementById('iphoneChatMessages').innerHTML = '';
-      hideAllIphoneOptions();
-      document.getElementById('startBtn').style.display = 'block';
-      iphoneCurrentStep = 'idle';
-    }
-    // SIMULADOR EMBEBIDO: Todo en DOMContentLoaded
-    document.addEventListener('DOMContentLoaded', function() {
-      // SIMULADOR EMBEBIDO: Mostrar/ocultar por card
-      const servicioAuto = document.getElementById('servicio-automatizacion');
-      const menuAutoWhatsapp = document.getElementById('menu-auto-whatsapp');
-      const simuladorContainer = document.getElementById('simuladorContainer');
-      const simuladorCloseBtn = document.getElementById('simuladorCloseBtn');
-      
-      // Debug: verificar que los elementos existen
-      console.log('Elementos encontrados:', {
-        servicioAuto: !!servicioAuto,
-        menuAutoWhatsapp: !!menuAutoWhatsapp,
-        simuladorContainer: !!simuladorContainer,
-        simuladorCloseBtn: !!simuladorCloseBtn
-      });
-      
-      if (servicioAuto && simuladorContainer) {
-        servicioAuto.addEventListener('click', function() {
-          if(simuladorContainer.classList.contains('active')) {
-            simuladorContainer.classList.remove('active');
-            resetIphoneDemo();
-          } else {
-            simuladorContainer.classList.add('active');
-            resetIphoneDemo();
-            setTimeout(function(){
-              simuladorContainer.scrollIntoView({behavior: "smooth", block: "center"});
-            }, 120);
-          }
-        });
-      }
-      
-      // SIMULADOR EMBEBIDO: Mostrar por menú dropdown
-      if (menuAutoWhatsapp && simuladorContainer) {
-        menuAutoWhatsapp.addEventListener('click', function(e) {
-          e.preventDefault();
-          if(!simuladorContainer.classList.contains('active')) {
-            simuladorContainer.classList.add('active');
-            resetIphoneDemo();
-            setTimeout(function(){
-              simuladorContainer.scrollIntoView({behavior: "smooth", block: "center"});
-            }, 120);
-          }
-          // Cierra el dropdown después de click
-          const dropdown = document.getElementById('dropdownServicios');
-          if (dropdown) dropdown.classList.remove('open');
-        });
-      }
-      
-      // SIMULADOR: Cerrar con la cruz
-      if (simuladorCloseBtn && simuladorContainer) {
-        simuladorCloseBtn.addEventListener('click', function(e) {
-          console.log('Cerrando simulador...'); // Para debug
-          e.preventDefault();
-          e.stopPropagation();
-          simuladorContainer.classList.remove('active');
-          resetIphoneDemo();
-        });
-      }
-      
-      // SIMULADOR: Cerrar con ESC
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && simuladorContainer && simuladorContainer.classList.contains('active')) {
-          simuladorContainer.classList.remove('active');
-          resetIphoneDemo();
-        }
-      });
-    });
     // Efecto tilt 3D en las tarjetas de servicio (solo en desktop)
     if (window.innerWidth > 768) {
       document.querySelectorAll('.servicio-card').forEach(card => {
@@ -3807,8 +2946,19 @@ function showAboutModal() {
           <span style='font-size:1.2rem;vertical-align:middle;margin-left:7px;'><i class='fa-solid fa-user-graduate fa-bounce'></i></span>
         </div>
         <div id='aboutText' style='color:#a8e3e0;font-size:1.13rem;font-family:"Poppins",Arial,sans-serif;font-weight:500;line-height:1.7;letter-spacing:0.01em;max-width:440px;margin:0 auto;text-align:left;'></div>
-        <button id='closeAboutBtn' style='background:linear-gradient(90deg,#23ffe3,#60a8ff 80%);color:#181d24;border:none;border-radius:22px;padding:10px 28px;font-size:1.07rem;font-weight:700;cursor:pointer;font-family:"Montserrat",Arial,sans-serif;margin-top:28px;box-shadow:0 0 8px 1px #42fa7a33;transition:background 0.18s, color 0.15s, transform 0.13s, box-shadow 0.2s;display:block;margin-left:auto;margin-right:auto;'>
-          <span data-translate="modal_close">Cerrar</span>
+        <button id='closeAboutBtn' style='
+          position:absolute;
+          top:12px;
+          right:18px;
+          background:none;
+          color:#fff;
+          border:none;
+          font-size:1.2rem;
+          cursor:pointer;
+          transition: color 0.15s;
+          z-index:2;
+        '>
+          <i class="fa fa-times"></i>
         </button>
       </div>
     `;
@@ -3867,6 +3017,3 @@ function closeAboutModal() {
   }
 }
 </script>
-
-</body>
-</html>
