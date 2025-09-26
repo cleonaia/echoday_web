@@ -802,6 +802,90 @@ const translations = {
 
     // Texto About
     about_text: "Olá! Sou estudante de Engenharia de Dados com uma profunda paixão por inovação e desenvolvimento tecnológico. Meu objetivo é fornecer soluções criativas e eficientes que impulsionem a transformação digital, especialmente na América do Sul, uma região cheia de potencial e oportunidades para abrir novos horizontes de conhecimento.\n\nMe motivo a criar ferramentas e plataformas que facilitem a vida das pessoas e empresas, usando dados, inteligência artificial e automação para resolver desafios reais. Acredito firmemente que a tecnologia é um motor de mudança positiva, e por isso busco estar sempre na vanguarda, aprendendo e aplicando as melhores práticas do setor.\n\nMinha visão é contribuir para o desenvolvimento de uma região mais competitiva, conectada e preparada para o futuro, colaborando com equipes multidisciplinares e compartilhando conhecimento adquirido. Se você compartilha essa paixão por inovar e transformar, vamos conversar e criar juntos o próximo grande projeto!"
+  },
+
+  ca: {
+    hero_projects: "Solucions personalitzades, tracte proper i resultats garantits.<br>Més de 30 projectes realitzats per a empreses i autònoms.",
+    services_header: "Serveis professionals",
+    services_header_desc: "Solucions digitals per a empreses i autònoms a Catalunya i Espanya.<br>Consulta preus i opcions personalitzades.<br><span style='color:#42fa7a;font-weight:700;font-size:1.45rem;'>Sol·licita assessoria gratuïta!</span>",
+    about_header: "Sobre mi",
+    about_section_desc: "Sóc Leo, professional digital amb més de 3 anys d'experiència en desenvolupament web, apps mòbils, intel·ligència artificial i consultoria tecnològica. La meva missió és ajudar empreses i autònoms a créixer i transformar-se digitalment, oferint solucions innovadores, eficients i adaptades a cada client.<br><br><b>Valors:</b> Innovació, honestedat, compromís i enfocament al client.<br><b>Experiència:</b> Més de 30 projectes realitzats a Espanya, Catalunya i Llatinoamèrica, incloent:<br>- App de gestió per a una gestoria a Catalunya.<br>- Plataforma web per a una cooperativa al Paraguai.<br>- Automatització IA per a una startup a Alemanya.<br><b>Enfocament internacional:</b> Conec el mercat català, espanyol i llatinoamericà, adaptant cada solució a les necessitats reals de cada zona.<br><br>Si busques un aliat tecnològic per al teu negoci, <a href='#contacto' style='color:var(--accent2);text-decoration:underline;'>contacta'm</a> i descobreix com podem innovar junts.",
+    about_section_contact: "Vols saber més? <a href='#contacto' style='color:var(--accent2);text-decoration:underline;'>Contacta'm</a>",
+    service_web_title: "Web professional",
+    service_web_desc: "Desenvolupament web modern, optimitzat i adaptat al teu negoci.",
+    service_web_includes: "Inclou: disseny personalitzat, SEO, integració amb xarxes socials i Google Analytics.",
+    service_web_feature1: "Responsive i SEO",
+    service_web_feature2: "Panell d'administració",
+    service_web_feature3: "Integració amb APIs",
+    service_web_feature4: "Exemple:",
+    service_web_example: "www.botiga-catalunya.com",
+    service_web_price: "Des de 1.800€",
+    service_app_title: "App mòbil",
+    service_app_desc: "Apps per a iOS i Android, personalitzades per a la teva empresa.",
+    service_app_includes: "Inclou: publicació a botigues, notificacions push, suport post-llançament.",
+    service_app_feature1: "Notificacions push",
+    service_app_feature2: "Publicació a botigues",
+    service_app_feature3: "Interfície intuïtiva",
+    service_app_feature4: "Exemple:",
+    service_app_example: "AppGestió Catalunya",
+    service_app_price: "Des de 2.400€",
+    service_ai_title: "Automatització IA",
+    service_ai_desc: "Automatitza processos amb intel·ligència artificial i bots avançats.",
+    service_ai_includes: "Inclou: chatbots, integració WhatsApp, anàlisi de dades.",
+    service_ai_feature1: "Chatbots intel·ligents",
+    service_ai_feature2: "Integració WhatsApp Business",
+    service_ai_feature3: "Fluxos de treball personalitzats",
+    service_ai_feature4: "Exemple:",
+    service_ai_example: "BotAtenció Express",
+    service_ai_price: "Des de 900€",
+    service_consult_title: "Consultoria digital",
+    service_consult_desc: "Diagnòstic, estratègia i capacitació per a empreses i autònoms.",
+    service_consult_includes: "Inclou: auditoria digital, pla d'acció, formació presencial/online.",
+    service_consult_feature1: "Diagnòstic digital",
+    service_consult_feature2: "Estratègia personalitzada",
+    service_consult_feature3: "Formació i suport",
+    service_consult_feature4: "Exemple:",
+    service_consult_example: "Consultoria Pime Barcelona",
+    service_consult_price: "Des de 250€",
+    service_present_title: "Presentacions d'impacte",
+    service_present_desc: "Disseny de presentacions professionals per a esdeveniments, pitch i formació.",
+    service_present_includes: "Inclou: animacions, guió, assessoria en comunicació.",
+    service_present_feature1: "Disseny visual i animacions",
+    service_present_feature2: "Contingut persuasiu",
+    service_present_feature3: "Interactivitat avançada",
+    service_present_feature4: "Exemple:",
+    service_present_example: "Pitch DemoTech",
+    service_present_price: "Des de 350€",
+    service_maint_title: "Manteniment web",
+    service_maint_desc: "Actualitzacions, seguretat i suport tècnic continu.",
+    service_maint_includes: "Inclou: còpies de seguretat, monitorització, resposta ràpida.",
+    service_maint_feature1: "Actualitzacions mensuals",
+    service_maint_feature2: "Suport tècnic",
+    service_maint_feature3: "Seguretat avançada",
+    service_maint_feature4: "Exemple:",
+    service_maint_example: "MantenimentWeb Pro",
+    service_maint_price: "130€/mes",
+
+    // Contacto
+    contact_title: "Parlem!",
+    contact_subtitle: "Preparats per transformar la teva empresa? Fem alguna cosa gran junts!",
+    contact_name_label: "Nom",
+    contact_name_placeholder: "Quin és el teu nom?",
+    contact_company_label: "Empresa",
+    contact_company_placeholder: "On treballes? (opcional)",
+    contact_email_label: "Email",
+    contact_email_placeholder: "El teu email de contacte",
+    contact_message_label: "Missatge",
+    contact_message_placeholder: "Com et puc ajudar?",
+    contact_send_button: "Enviar missatge",
+    contact_whatsapp: "Escriu-me ara",
+    contact_social: "Xarxes:",
+
+    // CTAs
+    service_cta: "Sol·licita una Consulta Gratuïta",
+
+    // Texto About
+    about_text: "Hola! Sóc un estudiant d'Enginyeria de Dades amb una profunda passió per la innovació i el desenvolupament tecnològic. El meu objectiu és aportar solucions creatives i eficients que impulsin la transformació digital, especialment a Catalunya i la resta d'Espanya, regions plenes de potencial i oportunitats.\n\nEm motiva crear eines i plataformes que facilitin la vida de les persones i les empreses, utilitzant dades, intel·ligència artificial i automatització per resoldre reptes reals. Crec fermament que la tecnologia és un motor de canvi positiu, i per això busco estar sempre a l'avantguarda, aprenent i aplicant les millors pràctiques del sector.\n\nLa meva visió és contribuir al desenvolupament d'una regió més competitiva, connectada i preparada per al futur, col·laborant amb equips multidisciplinaris i compartint coneixement adquirit. Si comparteixes aquesta passió per innovar i transformar, parlem i creem junts el proper gran projecte!"
   }
 };
 
@@ -899,6 +983,11 @@ class LanguageManager {
         title: 'Echoday - Soluciones Creativas',
         description: 'Transformación digital y creatividad para empresas que quieren destacar. Automatización IA, desarrollo web, apps móviles y más.',
         keywords: 'desarrollo web, automatización IA, apps móviles, transformación digital, consultoría empresarial'
+      },
+      'ca': {
+        title: 'Echoday - Solucions Creatives',
+        description: 'Transformació digital i creativitat per a empreses que volen destacar. Automatització IA, desenvolupament web, apps mòbils i més.',
+        keywords: 'desenvolupament web, automatització IA, apps mòbils, transformació digital, consultoria empresarial'
       },
       'en': {
         title: 'Echoday - Creative Solutions',
