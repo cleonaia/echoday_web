@@ -2309,15 +2309,20 @@ body {
       <h2 class="contact-title" style="font-size:1.6rem;margin-bottom:6px;">Contacto</h2>
       <p class="contact-subtitle" style="font-size:1.05rem;margin-bottom:12px;">¿Tienes dudas o quieres solicitar presupuesto? Rellena el formulario y te responderé en menos de 24h.</p>
       <div class="contact-grid" style="gap:12px;">
-        <form class="contact-form" style="max-width:340px;gap:8px;">
+        <form class="contact-form" style="max-width:340px;gap:8px;" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="8e2c9f1a-7b3d-4c5e-9f2a-1b8c7d4e6f9a">
+          <input type="hidden" name="redirect" value="https://cleonaia.github.io/echoday_web">
+          <input type="hidden" name="subject" value="Nuevo mensaje desde echoday.tech">
+          <input type="hidden" name="from_name" value="Formulario Echoday">
+          
           <label for="nombre" data-translate="contact_name_label">Nombre</label>
-          <input id="nombre" required data-translate-placeholder="contact_name_placeholder">
+          <input id="nombre" name="name" required data-translate-placeholder="contact_name_placeholder">
           <label for="empresa" data-translate="contact_company_label">Empresa</label>
-          <input id="empresa" data-translate-placeholder="contact_company_placeholder">
+          <input id="empresa" name="company" data-translate-placeholder="contact_company_placeholder">
           <label for="email" data-translate="contact_email_label">Email</label>
-          <input id="email" type="email" required data-translate-placeholder="contact_email_placeholder">
+          <input id="email" name="email" type="email" required data-translate-placeholder="contact_email_placeholder">
           <label for="mensaje" data-translate="contact_message_label">Mensaje</label>
-          <textarea id="mensaje" required data-translate-placeholder="contact_message_placeholder"></textarea>
+          <textarea id="mensaje" name="message" required data-translate-placeholder="contact_message_placeholder"></textarea>
           <button type="submit"><i class="fa fa-paper-plane"></i> <span data-translate="contact_send_button">Enviar mensaje</span></button>
         </form>
         <div class="contact-info" style="font-size:1.01rem;line-height:1.5;max-width:340px;">
@@ -2327,7 +2332,7 @@ body {
             <b data-translate="contact_social">Redes:</b>
             <a href="https://github.com/cleonaia" target="_blank" style="color:var(--accent2);margin:0 7px;" title="GitHub"><i class="fab fa-github fa-lg"></i></a>
             <a href="#" style="color:var(--accent1);margin:0 7px;"><i class="fab fa-twitter fa-lg"></i></a>
-            <a href="#" style="color:#42fa7a;margin:0 7px;"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="mailto:contacto@echoday.tech" style="color:#e96479;margin:0 7px;" title="Gmail"><i class="fa-solid fa-envelope fa-lg"></i></a>
           </div>
         </div>
       </div>
