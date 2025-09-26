@@ -515,6 +515,10 @@
             <div id="settings-tab" class="tab-content" style="display: none;">
                 <div class="header">
                     <h2>Configuració</h2>
+                    <button class="btn btn-secondary" onclick="showLeadStats()">
+                        <i class="fas fa-chart-pie"></i>
+                        Estadístiques Leads
+                    </button>
                 </div>
 
                 <div class="section">
@@ -611,6 +615,7 @@
     <script src="config.js"></script>
     <script src="templates.js"></script>
     <script src="automation.js"></script>
+    <script src="mass_leads_1000.js"></script>
     <script>
         // Dashboard functionality
         let automationSystem = null;
@@ -675,16 +680,44 @@
             try {
                 const campaignId = automationSystem.createCampaign(campaignData);
                 
-                // Generate sample leads for testing
-                const sampleLeads = LeadGeneration.generateSampleLeads(
-                    campaignData.sector, 
-                    campaignData.location, 
-                    10
-                );
+                // Use REAL LEADS from the 1000+ database
+                let realLeads = [];
+                if (typeof PRIORITIZED_LEADS !== 'undefined') {
+                    // Filter leads by sector and location
+                    realLeads = PRIORITIZED_LEADS.filter(lead => {
+                        const sectorMatch = lead.sector === campaignData.sector;
+                        const locationMatch = lead.location.toLowerCase().includes(campaignData.location.toLowerCase()) ||
+                                            campaignData.location.toLowerCase() === 'sabadell';
+                        return sectorMatch && locationMatch;
+                    }).slice(0, 20); // Take top 20 leads
+                    
+                    if (realLeads.length === 0) {
+                        // Fallback to any leads from the sector
+                        realLeads = PRIORITIZED_LEADS.filter(lead => lead.sector === campaignData.sector).slice(0, 15);
+                    }
+                }
                 
-                automationSystem.addLeadsToCampaign(campaignId, sampleLeads);
+                // Convert to expected format
+                const formattedLeads = realLeads.map(lead => ({
+                    business_name: lead.business_name,
+                    owner_name: lead.owner_name,
+                    email: lead.email,
+                    phone: lead.phone,
+                    sector: lead.sector,
+                    location: lead.location,
+                    custom_data: {
+                        address: lead.address,
+                        needs_score: lead.needs_score,
+                        budget_range: lead.budget_range,
+                        digital_needs: lead.digital_needs
+                    }
+                }));
                 
-                showAlert('Campanya creada amb èxit!', 'success');
+                // Add leads to campaign
+                const leadCount = automationSystem.addLeadsToCampaign(campaignId, formattedLeads);
+                
+                showAlert(`Campanya creada amb ${leadCount} leads reals!`, 'success');
+                showAlert(`Leads prioritaris carregats del sector ${campaignData.sector}`, 'success');
                 hideModal('newCampaignModal');
                 updateDashboard();
                 
@@ -771,6 +804,57 @@
             setTimeout(() => {
                 alert.remove();
             }, 5000);
+        }
+
+        // Show lead statistics
+        function showLeadStats() {
+            if (typeof LEAD_STATS !== 'undefined') {
+                let statsHTML = `
+                    <div class="alert success">
+                        <h3>📊 Base de Datos de Leads Reales</h3>
+                        <p><strong>Total:</strong> ${LEAD_STATS.total.toLocaleString()} empresas</p>
+                        <p><strong>Revenue Potencial:</strong> ${Math.round(LEAD_STATS.total_potential_revenue).toLocaleString()}€</p>
+                        <p><strong>Alta Prioridad:</strong> ${LEAD_STATS.high_priority_count} empresas</p>
+                        
+                        <h4>Por Sector:</h4>
+                        <ul>`;
+                
+                Object.entries(LEAD_STATS.by_sector).forEach(([sector, count]) => {
+                    statsHTML += `<li><strong>${sector}:</strong> ${count} empresas</li>`;
+                });
+                
+                statsHTML += `</ul>
+                        <h4>Ubicaciones Principales:</h4>
+                        <ul>`;
+                
+                const topLocations = Object.entries(LEAD_STATS.by_location)
+                    .sort(([,a], [,b]) => b - a)
+                    .slice(0, 5);
+                    
+                topLocations.forEach(([location, count]) => {
+                    statsHTML += `<li><strong>${location}:</strong> ${count} empresas</li>`;
+                });
+                
+                statsHTML += `</ul></div>`;
+                
+                // Create temporary modal for stats
+                const modal = document.createElement('div');
+                modal.className = 'modal show';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Estadístiques de Leads Reals</h3>
+                            <button class="close-btn" onclick="this.closest('.modal').remove()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            ${statsHTML}
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            } else {
+                showAlert('Carregant base de dades de leads...', 'error');
+            }
         }
 
         // Auto-refresh dashboard every 30 seconds
