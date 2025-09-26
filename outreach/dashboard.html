@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echoday - Dashboard d'Automatització de Màrqueting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0a0e14;
+            --secondary-bg: #1a1f2e;
+            --accent1: #60a8ff;
+            --accent2: #23ffe3;
+            --accent3: #42fa7a;
+            --danger: #ff6b6b;
+            --warning: #ffd93d;
+            --text: #ffffff;
+            --text-muted: #a8b2d1;
+            --border: #2d3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--secondary-bg);
+            padding: 2rem 1rem;
+            border-right: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            padding: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--accent2);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(96, 168, 255, 0.1);
+            color: var(--accent1);
+        }
+
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            color: var(--primary-bg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(96, 168, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--secondary-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .stat-icon.primary { background: rgba(96, 168, 255, 0.1); color: var(--accent1); }
+        .stat-icon.success { background: rgba(66, 250, 122, 0.1); color: var(--accent3); }
+        .stat-icon.warning { background: rgba(255, 217, 61, 0.1); color: var(--warning); }
+        .stat-icon.danger { background: rgba(255, 107, 107, 0.1); color: var(--danger); }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .section {
+            background: var(--secondary-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-content {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent1);
+            box-shadow: 0 0 0 3px rgba(96, 168, 255, 0.1);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .table th {
+            background: var(--primary-bg);
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.active { background: rgba(66, 250, 122, 0.2); color: var(--accent3); }
+        .badge.paused { background: rgba(255, 217, 61, 0.2); color: var(--warning); }
+        .badge.completed { background: rgba(96, 168, 255, 0.2); color: var(--accent1); }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--secondary-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid;
+        }
+
+        .alert.success {
+            background: rgba(66, 250, 122, 0.1);
+            border-color: var(--accent3);
+            color: var(--accent3);
+        }
+
+        .alert.error {
+            background: rgba(255, 107, 107, 0.1);
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <h1>Echoday</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link active" data-tab="dashboard">
+                            <i class="fas fa-chart-line"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#campaigns" class="nav-link" data-tab="campaigns">
+                            <i class="fas fa-bullhorn"></i>
+                            Campanyes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#leads" class="nav-link" data-tab="leads">
+                            <i class="fas fa-users"></i>
+                            Leads
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#templates" class="nav-link" data-tab="templates">
+                            <i class="fas fa-envelope"></i>
+                            Plantilles
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#analytics" class="nav-link" data-tab="analytics">
+                            <i class="fas fa-chart-bar"></i>
+                            Analítiques
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings" class="nav-link" data-tab="settings">
+                            <i class="fas fa-cog"></i>
+                            Configuració
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard-tab" class="tab-content">
+                <div class="header">
+                    <h2>Dashboard d'Automatització</h2>
+                    <button class="btn btn-primary" onclick="showModal('newCampaignModal')">
+                        <i class="fas fa-plus"></i>
+                        Nova Campanya
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon primary">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="totalEmailsSent">0</div>
+                        <div class="stat-label">Emails Enviats</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon success">
+                                <i class="fas fa-envelope-open"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="openRate">0%</div>
+                        <div class="stat-label">Taxa d'Obertura</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon warning">
+                                <i class="fas fa-reply"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="responseRate">0%</div>
+                        <div class="stat-label">Taxa de Resposta</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon danger">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="conversionRate">0%</div>
+                        <div class="stat-label">Taxa de Conversió</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h3>Campanyes Actives</h3>
+                    </div>
+                    <div class="section-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Campanya</th>
+                                    <th>Sector</th>
+                                    <th>Leads</th>
+                                    <th>Enviats</th>
+                                    <th>Estat</th>
+                                    <th>Progrés</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activeCampaigns">
+                                <tr>
+                                    <td colspan="6" style="text-align: center; color: var(--text-muted);">
+                                        No hi ha campanyes actives. Crea la teva primera campanya!
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other tab contents would go here -->
+            <div id="campaigns-tab" class="tab-content" style="display: none;">
+                <div class="header">
+                    <h2>Gestió de Campanyes</h2>
+                    <button class="btn btn-primary" onclick="showModal('newCampaignModal')">
+                        <i class="fas fa-plus"></i>
+                        Nova Campanya
+                    </button>
+                </div>
+                <!-- Campaign management content -->
+            </div>
+
+            <div id="settings-tab" class="tab-content" style="display: none;">
+                <div class="header">
+                    <h2>Configuració</h2>
+                </div>
+
+                <div class="section">
+                    <div class="section-header">
+                        <h3>Configuració Web3Forms</h3>
+                    </div>
+                    <div class="section-content">
+                        <div class="alert error" id="apiKeyWarning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Necessites configurar la teva clau API de Web3Forms per començar a enviar emails.
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Clau API de Web3Forms</label>
+                            <input type="text" class="form-control" id="web3formsApiKey" 
+                                   placeholder="Introdueix la teva clau API de Web3Forms">
+                            <small style="color: var(--text-muted); margin-top: 0.5rem; display: block;">
+                                Pots obtenir una clau API gratuïta a <a href="https://web3forms.com" target="_blank" style="color: var(--accent1);">web3forms.com</a>
+                            </small>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email de Contacte</label>
+                                <input type="email" class="form-control" id="contactEmail" value="contacto@echoday.tech">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Telèfon de Contacte</label>
+                                <input type="text" class="form-control" id="contactPhone" value="+34 643 032 807">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="saveSettings()">
+                            <i class="fas fa-save"></i>
+                            Guardar Configuració
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Campaign Modal -->
+    <div id="newCampaignModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nova Campanya d'Automatització</h3>
+                <button class="close-btn" onclick="hideModal('newCampaignModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newCampaignForm">
+                    <div class="form-group">
+                        <label class="form-label">Nom de la Campanya</label>
+                        <input type="text" class="form-control" id="campaignName" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Sector Objectiu</label>
+                            <select class="form-control" id="campaignSector" required>
+                                <option value="">Selecciona un sector</option>
+                                <option value="restaurants_bars">Restaurants i Bars</option>
+                                <option value="beauty_wellness">Bellesa i Benestar</option>
+                                <option value="retail_shops">Botigues i Comerç</option>
+                                <option value="medical_health">Salut i Serveis Mèdics</option>
+                                <option value="professional_services">Serveis Professionals</option>
+                                <option value="fitness_sports">Fitness i Esports</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Idioma</label>
+                            <select class="form-control" id="campaignLanguage">
+                                <option value="ca">Català</option>
+                                <option value="es">Espanyol</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Ubicació Objectiu</label>
+                        <input type="text" class="form-control" id="campaignLocation" value="Sabadell" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Crear Campanya
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="templates.js"></script>
+    <script src="automation.js"></script>
+    <script>
+        // Dashboard functionality
+        let automationSystem = null;
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDashboard();
+            loadSettings();
+        });
+
+        function initializeDashboard() {
+            // Initialize automation system
+            automationSystem = new OutreachAutomation(OUTREACH_CONFIG);
+            
+            // Set up tab navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    showTab(tabId);
+                });
+            });
+
+            // Set up form handlers
+            document.getElementById('newCampaignForm').addEventListener('submit', handleNewCampaign);
+        }
+
+        function showTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+
+            // Show selected tab
+            document.getElementById(tabId + '-tab').style.display = 'block';
+
+            // Update nav active state
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+        }
+
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
+        }
+
+        function hideModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        function handleNewCampaign(e) {
+            e.preventDefault();
+            
+            const campaignData = {
+                name: document.getElementById('campaignName').value,
+                sector: document.getElementById('campaignSector').value,
+                language: document.getElementById('campaignLanguage').value,
+                location: document.getElementById('campaignLocation').value
+            };
+
+            try {
+                const campaignId = automationSystem.createCampaign(campaignData);
+                
+                // Generate sample leads for testing
+                const sampleLeads = LeadGeneration.generateSampleLeads(
+                    campaignData.sector, 
+                    campaignData.location, 
+                    10
+                );
+                
+                automationSystem.addLeadsToCampaign(campaignId, sampleLeads);
+                
+                showAlert('Campanya creada amb èxit!', 'success');
+                hideModal('newCampaignModal');
+                updateDashboard();
+                
+            } catch (error) {
+                showAlert('Error creant la campanya: ' + error.message, 'error');
+            }
+        }
+
+        function updateDashboard() {
+            // Update stats
+            document.getElementById('totalEmailsSent').textContent = automationSystem.analytics.sent;
+            
+            // Update campaigns table
+            updateCampaignsTable();
+        }
+
+        function updateCampaignsTable() {
+            const tbody = document.getElementById('activeCampaigns');
+            tbody.innerHTML = '';
+
+            automationSystem.campaigns.forEach((campaign, campaignId) => {
+                const analytics = automationSystem.getCampaignAnalytics(campaignId);
+                const row = `
+                    <tr>
+                        <td>${campaign.name}</td>
+                        <td>${campaign.sector}</td>
+                        <td>${analytics.total_leads}</td>
+                        <td>${analytics.emails_sent}</td>
+                        <td><span class="badge ${campaign.status}">${campaign.status}</span></td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${analytics.conversion_rate}%"></div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function saveSettings() {
+            const apiKey = document.getElementById('web3formsApiKey').value;
+            const email = document.getElementById('contactEmail').value;
+            const phone = document.getElementById('contactPhone').value;
+
+            if (!apiKey) {
+                showAlert('La clau API de Web3Forms és obligatòria', 'error');
+                return;
+            }
+
+            // Update config
+            OUTREACH_CONFIG.web3forms.apiKey = apiKey;
+            OUTREACH_CONFIG.company.email = email;
+            OUTREACH_CONFIG.company.phone = phone;
+
+            // Save to localStorage
+            localStorage.setItem('echoday_outreach_config', JSON.stringify(OUTREACH_CONFIG));
+            
+            showAlert('Configuració guardada correctament!', 'success');
+            document.getElementById('apiKeyWarning').style.display = 'none';
+        }
+
+        function loadSettings() {
+            const saved = localStorage.getItem('echoday_outreach_config');
+            if (saved) {
+                const config = JSON.parse(saved);
+                document.getElementById('web3formsApiKey').value = config.web3forms.apiKey || '';
+                document.getElementById('contactEmail').value = config.company.email || 'contacto@echoday.tech';
+                document.getElementById('contactPhone').value = config.company.phone || '+34 643 032 807';
+                
+                if (config.web3forms.apiKey) {
+                    document.getElementById('apiKeyWarning').style.display = 'none';
+                }
+            }
+        }
+
+        function showAlert(message, type = 'success') {
+            const alert = document.createElement('div');
+            alert.className = `alert ${type}`;
+            alert.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i> ${message}`;
+            
+            document.body.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+
+        // Auto-refresh dashboard every 30 seconds
+        setInterval(updateDashboard, 30000);
+    </script>
+</body>
+</html>
